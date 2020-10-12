@@ -1,0 +1,11 @@
+title: "Angular After Tutorial"
+summary: "この本ではAngularのチュートリアルを終えた人に向けて、コンポーネントやサービス、アプリケーション全体の設計を改善していく道筋を示します。"
+topics: [angular]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 01-first-refactoring
+  - 02-effective-rxjs
+  - 03-httpclient-in-action
+  - 04-dependency-injection
