@@ -12,6 +12,11 @@ title: はじめに
 この本についてのフィードバックは Twitter の [\#AngularAfterTutorial](https://twitter.com/search?q=%23AngularAfterTutorial) ハッシュタグを使ってください。  
 コンテンツのリクエストも歓迎です！
 
+## この本の読み方
+
+この本はいくつかの章から、章はいくつかのページから構成されます。それぞれの章は独立しているため、順番に読む必要はありません。
+ですが、公式チュートリアルを終えたばかりであれば、もっとも基礎的な内容を学べる第1章から読み始めることをおすすめします。
+
 ## 更新状況
 
 * 2020/10/12: Zennへ移動、細かい文言のアップデート
@@ -21,7 +26,7 @@ title: はじめに
 ## 著者情報
 
 Suguru Inatomi / 稲富 駿   
-Google Developers Expert for Angular   
+Google Developers Expert for Angular
 Angular日本ユーザー会 代表
 
 Twitter: [@laco2net](https://twitter.com/laco2net)   

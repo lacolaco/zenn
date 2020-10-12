@@ -335,16 +335,13 @@ export class UserDetailPageComponent implements OnInit, OnDestroy {
 
 ```html:user-detail-page.component.html
 <ng-container *ngIf="user$ | async as user; else userFetching">
-
   <h1>{{user.first_name}} {{user.last_name}}</h1>
-
   <dl>
     <dt>Email</dt>
     <dd>{{ user.email }}</dd>
     <dt>Avatar</dt>
     <dd><img [src]="user.avatar"></dd>
   </dl>
-
 </ng-container>
 
 <ng-template #userFetching>
@@ -361,7 +358,7 @@ export class UserDetailPageComponent implements OnInit, OnDestroy {
 さて、このサンプルではHTTPリクエストでAPIを呼び出し、ユーザーリストを表示し、ユーザー詳細へルーティングするという、一般的なデータ駆動のアプリケーションを作成しました。
 アプリケーションとしては小規模ですが、一般的なAngularアプリケーションの開発に役立ついくつかの示唆を得ることができました。
 
-1. コンポーネントは単一責任の原則にしたがって親子関係を分割する
+1. コンポーネントは単一責任原則にしたがって親子関係を分割する
 2. コンポーネントがもつべきでないビューと関係のない処理はサービスに移動する
 3. コマンド・クエリ分離原則にしたがって、副作用の発生し得る箇所を限定する
 4. ビューとの結合性が高く、単独の責務として定義しづらいビジネスロジックをUsecaseに集約し、API呼び出しや状態管理などのサービスの独立性を維持する

@@ -6,6 +6,6 @@
   "author": "Suguru Inatomi <suguru.inatomi@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "zenn-cli": "^0.1.47"
+    "zenn-cli": "^0.1.48"
   }
 }

@@ -48,11 +48,11 @@ export const initialState = {
 
 状態管理をおこなうStoreサービスを作成します。状態を保持するための `BehaviorSubject` と、状態を更新するための `update` メソッド、そして状態を購読するための `select<T>` メソッドを実装しています。
 
-:::message info
+:::message
 このサンプルではサードパーティライブラリに依存しないために独自にStoreを実装していますが、通常のアプリケーションでは ngrx/store や Akita のようなライブラリを使うことをおすすめします。
 :::
 
-:::message alert
+:::message
 `update`メソッドではRxJSの[`queueScheduler.schedule`](https://rxjs-dev.firebaseapp.com/api/index/const/queueScheduler) メソッドを使っています。これは引数に渡した関数を非同期的に実行するものです。同期的に`this._state$.next` を呼び出すとその更新が別の購読に即座に影響を与えるため、Angularの変更検知の整合性チェックでエラーが起きます。
 :::
 
@@ -83,8 +83,8 @@ export class Store {
 }
 ```
 
-このStoreを使うように、`UserService` を変更します。 `AppComponent` から見た `UserService` のインターフェースは変えず、内部実装だけを変更します。これにより、状態管理の責務が `UserService` から切り離されます。同時に、`fetchUsers` メソッドは async関数を使いシンプルに書き直します。HTTPリクエストのObservableはリクエストが完了すると同時に自動でcompleteするため、Subscriptionを使ったキャンセルをしないのであればPromiseと大きな違いはありません。（[「Observableのライフサイクル」](https://app.gitbook.com/@lacolaco/s/angular-after-tutorial/season-2-effective-rxjs/observable-lifecycle)を参照）
-ここではコールバックネストを減らして可読性を高めるためにasync関数を利用しました。
+このStoreを使うように、`UserService` を変更します。 `AppComponent` から見た `UserService` のインターフェースは変えず、内部実装だけを変更します。これにより、状態管理の責務が `UserService` から切り離されます。同時に、`fetchUsers` メソッドは async関数を使いシンプルに書き直します。HTTPリクエストのObservableはリクエストが完了すると同時に自動でcompleteするため、Subscriptionを使ったキャンセルをしないのであればPromiseと大きな違いはありません（[Observableのライフサイクル](https://app.gitbook.com/@lacolaco/s/angular-after-tutorial/season-2-effective-rxjs/observable-lifecycle)を参照）。
+ここではコールバックネストを減らして可読性を高めるためにAsync Functionを利用しました。
 
 
 ```typescript:user.service.ts
@@ -200,12 +200,10 @@ Reactive Formを使うためには、`AppModule`の `imports` メタデータに
 
 ```html:user-list-filter.component.html
 <form [formGroup]="form">
-
-    <label>
+  <label>
     Name Filter:
     <input formControlName="nameFilter" >
   </label>
-
 </form>
 ```
 

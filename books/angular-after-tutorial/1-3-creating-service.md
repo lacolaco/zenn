@@ -2,7 +2,7 @@
 title: "第1章 3. サービスの作成と状態管理"
 ---
 
-前のページに引き続き、単一責任の原則に基づいて AppComponent が抱える責任を分離していきます。このページでは ユーザー配列の取得と、その状態の保持をAppComponentから取り除くことにしましょう。
+前のページに引き続き、単一責任原則に基づいて AppComponent が抱える責任を分離していきます。このページでは ユーザー配列の取得と、その状態の保持をAppComponentから取り除くことにしましょう。
 
 ## UserService
 
@@ -69,9 +69,7 @@ AppComponentの責務がどんどん減ってきましたね。あともう少�
 * `get users$(): Observable<User[]>`  ユーザーの配列の更新を通知するObservableを返すgetter
 * `fetchUsers(): void` ユーザーの配列をフェッチするコマンド
 
-この分離は、 **コマンド・クエリ分離原則** に従ったものになっています。この原則は、副作用を与えず結果だけを受け取る **クエリ** と、結果を返さず副作用だけを起こす **コマンド** を分離するものです。
-
-http://bliki-ja.github.io/CommandQuerySeparation/
+この分離は、 **コマンド・クエリ分離原則**^[http://bliki-ja.github.io/CommandQuerySeparation/]に従ったものになっています。この原則は、副作用を与えず結果だけを受け取る **クエリ** と、結果を返さず副作用だけを起こす **コマンド** を分離するものです。
 
 現在の `getUsers()` はHTTPリクエストを発行する副作用がある一方で呼び出し元に結果も返しています。これを分離し、HTTPリクエストを発行してシステムの状態を書き換えるコマンドと、システムの状態を監視するクエリを作成します。
 
@@ -137,10 +135,10 @@ export class AppComponent {
 
 @[stackblitz](https://stackblitz.com/edit/angular-6teweq?embed=1&file=src/app/app.component.ts)
 
-ところで、今のAppComponentとUserServiceの関係を図にすると次のようになります。よくみるとこれはビューとストア、アクションによる単方向のデータフローを構成しており、簡易的ではありますがFluxに近い実装となっています。
+ところで、今のAppComponentとUserServiceの関係を図にすると次のようになります。よくみるとこれはビューとストア、アクションによる単方向のデータフローを構成しており、簡易的ではありますがFlux^[https://facebook.github.io/flux/]に近い実装となっています。
 
 ![AppComponentとUserServiceの関係図](https://storage.googleapis.com/zenn-user-upload/0tjj13o70fsn693ewz5fggpmk0tk)
 
-現在は管理する状態がユーザーの配列だけですが、アプリケーションの状態が増えるとUserServiceだけで管理することが単一責任の原則に反していきます。
+現在は管理する状態がユーザーの配列だけですが、アプリケーションの状態が増えるとUserServiceだけで管理することが単一責任原則に反していきます。
 次のページからは少し複雑性が高くなっていくなかでのアプリケーション設計を学びましょう。
 

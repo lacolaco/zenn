@@ -1,6 +1,6 @@
 title: "Angular After Tutorial"
 summary: "この本ではAngularのチュートリアルを終えた人に向けて、コンポーネントやサービス、アプリケーション全体の設計を改善していく道筋を示します。"
-topics: [angular]
+topics: [angular, rxjs]
 published: false
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
@@ -11,3 +11,7 @@ chapters:
   - 1-3-creating-service
   - 1-4-forms-and-state
   - 1-5-routing
+  - 2-1-effective-rxjs
+  - 2-2-observable-lifecycle
+  - 2-3-subscribe-observables-in-components
+  - 2-4-making-custom-operator

@@ -8,7 +8,7 @@ title: "第1章 1. はじめてのリファクタリング"
 
 ## ユーザーリストの取得と表示
 
-この章のサンプルアプリケーションでは、[https://reqres.in/](https://reqres.in/) の [ユーザーAPI](https://reqres.in/api/users ) で取得したユーザーを一覧して表示します。
+この章のサンプルアプリケーションでは、[https://reqres.in/](https://reqres.in/)の ユーザーAPI^[https://reqres.in/api/users]で取得したユーザーを一覧して表示します。
 
 最初の状態では、すべての処理を `AppComponent` だけでおこないます。サービスへの分割も、コンポーネントの分割もまだ何もおこなっていません。
 
