@@ -1,9 +1,8 @@
 ---
-title: 第2章 3. コンポーネントにおけるObservableの購読
+title: 第2章 Effective RxJS - コンポーネントにおけるObservableの購読
 ---
 
-
-この章ではAngularコンポーネントにおいてどのようにObservableを購読すべきなのかについて学びます。単純なsubscribeからはじめ、段階的にAsyncパイプを使ったリアクティブなパターンの使い方へステップアップしていきます。
+このページではAngularコンポーネントにおいてどのようにObservableを購読すべきなのかについて学びます。単純なsubscribeからはじめ、段階的にAsyncパイプを使ったリアクティブなパターンの使い方へステップアップしていきます。
 
 Angularのコンポーネントの基本とRxJSの基本を習得したら、次に学ぶのは実際にどうやってObservableとコンポーネントを組み合わせるかというプラクティスです。うまくObservableを利用することで、ユーザーインタラクションとリアクティブに協調するコンポーネントを簡単に実装できるようになるでしょう。
 
@@ -86,7 +85,7 @@ export class ExplicitSubscribeComponent implements OnInit {
 }
 ```
 
-`subscribe` メソッドを使う方法はシンプルに見えますが注意点があります。[Observableのライフサイクル](2-2-observable-lifecycle#無限のbservable) で述べたように、購読解除をしなければコンポーネントが破棄されたあとにメモリリークが発生します。おそらく、`ngOnDestroy` ライフサイクルフックメソッドを使って次のように `unsubscribe` メソッドを呼ぶ方法をまず最初に思いつくでしょう。
+`subscribe` メソッドを使う方法はシンプルに見えますが注意点があります。[Observableのライフサイクル](2-1-observable-lifecycle#無限のbservable) で述べたように、購読解除をしなければコンポーネントが破棄されたあとにメモリリークが発生します。おそらく、`ngOnDestroy` ライフサイクルフックメソッドを使って次のように `unsubscribe` メソッドを呼ぶ方法をまず最初に思いつくでしょう。
 
 ```typescript:explicit-subscribe.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -114,7 +113,7 @@ export class ExplicitSubscribeComponent implements OnInit, OnDestroy {
 
 この方法はクラスフィールドとして `Subscription` オブジェクトを保持する必要があります。`subscribe` メソッドの戻り値を使うことになりますが、コンポーネントが購読する Observableが複数になると、煩雑なコードになってしまうのが欠点であり、購読解除忘れも発生しがちです。
 
-ところで、[Observableのライフサイクル](2-2-observable-lifecycle#有限のobservable) で説明したとおり、Observableが完了するとその時点ですべての購読が自動的に解除されます。それを利用して、購読を開始する前の段階で、自動的に完了するように仕込んでおくことで購読解除忘れを防ぐことができます。
+ところで、[Observableのライフサイクル](2-1-observable-lifecycle#有限のobservable) で説明したとおり、Observableが完了するとその時点ですべての購読が自動的に解除されます。それを利用して、購読を開始する前の段階で、自動的に完了するように仕込んでおくことで購読解除忘れを防ぐことができます。
 
 次の例では、`ngOnDestroy` ライフサイクルフックのタイミングで発行される `onDestroy$` Subjectを作成し、 `valueChanges` には`takeUntil` オペレーターを追加します。`takeUntil` オペレータは、引数に指定したObservableに値が流れたときに、オペレーターが適用されたObservableを強制的に完了します。このように実装すると、複数のObservableになったときもクラスフィールドを増やすことなくそれぞれに `takeUntil` オペレーターを追加するだけです。
 

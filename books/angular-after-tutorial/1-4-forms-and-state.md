@@ -1,5 +1,5 @@
 ---
-title: "第1章 4. フォームと状態管理"
+title: "第1章 はじめてのリファクタリング - フォームと状態管理"
 ---
 
 前のページではユーザーリストを表示するための配列をRxJSの `BehaviorSubject` で管理しました。このページでは、ユーザーリストにフィルター機能を追加する中での、少し複雑になった状態を管理する設計パターンについて見ていきましょう。
@@ -83,7 +83,7 @@ export class Store {
 }
 ```
 
-このStoreを使うように、`UserService` を変更します。 `AppComponent` から見た `UserService` のインターフェースは変えず、内部実装だけを変更します。これにより、状態管理の責務が `UserService` から切り離されます。同時に、`fetchUsers` メソッドは async関数を使いシンプルに書き直します。HTTPリクエストのObservableはリクエストが完了すると同時に自動でcompleteするため、Subscriptionを使ったキャンセルをしないのであればPromiseと大きな違いはありません（[Observableのライフサイクル](https://app.gitbook.com/@lacolaco/s/angular-after-tutorial/season-2-effective-rxjs/observable-lifecycle)を参照）。
+このStoreを使うように、`UserService` を変更します。 `AppComponent` から見た `UserService` のインターフェースは変えず、内部実装だけを変更します。これにより、状態管理の責務が `UserService` から切り離されます。同時に、`fetchUsers` メソッドは async関数を使いシンプルに書き直します。HTTPリクエストのObservableはリクエストが完了すると同時に自動でcompleteするため、Subscriptionを使ったキャンセルをしないのであればPromiseと大きな違いはありません（[Observableのライフサイクル](2-1-observable-lifecycle)を参照）。
 ここではコールバックネストを減らして可読性を高めるためにAsync Functionを利用しました。
 
 

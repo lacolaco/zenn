@@ -1,8 +1,21 @@
 ---
-title: 第2章 2. Observableのライフサイクル
+title: 第2章 Effective RxJS - Observableのライフサイクル
 ---
 
-RxJSのユースケースの前に、まず理解しておかなくてはならない前提知識を学びます。
+第2章では、AngularアプリケーションにおけるRxJSの良い使い方、良くない使い方について解説します。 
+いくつかの例を通して、どのような場面でどのようにRxJSを使うとよいのかを学び、最後にはそれを自分で判断できるようになることを目指します。
+
+## RxJSについて
+
+本書ではRxJSそのものについての解説はおこないません。RxJSやObservableに関する基本的な解説は、Angular公式ドキュメンテーションの翻訳版がありますので、そちらを参照してください。
+
+* Observables: [https://angular.jp/guide/observables](https://angular.jp/guide/observables)
+* RxJS ライブラリ: [https://angular.jp/guide/rx-library](https://angular.jp/guide/rx-library)
+* Angular での Observable: [https://angular.jp/guide/observables-in-angular](https://angular.jp/guide/observables-in-angular) 
+
+また、RxJSそのものについての詳しい学習には、[learn-rxjs](https://www.learnrxjs.io/)というWebサイトがおすすめです。多くの機能について網羅的に解説されています。[公式ドキュメンテーションサイト](https://rxjs.dev/)も整備されてきています。こちらもリファレンスとして参考にするとよいでしょう。
+
+このページでは、RxJSのユースケースへ進む前にまず理解しておかなくてはならない前提知識を学びます。
 
 ## 2種類のObservable
 
