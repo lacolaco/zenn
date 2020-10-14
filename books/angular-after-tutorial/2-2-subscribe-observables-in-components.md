@@ -215,7 +215,7 @@ Single State Steamパターンを構成する重要な要素は **`ng-container`
 
 `*ngIf` や `*ngFor` のような[構造ディレクティブ](https://angular.jp/guide/structural-directives#ng-container-to-the-rescue)を使うときに、テンプレート内の階層構造をうまく表現するためのタグとしてよく用いられる擬似的なタグです。
 
-### ngIf-as 構文 <a id="ngifas"></a>
+### ngIf-as 構文
 
 `*ngIf` の `as` 構文は、`*ngIf` に渡された式の評価結果を、テンプレート内で新しい変数に代入する機能です。同期的な `*ngIf` では使い所はありませんが、 Asyncパイプを併用すれば、Asyncパイプで得られた値が `*ngIf` に渡されるタイミングで、値を変数化できるのです。
 
