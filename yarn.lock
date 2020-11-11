@@ -6280,7 +6280,7 @@ yeast@0.1.2:
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
   integrity sha1-AI4G2AlDIMNy28L47XagymyKxBk=
 
-zenn-cli@^0.1.48:
+zenn-cli@^0.1.57:
   version "0.1.57"
   resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.57.tgz#fb1bb323d01ee4a99b96511214c4d7bc6b7dbeeb"
   integrity sha512-CtEglrxoaR/XIF1zrmSwT7y0byiCvCEFpWTaxd0PKtgB0Lz0/TMUdeteAhDvjRfEm0roI3hFxnaXgSK8qLSV4Q==
