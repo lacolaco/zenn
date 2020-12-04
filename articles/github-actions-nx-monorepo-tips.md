@@ -3,7 +3,7 @@ title: "Nx monorepoでのnpmパッケージ管理とGitHub Actions"
 emoji: "⚙️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["githubactions", "nx", "monorepo"]
-published: false
+published: true
 ---
 
 はじめましてlacolacoです！この記事は[Classi Advent Calendar 2020](https://qiita.com/advent-calendar/2020/classi) 12/5担当の記事です。
