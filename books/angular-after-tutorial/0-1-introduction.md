@@ -28,6 +28,8 @@ https://github.com/lacolaco/zenn/tree/main/books/angular-after-tutorial
 
 ## 更新状況
 
+* 2021/03/14: 再編のため依存性の注入の章を削除
+  * Zennでいくつかの章からなる本を管理するのが難しいため、章ごとに本を分けてAfter Tutorialは玄関口としてそれらへのリンクをまとめていく計画
 * 2020/10/12: Zennへ移動、細かい文言のアップデート
 * 2020/08/03: Season 2の"コンポーネントにおけるObservableの購読"の内容をSingle State Streamパターンに更新
 * 2020/04/16: Season 1のサンプルコードをAngular v9系に合わせて更新

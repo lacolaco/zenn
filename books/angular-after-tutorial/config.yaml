@@ -15,6 +15,6 @@ chapters:
   - 2-2-subscribe-observables-in-components
   - 2-3-making-custom-operator
   - 3-1-http-interceptors
-  - 4-1-app-config
-  - 4-2-external-sdk-abstraction
-  - 4-3-provider-types-and-choice
+  # - 4-1-app-config
+  # - 4-2-external-sdk-abstraction
+  # - 4-3-provider-types-and-choice
