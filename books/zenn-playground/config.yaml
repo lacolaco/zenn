@@ -1,7 +1,7 @@
 title: "zenn-playground"
 summary: "Zennの本の作り方を実験するための本"
 topics: ["noop"]
-published: true
+published: false
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
 chapters:
