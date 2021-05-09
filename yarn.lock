@@ -4923,10 +4923,10 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zenn-cli@^0.1.78:
-  version "0.1.78"
-  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.78.tgz#eed24c7207a314fe0b2ec76e4bfa0e8f4937aa22"
-  integrity sha512-hhZU94uGWUvCpEy/TW3zjNIsK6b/WKFth4a9dfq4/GiYbSauoyPY2wTJeOEpz1cC7lrsVdxYrQspnMqmECvuAQ==
+zenn-cli@0.1.79:
+  version "0.1.79"
+  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.79.tgz#d7bf25168fcea70f9987e454d4c240d8a8a9ff12"
+  integrity sha512-t11EIgi3rJHrWQBETqD4dd+qSbRjM5616SNpPkE+gxD5cR+l9fappfOTRyxtZ/+3l/+0uBx/wNyE7NgKcJLWhQ==
   dependencies:
     "@types/update-notifier" "^5.0.0"
     arg "^4.1.3"
@@ -4947,7 +4947,7 @@ zenn-cli@^0.1.78:
     update-notifier "^5.1.0"
     zenn-content-css "^0.1.78"
     zenn-embed-elements "^0.1.77"
-    zenn-markdown-html "^0.1.77"
+    zenn-markdown-html "^0.1.79"
 
 zenn-content-css@^0.1.78:
   version "0.1.78"
@@ -4959,10 +4959,10 @@ zenn-embed-elements@^0.1.77:
   resolved "https://registry.yarnpkg.com/zenn-embed-elements/-/zenn-embed-elements-0.1.77.tgz#9b8c90b0ac47c2b52a4443f9178c24f18523cfa2"
   integrity sha512-xfnHW6DzJKXTs9dAOshd70tFivcPksXOnF6TOWyvqe8H+jlRQjYEglDKgryXl4NrkfER57t9tTeysm0yVgserw==
 
-zenn-markdown-html@^0.1.77:
-  version "0.1.77"
-  resolved "https://registry.yarnpkg.com/zenn-markdown-html/-/zenn-markdown-html-0.1.77.tgz#1230e260284a4580fc937d76f4d3ab597ad2b9c7"
-  integrity sha512-GTwonJj/FJX8IH6Ha8n3iVRkUyUntp//Ljz/gjesoV64EYQ3IenWQvad11U5vL7/csuBpFF21604/PwDceSsxw==
+zenn-markdown-html@^0.1.79:
+  version "0.1.79"
+  resolved "https://registry.yarnpkg.com/zenn-markdown-html/-/zenn-markdown-html-0.1.79.tgz#9bf05cb143052f6547b340bc998db59577cc452b"
+  integrity sha512-158HiIIpeNFkb2o8KWOGbhA+vQ9EOswF8CeAwcpP3wQMo4+5Uo2wq+z7DK7aArwrmlQ+vgZnFe3W1YHKcyu/GA==
   dependencies:
     "@steelydylan/markdown-it-imsize" "^1.0.2"
     "@steelydylan/prism-diff-highlight" "1.0.4"
