@@ -1,0 +1,9 @@
+title: 'Angularの基本語彙'
+summary: 'Angularのメカニズムを理解するための基本的な語彙について学習しましょう'
+topics: [angular]
+published: false
+price: 300 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - 0.intro
+  - 1.view
