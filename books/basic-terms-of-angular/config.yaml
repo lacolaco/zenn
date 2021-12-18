@@ -5,5 +5,5 @@ published: false
 price: 300 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
 chapters:
-  - 0.intro
-  - 1.view
+  - 0-intro
+  - 1-view
