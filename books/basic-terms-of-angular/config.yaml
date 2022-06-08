@@ -7,3 +7,4 @@ price: 300 # 有料の場合200〜5000
 chapters:
   - 0-intro
   - 1-view
+  - 2-component

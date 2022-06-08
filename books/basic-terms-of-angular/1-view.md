@@ -1,5 +1,5 @@
 ---
-title: "ビューについて"
+title: "ビュー"
 free: true
 ---
 
