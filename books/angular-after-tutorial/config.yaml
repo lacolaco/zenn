@@ -3,15 +3,3 @@ summary: 'この本ではAngularのチュートリアルを終えた人に向け
 topics: [angular, rxjs]
 published: true
 price: 0 # 有料の場合200〜5000
-# 本に含めるチャプターを順番に並べましょう
-chapters:
-  - 0.introduction
-  - 1.learning-roadmap
-  - 10.first-refactoring
-  - 11.separate-components
-  - 12.forms-and-state
-  - 13.routing
-  - 21.observable-lifecycle
-  - 22.subscribe-observables-in-components
-  - 23.making-custom-operator
-  - 31.http-interceptors
