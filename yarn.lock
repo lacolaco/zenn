@@ -3,6 +3,6 @@
 
 
 zenn-cli@^0.1.115:
-  version "0.1.115"
-  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.115.tgz#3fe0560fbf22ea0612fd5948a7e2ba474ba289be"
-  integrity sha512-yy4CktogzgjEdBZzsVw1Lml8z5LMFfqZqe/odDaCdtQvKDgDHwxjSVhJNco15kChbzA2ySBD9Fjy3y8aObHHQg==
+  version "0.1.131"
+  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.131.tgz#e61fc95158437a2ce6a8a2b4d7185b42dac7faf2"
+  integrity sha512-oikfVMJHSKMFpN3nhhwb8sy0890HJGgC3T4Q5/Av75SWRy8uAUJUSGNDFJL+ysResBFJwXsf/Pg0GHmRMbkUPQ==
