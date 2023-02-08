@@ -1,0 +1,40 @@
+name: sync-with-notion
+
+on:
+  schedule:
+    - cron: '0/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      forceUpdate:
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: yarn
+      # https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#authenticating-with-github-app-generated-tokens
+      - uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.WORKER_APP_ID }}
+          private_key: ${{ secrets.WORKER_APP_PRIVATE_KEY }}
+      - run: yarn install
+      - run: yarn notion:fetch ${{ github.event.inputs.forceUpdate && '--force' || '' }}
+        env:
+          NOTION_AUTH_TOKEN: ${{ secrets.NOTION_AUTH_TOKEN }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          commit-message: 'fix: apply changes from Notion'
+          branch: sync-with-notion
+          delete-branch: true
+          title: 'fix: apply changes from Notion'
+          body: '@lacolaco Review and apply changes from Notion'
