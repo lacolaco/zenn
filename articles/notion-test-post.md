@@ -1,6 +1,6 @@
 ---
 title: 'Notionテスト記事'
-published_at: '2022-02-11'
+published_at: '2022-02-11 20:47'
 topics:
   - 'test'
 published: false

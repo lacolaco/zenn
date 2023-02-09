@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
 import { defer, forkJoin, lastValueFrom } from 'rxjs';
 import { BlockObject } from '../notion';
 import { renderPage } from './renderer/renderer';
@@ -36,7 +38,7 @@ export class LocalPostFactory {
     const publishedAt = new Date(createdAtOverride ?? createdAt);
     const props: PostAttributes = {
       title,
-      published_at: publishedAt.toISOString().split('T')[0],
+      published_at: format(utcToZonedTime(publishedAt, 'Asia/Tokyo'), 'yyyy-MM-dd HH:mm'),
       topics: tags,
       published: publishable,
       source: page.url,
