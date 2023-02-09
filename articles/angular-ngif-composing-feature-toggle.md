@@ -1,6 +1,6 @@
 ---
 title: 'Angular: NgIfを合成したフィーチャートグルディレクティブ'
-published_at: '2023-02-08'
+published_at: '2023-02-07'
 topics:
   - 'angular'
 published: true
