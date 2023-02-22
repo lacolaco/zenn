@@ -1,12 +1,12 @@
 ---
-title: 'Angular: Inputs Stream パターン'
+title: 'Angular: Input を Observable で扱えるようにする Inputs Stream パターン'
 published_at: '2023-02-14 09:40'
 topics:
   - 'angular'
   - 'rxjs'
   - 'rx-angular'
 published: true
-source: 'https://www.notion.so/Angular-Inputs-Stream-02ff5a3536af4d6996091ea3f818ad95'
+source: 'https://www.notion.so/Angular-Input-Observable-Inputs-Stream-02ff5a3536af4d6996091ea3f818ad95'
 type: 'tech'
 emoji: '✨'
 ---
