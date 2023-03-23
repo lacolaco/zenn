@@ -80,6 +80,14 @@ $$
 
 This is inline equation: $e=mc^2$
 
+```mermaid
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+
 <!--table_of_contents-->
 <!--{"object":"block","id":"c3906a6f-cd9c-4985-934a-c55aa0420747","parent":{"type":"page_id","page_id":"80f5c549-39b6-4e7a-b258-25bdb35f1cae"},"created_time":"2022-02-13T16:08:00.000Z","last_edited_time":"2022-02-13T16:08:00.000Z","created_by":{"object":"user","id":"f4f222d4-d508-405d-ba6c-da82ee26ee54"},"last_edited_by":{"object":"user","id":"f4f222d4-d508-405d-ba6c-da82ee26ee54"},"has_children":false,"archived":false,"type":"table_of_contents","table_of_contents":{"color":"gray"}}-->
 
