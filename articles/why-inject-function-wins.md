@@ -3,7 +3,6 @@ title: 'Angular: 依存性の注入にコンストラクタ引数ではなくinj
 published_at: '2023-03-23 09:44'
 topics:
   - 'angular'
-  - 'dependency injection'
   - 'TypeScript'
 published: true
 source: 'https://www.notion.so/Angular-inject-23c54aef56ff4d4c99b035e052b80056'
