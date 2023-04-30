@@ -366,6 +366,6 @@ whatwg-url@^5.0.0:
     webidl-conversions "^3.0.0"
 
 zenn-cli@^0.1.137:
-  version "0.1.141"
-  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.141.tgz#35bc4b9d289ab78091558f6201f0578dcb4b6a04"
-  integrity sha512-33hYqqHZk9nYP24Za56jeFcqXsPkoYno9HDsIjdUjQxzl3/zmRaJEiHJ3qD4IId6qNduY3Vhgq3s6kJuCDVuVQ==
+  version "0.1.143"
+  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.143.tgz#a9a086a7294d9da20a3dfe02a9b41ea7fd098cc8"
+  integrity sha512-LW11tcLK4yLIW32NiVAHXgb5hOzRaClNag4/hhOXSFZ0IroF7XLgBN/IgbLk9sz8fX3XjhgptX8mDJC50JxBDA==
