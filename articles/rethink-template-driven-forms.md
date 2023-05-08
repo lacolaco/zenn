@@ -7,7 +7,7 @@ topics:
 published: true
 source: 'https://www.notion.so/Angular-4e8bcf7e4c2c4d31806bff592edf4232'
 type: 'tech'
-emoji: '💭'
+emoji: '🔍'
 ---
 
 Angular のフォーム API にはテンプレート駆動フォームとリアクティブフォームの 2 種類があり、リリース当初からその使い分けは常に議論の種になってきた。Angular v14 から導入された Typed Forms が現状はリアクティブフォームだけに適用されることもあり、歴史的にはリアクティブフォームのほうが好まれてきたように思う。だがその評価がなんとなくの惰性によるものになっているような感覚がある。ここでは、Angular v16 を前提にしてあらためてテンプレート駆動フォームを評価してみたい。
@@ -28,7 +28,9 @@ Angular のフォーム API にはテンプレート駆動フォームとリア�
 
 そもそもフォームにおけるスケーラビリティとはどのような性質を指すのか、[公式ドキュメント](https://angular.jp/guide/forms-overview#scalability)ではこう書かれている。
 
-> If forms are a central part of your application, scalability is very important. Being able to reuse form models across components is critical.
+> If forms are a central part of your application, scalability is very important. Being able to reuse form models across components is critical.  
+> Reactive forms are more scalable than template-driven forms. They provide direct access to the underlying form API, and use [synchronous data flow](https://angular.jp/guide/forms-overview#data-flow-in-reactive-forms) between the view and the data model, which makes creating large-scale forms easier. Reactive forms require less setup for testing, and testing does not require deep understanding of change detection to properly test form updates and validation.  
+> Template-driven forms focus on simple scenarios and are not as reusable. They abstract away the underlying form API, and use [asynchronous data flow](https://angular.jp/guide/forms-overview#data-flow-in-template-driven-forms) The abstraction of template-driven forms also affects testing. Tests are deeply reliant on manual change detection execution to run properly, and require more setup.
 
 リアクティブフォームはテンプレートから独立したフォームモデルを TypeScript コードで直接扱うため、特定のコンポーネントに依存しない再利用性の高いモジュールに切り出すことが簡単である。これが第一のスケーラビリティであるようだ。つまり、アプリケーションが大きくなり、同じようなフォームを構築する場面が増えた時にもフォームに関する部分を再利用できるという DRY の観点である。
 
