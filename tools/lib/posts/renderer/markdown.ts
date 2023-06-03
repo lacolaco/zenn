@@ -1,3 +1,78 @@
+import { BlockObject, PageProperty } from '../../notion';
+import { RendererContext } from '../types';
+import { isNotNull } from '../utils';
+
+export function renderTitle(block: PageProperty<'title'>): string {
+  return plainText(block.title);
+}
+
+export function renderBlock(block: BlockObject, context: RendererContext): string | null {
+  const stringify = (node: BlockObject, contents: string[]): string | null => {
+    switch (node.type) {
+      case 'heading_1':
+        return heading(node.heading_1.rich_text, 1);
+      case 'heading_2':
+        return heading(node.heading_2.rich_text, 2);
+      case 'heading_3':
+        return heading(node.heading_3.rich_text, 3);
+      case 'paragraph':
+        return paragraph(node.paragraph.rich_text);
+      case 'code':
+        return codeBlock(node.code.rich_text, node.code.language);
+      case 'bulleted_list_item':
+        return bulletedListItem(node.bulleted_list_item.rich_text, contents);
+      case 'numbered_list_item':
+        return numberedListItem(node.numbered_list_item.rich_text, contents);
+      case 'quote':
+        return quote(node.quote.rich_text);
+      case 'divider':
+        return divider();
+      case 'bookmark':
+        return linkPreview(node.bookmark.url);
+      case 'link_preview':
+        return linkPreview(node.link_preview.url);
+      case 'callout':
+        const emojiIcon = node.callout.icon?.type === 'emoji' ? node.callout.icon.emoji : undefined;
+        return callout(node.callout.rich_text, emojiIcon);
+      case 'image':
+        switch (node.image.type) {
+          case 'external':
+            return image(node.image.external.url, node.image.caption);
+          case 'file':
+            const url = node.image.file.url;
+            const name = decodeURIComponent(new URL(url).pathname).replace(/^\/secure\.notion-static\.com\//, '');
+            const localPath = `${context.slug}/${name}`;
+            context.fetchExternalImage({ url, localPath: localPath });
+            return image(`/images/${localPath}`, node.image.caption);
+        }
+      case 'equation':
+        return equation(node.equation.expression);
+      case 'toggle':
+        return details(node.toggle.rich_text, contents);
+      case 'embed':
+        return embed(node.embed.url);
+      case 'video':
+        switch (node.video.type) {
+          case 'external':
+            return video(node.video.external.url);
+          default:
+            return null;
+        }
+      case 'table':
+        return table(node);
+      case 'table_row':
+        return tableRow(node);
+    }
+    return null;
+  };
+
+  const visit = (node: BlockObject) => {
+    const contents: string[] = node.children?.map((child) => visit(child)).filter(isNotNull) ?? [];
+    return stringify(node, contents) ?? `<!--${node.type}-->\n<!--${JSON.stringify(node)}-->\n\n`;
+  };
+  return visit(block);
+}
+
 type TextAnnotations = {
   bold: boolean;
   italic: boolean;
@@ -31,51 +106,51 @@ type RichTextNode = TextNode | MentionNode | EquationNode;
 
 export type RichText = Array<RichTextNode>;
 
-export const heading = (text: RichText, level: 1 | 2 | 3) => `${'#'.repeat(level)} ${decorateText(text)}\n\n`;
-export const paragraph = (text: RichText) => `\n${decorateText(text)}\n\n`;
+const heading = (text: RichText, level: 1 | 2 | 3) => `${'#'.repeat(level)} ${richText(text)}\n\n`;
+const paragraph = (text: RichText) => `\n${richText(text)}\n\n`;
 
-export const codeBlock = (text: RichText, language?: string) => {
+const codeBlock = (text: RichText, language?: string) => {
   const delimiter = '```';
   return `${delimiter}${language ?? ''}\n${plainText(text)}\n${delimiter}\n\n`;
 };
 
-export const bulletedListItem = (text: RichText, contents: string[]) => {
-  return `- ${decorateText(text)}\n${contents.map(indent).join('')}`;
+const bulletedListItem = (text: RichText, contents: string[]) => {
+  return `- ${richText(text)}\n${contents.map(indent).join('')}`;
 };
 
-export const numberedListItem = (text: RichText, contents: string[]) => {
-  return `1. ${decorateText(text)}\n${contents.map(indent).join('')}`;
+const numberedListItem = (text: RichText, contents: string[]) => {
+  return `1. ${richText(text)}\n${contents.map(indent).join('')}`;
 };
 
-export const quote = (text: RichText) => `> ${decorateText(text)}\n\n`;
+const quote = (text: RichText) => `> ${richText(text)}\n\n`;
 
-export const divider = () => '---\n\n';
+const divider = () => '---\n\n';
 
-export const linkPreview = (url: string) => {
+const linkPreview = (url: string) => {
   return embed(url) ?? `${url}\n\n`;
 };
 
-export const callout = (text: RichText, emojiIcon?: string) => {
-  return `:::message\n${decorateText(text)}\n:::\n\n`;
+const callout = (text: RichText, emojiIcon?: string) => {
+  return `:::message\n${richText(text)}\n:::\n\n`;
 };
 
-export const image = (url: string, caption: RichText) => {
-  const captionText = decorateText(caption);
+const image = (url: string, caption: RichText) => {
+  const captionText = richText(caption);
   if (captionText) {
     return `![](${url})\n*${captionText}*\n\n`;
   }
   return `![](${url})\n\n`;
 };
 
-export const equation = (expression: string) => {
+const equation = (expression: string) => {
   return `$$\n${expression}\n$$\n\n`;
 };
 
-export const details = (summary: RichText, contents: string[]) => {
+const details = (summary: RichText, contents: string[]) => {
   return `:::details ${plainText(summary)}\n\n${contents.join('')}\n\n:::\n\n`;
 };
 
-export const embed = (url: string) => {
+const embed = (url: string) => {
   const parsedUrl = new URL(url);
   // Stackblitz
   if (parsedUrl.host === 'stackblitz.com' && parsedUrl.searchParams.get('embed') === '1') {
@@ -93,7 +168,7 @@ export const embed = (url: string) => {
   return null;
 };
 
-export const video = (url: string) => {
+const video = (url: string) => {
   const parsedUrl = new URL(url);
   // YouTube
   if (parsedUrl.host === 'www.youtube.com' && parsedUrl.searchParams.has('v')) {
@@ -102,11 +177,25 @@ export const video = (url: string) => {
   return null;
 };
 
+const table = (block: BlockObject<'table'>) => {
+  const hasHeader = block.table.has_column_header;
+  const rows = (block.children ?? []).map((child) => tableRow(child as BlockObject<'table_row'>)).filter(isNotNull);
+  const columns = rows[0] ? rows[0].split('|').length - 2 : 0;
+  const header = hasHeader ? rows.shift() : `|${'|'.repeat(columns)}\n`;
+  const alignment = `|${':--|'.repeat(columns)}`;
+  return `${header}${alignment}\n${rows.join('')}\n\n`;
+};
+
+const tableRow = (block: BlockObject<'table_row'>) => {
+  const cells = (block.table_row.cells ?? []).map((child) => richText(child)).filter(isNotNull);
+  return `|${cells.join('|')}|\n`;
+};
+
 function indent(text: string): string {
   return `\t${text}`;
 }
 
-export function decorateText(text: RichText): string {
+function richText(text: RichText): string {
   const renderNode = (node: RichTextNode): string => {
     const { type, plain_text, href, annotations } = node;
     if (type === 'mention') {

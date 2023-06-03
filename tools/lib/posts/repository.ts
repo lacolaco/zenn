@@ -12,9 +12,7 @@ export class RemotePostsRepository {
 
   async query(): Promise<Array<NotionPostPage>> {
     // collect pages
-    const pages = await this.notion.queryAllPages(postsDatabaseId, {
-      distribution: 'zenn',
-    });
+    const pages = await this.notion.queryAllPages(postsDatabaseId);
 
     // convert pages to post items
     const pagesWithContent = await Promise.all(

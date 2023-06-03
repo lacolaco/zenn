@@ -1,11 +1,11 @@
 import { format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { defer, forkJoin, lastValueFrom } from 'rxjs';
-import { BlockObject } from '../notion';
+import { BlockObject, BlogPageProperties } from '../notion';
 import { renderPage } from './renderer/renderer';
 import { ImagesRepository, LocalPostsRepository } from './repository';
 import { NotionPostPage, PostAttributes, TaskFactory } from './types';
-import { createPagePropertyMap } from './utils';
+import { renderTitle } from './renderer/markdown';
 
 export class LocalPostFactory {
   constructor(
@@ -19,23 +19,20 @@ export class LocalPostFactory {
   }
 
   private async createPost(page: NotionPostPage) {
-    const { created_time: createdAt, archived, icon } = page;
-    if (archived) {
-      return;
-    }
-    const pageProps = createPagePropertyMap(page);
-    const title = pageProps.get('title', 'title')?.title[0]?.plain_text;
-    const slug = pageProps.get('Y~YJ', 'rich_text')?.rich_text[0]?.plain_text ?? null;
-    const tags = pageProps.get('v%5EIo', 'multi_select')?.multi_select.map((node) => node.name) ?? [];
-    const publishable = pageProps.get('vssQ', 'checkbox')?.checkbox ?? false;
-    const createdAtOverride = pageProps.get('%3CDyF', 'date')?.date?.start ?? null;
+    const { icon } = page;
+    const properties = page.properties as BlogPageProperties;
+    const title = renderTitle(properties.title);
+    const slug = properties.slug.rich_text[0]?.plain_text ?? null;
+    const tags = properties.tags.multi_select.map((node) => node.name) ?? [];
+    const publishable = properties.published.checkbox ?? false;
+    const createdAtOverride = properties.created_at_override?.date?.start ?? null;
+    const publishedAt = new Date(createdAtOverride ?? page.created_time).toISOString();
     if (title == null || slug == null) {
       console.warn(`title or slug is null: ${JSON.stringify(page, null, 2)}`);
       return;
     }
     const emoji = icon?.type === 'emoji' ? icon.emoji : '✨';
 
-    const publishedAt = new Date(createdAtOverride ?? createdAt);
     const props: PostAttributes = {
       title,
       published_at: format(utcToZonedTime(publishedAt, 'Asia/Tokyo'), 'yyyy-MM-dd HH:mm'),
