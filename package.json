@@ -14,7 +14,7 @@
     "node": "^18.0.0"
   },
   "devDependencies": {
-    "@notionhq/client": "2.2.3",
+    "@notionhq/client": "2.2.5",
     "@types/cli-progress": "^3.11.0",
     "@types/js-yaml": "4.0.5",
     "@types/node": "18.16.16",
