@@ -1,29 +1,7 @@
-import { writeFile, readFile, rm, mkdir } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import * as path from 'node:path';
 import { Readable } from 'node:stream';
 import { request } from 'undici';
-import { NotionAPI } from '../notion';
-import { NotionPostPage } from './types';
-
-const postsDatabaseId = 'b47a04005a1541dfbf4a548ee42d04ab';
-
-export class RemotePostsRepository {
-  constructor(private readonly notion: NotionAPI) {}
-
-  async query(): Promise<Array<NotionPostPage>> {
-    // collect pages
-    const pages = await this.notion.queryAllPages(postsDatabaseId);
-
-    // convert pages to post items
-    const pagesWithContent = await Promise.all(
-      pages.map(async (page) => {
-        const blocks = await this.notion.fetchChildBlocks(page.id);
-        return { ...page, content: blocks };
-      }),
-    );
-    return pagesWithContent;
-  }
-}
 
 export class LocalPostsRepository {
   constructor(private readonly postsDir: string, private readonly options: { dryRun?: boolean } = {}) {}

@@ -1,6 +1,9 @@
 import type { Client } from '@notionhq/client';
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
+export type DatabaseQueryParams = Parameters<Client['databases']['query']>[0];
+export type QueryFilterObject = DatabaseQueryParams['filter'];
+
 export type PageObject = MatchType<
   ElementType<Awaited<ReturnType<Client['databases']['query']>>['results']>,
   {

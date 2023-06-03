@@ -1,11 +1,11 @@
 import { format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { defer, forkJoin, lastValueFrom } from 'rxjs';
-import { BlockObject, BlogPageProperties } from '../notion';
+import { BlockObject, PageObjectWithContent } from '../notion';
+import { renderTitle } from './renderer/markdown';
 import { renderPage } from './renderer/renderer';
 import { ImagesRepository, LocalPostsRepository } from './repository';
-import { NotionPostPage, PostAttributes, TaskFactory } from './types';
-import { renderTitle } from './renderer/markdown';
+import { PostAttributes, TaskFactory } from './types';
 
 export class LocalPostFactory {
   constructor(
@@ -14,13 +14,12 @@ export class LocalPostFactory {
     private readonly options: { forceUpdate?: boolean },
   ) {}
 
-  async create(pages: NotionPostPage[]) {
+  async create(pages: PageObjectWithContent[]) {
     await Promise.all(pages.map((page) => this.createPost(page)));
   }
 
-  private async createPost(page: NotionPostPage) {
-    const { icon } = page;
-    const properties = page.properties as BlogPageProperties;
+  private async createPost(page: PageObjectWithContent) {
+    const { icon, properties } = page;
     const title = renderTitle(properties.title);
     const slug = properties.slug.rich_text[0]?.plain_text ?? null;
     const tags = properties.tags.multi_select.map((node) => node.name) ?? [];
