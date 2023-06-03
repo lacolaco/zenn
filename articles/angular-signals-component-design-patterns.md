@@ -19,7 +19,7 @@ https://blog.lacolaco.net/2022/05/angular-state-management-patterns/
 
 なお、この記事中での各コンポーネント実装パターンの名称は特に定まったものではなく、この記事中での参照の一貫性のためだけに名付けている。あまり名称にこだわらずに読んでほしいし、もし参考にして実装しようとする際には、アプリケーションに適した命名を各自であらためて検討してほしい。
 
-また、この記事のサンプルコードは Angular v16.0 時点での API に準拠している。
+また、この記事のサンプルコードは Angular v16.0 時点での API に準拠している。今後 Angular Signals の API が拡充してくると細かい実装レベルでは違いが出てくるが、大枠の設計はそれほど変わらないだろう。
 
 ## 1. ステートレスコンポーネント
 
@@ -105,9 +105,9 @@ export class SimpleStatefulCounterComponent {
 ### このパターンの特徴
 
 - コンポーネント内部に状態を持つ
+  - 状態のライフサイクルを意識する必要がある
 - 依存するものがなく外部への副作用もないため再利用性が高い
-- コンポーネントへのユニットテストを書きやすい
-- 状態のライフサイクルを意識する必要がある
+  - コンポーネントのユニットテストを書きやすい
 
 ### このパターンのユースケース例
 
@@ -135,7 +135,7 @@ export class UserListUsecase {
 }
 ```
 
-HTML テンプレートはステートフルコンポーネントと同じくステートレスコンポーネントを呼び出す場合もあれば、直接ビューを記述してもよい。
+HTML テンプレートはステートフルコンポーネントと同じくステートレスコンポーネントを呼び出す場合もあれば、直接ビューを記述してもよい。そこは大した論点ではない。
 
 ```html
 <ul>
@@ -169,7 +169,7 @@ export class SimplePdsUserListComponent implements OnInit {
 }
 ```
 
-![](/images/angular-signals-component-design-patterns/b48234b7-ca60-4dc5-8a7d-2b16ad5246b7/Untitled.png)
+![](/images/angular-signals-component-design-patterns/4b8207c2-8347-4723-a9f3-7508c872c062/simple-pds.png)
 _Simple PDS Component_
 
 ### このパターンの特徴
