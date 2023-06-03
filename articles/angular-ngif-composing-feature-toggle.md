@@ -2,7 +2,9 @@
 title: 'Angular: NgIfを合成したフィーチャートグルディレクティブ'
 published_at: '2023-02-08 15:00'
 topics:
-  - 'angular'
+  - 'Angular'
+  - 'tech'
+  - 'standalone component'
 published: true
 source: 'https://www.notion.so/Angular-NgIf-c30c4744b39047558495a126d32ad0d9'
 type: 'tech'
