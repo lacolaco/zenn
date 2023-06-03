@@ -2,7 +2,8 @@
 title: 'Angular: Angular CLI の Jest サポートを試す'
 published_at: '2023-05-06 10:37'
 topics:
-  - 'angular'
+  - 'Angular'
+  - 'tech'
   - 'testing'
   - 'jest'
 published: true
