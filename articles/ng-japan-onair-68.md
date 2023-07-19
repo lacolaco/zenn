@@ -1,6 +1,6 @@
 ---
 publication_name: "angular_jp"
-title: "ng-japan OnAir #68 Show Note"
+title: "[Show Note] Angularの最新情報がわかる！Monthly Angular 7月号【ng-japan OnAir #68】"
 emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["angular", "shownote"]
