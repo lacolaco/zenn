@@ -8,7 +8,7 @@ export function renderPage(
   properties: Record<string, unknown>,
   content: BlockObject[],
   context: RendererContext,
-): string {
+): Promise<string> {
   const frontmatter = renderFrontmatter(properties);
   const body = content.map((block) => renderBlock(block, context)).join('');
   return format([frontmatter, body].join('\n\n'), {

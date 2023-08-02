@@ -43,7 +43,7 @@ export class LocalPostFactory {
     };
     // render post content
     const deferredTasks: Array<TaskFactory> = [];
-    const rendered = this.renderPost(slug, props, page.content, (task) => deferredTasks.push(task));
+    const rendered = await this.renderPost(slug, props, page.content, (task) => deferredTasks.push(task));
 
     // skip if the content is not changed
     const existing = await this.localPostsRepositiry.loadPost(slug);
@@ -67,7 +67,7 @@ export class LocalPostFactory {
     properties: { [key: string]: unknown },
     content: BlockObject[],
     addAsyncTask: (factory: TaskFactory) => void,
-  ): string {
+  ): Promise<string> {
     return renderPage(properties, content, {
       slug,
       fetchExternalImage: (req) => addAsyncTask(async () => this.imagesRepository.download(req.url, req.localPath)),
