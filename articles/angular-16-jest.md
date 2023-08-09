@@ -3,8 +3,7 @@ title: 'Angular: Angular CLI の Jest サポートを試す'
 published_at: '2023-05-06 10:37'
 topics:
   - 'Angular'
-  - 'tech'
-  - 'testing'
+  - 'Testing'
   - 'jest'
 published: true
 source: 'https://www.notion.so/Angular-Angular-CLI-Jest-aa5b128387fb4b2fbc916ec77c9f5d2a'
@@ -12,7 +11,7 @@ type: 'tech'
 emoji: '🃏'
 ---
 
-Angular v16 から、実験的機能として Jest によるユニットテスト実行がサポートされた。この記事では新規に作成した Angular プロジェクトでさっそく Jest を有効化してみた。Angular が Jest サポートを検討している背景などは公式ブログを参照してほしい。
+Angular v16から、実験的機能として Jest によるユニットテスト実行がサポートされた。この記事では新規に作成した Angular プロジェクトでさっそく Jest を有効化してみた。Angular が Jest サポートを検討している背景などは公式ブログを参照してほしい。
 
 https://blog.angular.io/moving-angular-cli-to-jest-and-web-test-runner-ef85ef69ceca
 
@@ -26,11 +25,11 @@ https://blog.angular.io/moving-angular-cli-to-jest-and-web-test-runner-ef85ef69c
 $ ng new ng16-jest --standalone
 ```
 
-### Jest ビルダーに切り替える
+### Jestビルダーに切り替える
 
-次に `ng test` コマンドで実行されるユニットテスト実行のビルダーを Karma から Jest に切り替える。 `@angular-devkit/build-angular:karma` に指定されている部分を `@angular-devkit/build-angular:jest` に変更する。
+次に `ng test` コマンドで実行されるユニットテスト実行のビルダーをKarmaからJestに切り替える。 `@angular-devkit/build-angular:karma` に指定されている部分を `@angular-devkit/build-angular:jest` に変更する。
 
-Jest によるテストはブラウザテストではなく Node.js による擬似的な DOM を使ったテストなので、 `assets` や `styles` といったオプションは現状サポートされていない。次のように非対応のオプションを削除する。
+Jest によるテストはブラウザテストではなくNode.jsによる擬似的なDOMを使ったテストなので、 `assets` や `styles` といったオプションは現状サポートされていない。次のように非対応のオプションを削除する。
 
 ```diff
          "test": {
@@ -56,7 +55,7 @@ Jest によるテストはブラウザテストではなく Node.js による擬
        }
 ```
 
-このように変更して `ng test` コマンドを実行すると、Jest 関連の npm パッケージが不足していることがエラーで示される。指示に従い、 `jest` と `jest-environment-jsdom` を追加でインストールする。
+このように変更して `ng test` コマンドを実行すると、Jest関連のnpmパッケージが不足していることがエラーで示される。指示に従い、 `jest` と `jest-environment-jsdom` を追加でインストールする。
 
 ```shell
 $ npm i -D jest jest-environment-jsdom
@@ -67,11 +66,11 @@ $ npm i -D jest jest-environment-jsdom
 依存パッケージが揃ったらあらためて `ng test` コマンドを実行する。自動生成される `AppComponent` には簡易なユニットテストがはじめから `app.component.spec.ts` に書かれているので、うまくセットアップできていればテストが通るはずだ。
 
 ![](/images/angular-16-jest/2841ccc5-5f5b-48ec-aa66-bbc200023f4a/Untitled.png)
-_ng test の実行結果_
+_ng testの実行結果_
 
 ## Jest ビルダーの設定
 
-まだ Angular CLI 公式の Jest ビルダーは実験段なのでカスタマイズできる設定は少ないが、現状では次のオプションが使えるようだ。 `ng test --help` コマンドで確認できる。
+まだAngular CLI公式のJestビルダーは実験段なのでカスタマイズできる設定は少ないが、現状では次のオプションが使えるようだ。 `ng test --help` コマンドで確認できる。
 
 ```shell
 $ ng test --help
@@ -93,17 +92,17 @@ Options:
       --ts-config      The name of the TypeScript configuration file.  [string]
 ```
 
-- `--configuration` : Jest の設定ではなく、 `ng build` などと同じく `angular.json` で定義される `configurations` の話である。テストの環境を使い分けることはあまりないので使うことはなさそうだ。
-- `--exclude` / `--include` : テストを実行するファイルを Glob パターンで絞り込める。多用するはず
+- `--configuration` : Jestの設定ではなく、 `ng build` などと同じく `angular.json` で定義される `configurations` の話である。テストの環境を使い分けることはあまりないので使うことはなさそうだ。
+- `--exclude` / `--include` : テストを実行するファイルをGlobパターンで絞り込める。多用するはず
 - `--polyfills` : 主に `zone.js` を読み込むためのオプション。基本的に `angular.json` の中で記述するだろう。
-- `--ts-config` : テスト用の tsconfig ファイル。これも基本的に `angular.json` の中で記述するだろう。
+- `--ts-config` : テスト用のtsconfigファイル。これも基本的に `angular.json` の中で記述するだろう。
 
 注意すべき点は、まだ `watch` 相当のオプションや機能は存在していないことだ。単発のテスト実行しかサポートされていない。今後のアップデートで間違いなくサポートされるのは間違いないと思うが、まだ本格的に導入するには早いかもしれない。試験的に導入するに留めよう。
 
-また、 Jest の設定ファイルは露出されていないため、プラグインもまだ導入できない。実用レベルのものが必要であればまだしばらくサードパーティの jest-preset-angular の世話になるしかなさそうだ。
+また、 Jestの設定ファイルは露出されていないため、プラグインもまだ導入できない。実用レベルのものが必要であればまだしばらくサードパーティの jest-preset-angular の世話になるしかなさそうだ。
 
 https://github.com/thymikee/jest-preset-angular
 
-Jest サポートのモチベーションは Karma を標準ツールセットから外すことだから、しばらくはこれまで Karma だけでテストを実行してきたプロジェクトの脱 Karma を主眼としてサポートを拡張するだろう。よって、すでに Jest 化しているプロジェクトはそのままでいいはずだ。
+Jest サポートのモチベーションは Karma を標準ツールセットから外すことだから、しばらくはこれまでKarmaだけでテストを実行してきたプロジェクトの脱Karmaを主眼としてサポートを拡張するだろう。よって、すでにJest化しているプロジェクトはそのままでいいはずだ。
 
-v16 のうちは、もし Karma に強く依存したテストがあれば依存を弱め、できるだけブラウザ環境が不要なテストを Jest に移行しやすく書き直していく準備をするのがよいだろう。どうしてもブラウザ環境が必要なテストは、冒頭に紹介したブログ記事で書かれているように、Web Test Runner への移行サポートも計画されているからそれまで待とう。
+v16のうちは、もし Karma に強く依存したテストがあれば依存を弱め、できるだけブラウザ環境が不要なテストをJestに移行しやすく書き直していく準備をするのがよいだろう。どうしてもブラウザ環境が必要なテストは、冒頭に紹介したブログ記事で書かれているように、Web Test Runner への移行サポートも計画されているからそれまで待とう。

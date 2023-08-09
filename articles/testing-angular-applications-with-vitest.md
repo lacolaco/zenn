@@ -3,7 +3,7 @@ title: 'AngularアプリケーションをVitestでテストする'
 published_at: '2023-08-05 22:19'
 topics:
   - 'Angular'
-  - 'testing'
+  - 'Testing'
   - 'Vitest'
 published: true
 source: 'https://www.notion.so/Angular-Vitest-7b14ed47693347978ef0c29e83922a49'
