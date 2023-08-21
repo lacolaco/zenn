@@ -31,7 +31,11 @@ npm i -D vitest @analogjs/vite-plugin-angular
 
 ## 設定ファイルの作成
 
-いろいろと試行錯誤した結果、設定は以下のようになった。vite-plugin-angularの `jit` フラグをfalseにしないと、コンポーネントが `templateUrl` で外部ファイルを読み込んでいる場合にパースに失敗することがあった。
+いろいろと試行錯誤した結果、設定は以下のようになった。~~vite-plugin-angularの ~~`jit`~~ フラグをfalseにしないと、コンポーネントが ~~`templateUrl`~~ で外部ファイルを読み込んでいる場合にパースに失敗することがあった。~~
+
+:::message
+Analog 0.2.0でJITコンパイルに関するエラーは修正されたので、 `jit: false` は不要になった。
+:::
 
 また、今回は Karma からの乗り換えを前提としているため、[VitestのBrowser Mode](https://vitest.dev/guide/browser.html)を有効化している。これによって、JSDOMによるエミュレーションではなく、Karmaと同じように実際のブラウザ上でDOMのテストができる。ブラウザ制御のためのプロバイダーはWebDriverIOがデフォルトだったが、GitHub Actions上でうまくヘッドレス実行ができなかったため、playwrightに変更している。
 
@@ -46,7 +50,6 @@ const isCI = !!process.env['CI'];
 export default defineConfig({
   plugins: [
     angular({
-      jit: false,
       tsconfig: 'tsconfig.spec.json',
     }),
   ],
