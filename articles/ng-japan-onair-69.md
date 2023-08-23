@@ -53,6 +53,8 @@ https://twitter.com/angular/status/1692612331769937986?s=20
 - [feat\(@angular\-devkit/build\-angular\): add pre\-rendering \(SSG\) and App\-… · angular/angular\-cli@cb165a7](https://github.com/angular/angular-cli/commit/cb165a75dc8c21ead537684a092ed50d3736e04a)
 
 
+サンプルコード: https://github.com/lacolaco/angular-cli-prerendering
+
 #### その他の変更点
 
 angular/angular
