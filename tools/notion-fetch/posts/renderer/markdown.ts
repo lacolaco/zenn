@@ -40,7 +40,11 @@ export function renderBlock(block: BlockObject, context: RendererContext): strin
             return image(node.image.external.url, node.image.caption);
           case 'file':
             const url = node.image.file.url;
-            const name = decodeURIComponent(new URL(url).pathname).replace(/^\/secure\.notion-static\.com\//, '');
+            const name = decodeURIComponent(new URL(url).pathname)
+              // 先頭の / を削除
+              .replace(/^\//, '')
+              // ファイル名のみ抽出
+              .replace(/secure\.notion-static\.com\//, '');
             const localPath = `${context.slug}/${name}`;
             context.fetchExternalImage({ url, localPath: localPath });
             return image(`/images/${localPath}`, node.image.caption);
