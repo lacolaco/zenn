@@ -17,7 +17,7 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 ![](/images/angular-host-element-with-tailwindcss-classes/3c6255ea-b6c7-4055-8126-638d2819f0c3/5391c161-d5f9-4447-b38b-5ff29f5d786a/Untitled.png)
 _hostメタデータのclassプロパティはTailwindCSS Extensionにクラスを記述する場所だと認識されていない_
 
-TainwindCSS のユーティリティファーストは入力補完があってはじめてまともに実用性があるアプローチだと考えているので、この使いにくさはAngularアプリケーションでTailwindCSSを使う上で悩みのタネだった。
+TailwindCSS のユーティリティファーストは入力補完があってはじめてまともに実用性があるアプローチだと考えているので、この使いにくさはAngularアプリケーションでTailwindCSSを使う上で悩みのタネだった。
 
 これはどうにかできないかと長らく思っていたのだが、あらためてExtensionの設定項目を眺めてみると `classRegex` という設定があった。実はけっこう前から追加されているらしく、これを使えば任意の正規表現にヒットする行でIntelliSenseを有効にできる。
 
