@@ -5,7 +5,7 @@ emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["angular", "shownote"]
 published: true
-published_at: 2023-10-04 20:00
+published_at: 2023-10-04 19:45
 ---
 
 
