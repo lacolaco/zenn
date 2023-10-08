@@ -437,6 +437,6 @@ yocto-queue@^1.0.0:
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
 
 zenn-cli@^0.1.137:
-  version "0.1.144"
-  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.144.tgz#6d1d46afefbaaa542951a3b0948267ba4552c7bd"
-  integrity sha512-vReeYJg2ySjIUKSm5shKdi8rLmMO31Mtk7/xcTJVMSY0sLWJemTgtV8Mcpe1lIvTLKwg5SjfAa3iWjX0HIy3EA==
+  version "0.1.147"
+  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.147.tgz#52ad816b2ac0b479c475af4c82d0c63ba0077a26"
+  integrity sha512-4HKDyk357aIFZnii+Zkkq82Q0Q4uRD4+7zS/u8edwxPea/eeS6W4NBorPyloUzaFI/Rxe0DLr4/aRFc0hHG0ug==
