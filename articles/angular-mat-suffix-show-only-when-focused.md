@@ -13,7 +13,7 @@ emoji: '✨'
 
 Angular Material の MatFormField と MatInput を使う場面で、フォーカスにより MatSuffix の表示状態を制御する方法の一例を紹介する。ユーザーに対する入力中のヒントを表示するのに便利なケースがあるかもしれない。
 
-![](/images/angular-mat-suffix-show-only-when-focused/3c6255ea-b6c7-4055-8126-638d2819f0c3/2a0c3976-5bf3-4d06-a580-155e77d3b1b4/画面収録_2023-10-18_10.56.04.gif)
+![](/images/angular-mat-suffix-show-only-when-focused/3c6255ea-b6c7-4055-8126-638d2819f0c3/5236dbbb-d480-47f6-bf88-31078006447b/capture.gif)
 _テキストフィールドにフォーカスがあるときだけMatSuffix要素が可視化される_
 
 サンプルコードでは TailwindCSS の標準ユーティリティクラスを使うが、原理的にはCSSで実現しているのと変わらない。
