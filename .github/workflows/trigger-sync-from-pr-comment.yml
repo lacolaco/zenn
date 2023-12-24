@@ -13,7 +13,7 @@ jobs:
         id: comment-branch
       - name: Add reaction
         if: ${{ success() && steps.comment-branch.outputs.head_ref == 'sync-with-notion' }}
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             github.rest.reactions.createForIssueComment({
@@ -24,7 +24,7 @@ jobs:
             })
       - name: Trigger Workflow
         if: ${{ success() }}
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             github.rest.actions.createWorkflowDispatch({
