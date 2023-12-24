@@ -18,7 +18,7 @@ export async function queryAllPages(
       sorts: [{ timestamp: 'created_time', direction: 'descending' }],
     });
     for (const page of results) {
-      if ('properties' in page) {
+      if ('properties' in page && page.object === 'page') {
         pages.push(page);
       }
     }

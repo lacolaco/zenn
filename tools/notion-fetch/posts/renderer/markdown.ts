@@ -40,12 +40,11 @@ export function renderBlock(block: BlockObject, context: RendererContext): strin
             return image(node.image.external.url, node.image.caption);
           case 'file':
             const url = node.image.file.url;
-            const name = decodeURIComponent(new URL(url).pathname)
-              // 先頭の / を削除
-              .replace(/^\//, '')
-              // ファイル名のみ抽出
-              .replace(/secure\.notion-static\.com\//, '');
-            const localPath = `${context.slug}/${name}`;
+            const [fileId, ext] = new URL(url).pathname.match(/^(.+)\/.+\.(.+)$/)?.slice(1) ?? [];
+            if (fileId == null) {
+              throw new Error(`Invalid image url: ${url}`);
+            }
+            const localPath = `${context.slug}${fileId}.${ext}`;
             context.fetchExternalImage({ url, localPath: localPath });
             return image(`/images/${localPath}`, node.image.caption);
         }

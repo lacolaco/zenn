@@ -1,11 +1,15 @@
-import { format } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import tz from 'dayjs/plugin/timezone';
 import { defer, forkJoin, lastValueFrom } from 'rxjs';
 import { BlockObject, PageObjectWithContent } from '../notion';
 import { renderTitle } from './renderer/markdown';
 import { renderPage } from './renderer/renderer';
 import { ImagesRepository, LocalPostsRepository } from './repository';
 import { PostAttributes, TaskFactory } from './types';
+
+dayjs.extend(utc);
+dayjs.extend(tz);
 
 export class LocalPostFactory {
   constructor(
@@ -22,7 +26,7 @@ export class LocalPostFactory {
     const { icon, properties } = page;
     const title = renderTitle(properties.title);
     const slug = properties.slug.rich_text[0]?.plain_text ?? null;
-    const tags = properties.tags.multi_select.map((node) => node.name) ?? [];
+    const tags = properties.tags.multi_select.map((node) => node.name.toLowerCase()) ?? [];
     const publishable = properties.published.checkbox ?? false;
     const createdAtOverride = properties.created_at_override?.date?.start ?? null;
     const publishedAt = new Date(createdAtOverride ?? page.created_time).toISOString();
@@ -34,7 +38,7 @@ export class LocalPostFactory {
 
     const props: PostAttributes = {
       title,
-      published_at: format(utcToZonedTime(publishedAt, 'Asia/Tokyo'), 'yyyy-MM-dd HH:mm'),
+      published_at: dayjs(publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm'),
       topics: tags,
       published: publishable,
       source: page.url,

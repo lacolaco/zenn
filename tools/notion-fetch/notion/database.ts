@@ -10,6 +10,8 @@ const isDevMode = NODE_ENV === 'development';
 const notion = new Client({ auth: NOTION_AUTH_TOKEN });
 const manifestFilePath = new URL('../manifest.json', import.meta.url);
 
+const limit = pLimit(2);
+
 export class NotionDatabase {
   async queryBlogPages(): Promise<PageObjectWithContent[]> {
     // collect pages
@@ -46,7 +48,6 @@ export class NotionDatabase {
     console.log('Fetching page content...');
     const progress = new SingleBar({});
     progress.start(editedPages.length, 0);
-    const limit = pLimit(2);
     const pagesWithContent = await Promise.all(
       editedPages.map((page) =>
         limit(async () => {

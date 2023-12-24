@@ -1,10 +1,13 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import * as path from 'node:path';
-import { Readable } from 'node:stream';
-import { request } from 'undici';
+
+type WriteFileData = Parameters<typeof writeFile>[1];
 
 export class LocalPostsRepository {
-  constructor(private readonly postsDir: string, private readonly options: { dryRun?: boolean } = {}) {}
+  constructor(
+    private readonly postsDir: string,
+    private readonly options: { dryRun?: boolean } = {},
+  ) {}
 
   async savePost(slug: string, content: string) {
     if (this.options.dryRun) {
@@ -26,7 +29,10 @@ export class LocalPostsRepository {
 }
 
 export class ImagesRepository {
-  constructor(private readonly imagesDir: string, private readonly options: { dryRun?: boolean } = {}) {}
+  constructor(
+    private readonly imagesDir: string,
+    private readonly options: { dryRun?: boolean } = {},
+  ) {}
 
   async clearPostImages(slug: string) {
     if (this.options.dryRun) {
@@ -38,7 +44,7 @@ export class ImagesRepository {
     } catch {}
   }
 
-  async saveImage(localPath: string, data: Readable): Promise<void> {
+  async saveImage(localPath: string, data: WriteFileData): Promise<void> {
     const absPath = path.resolve(this.imagesDir, localPath);
     if (this.options.dryRun) {
       return;
@@ -49,8 +55,11 @@ export class ImagesRepository {
 
   async download(imageUrl: string, localPath: string): Promise<void> {
     console.log(`[ImagesRepository] downloading ${localPath}`);
-    const resp = await request(new URL(imageUrl));
-    await this.saveImage(localPath, resp.body);
-    return;
+    const resp = await fetch(new URL(imageUrl));
+    if (!resp.ok) {
+      throw new Error(`Failed to fetch image: ${imageUrl}`);
+    }
+    const data = await resp.arrayBuffer();
+    await this.saveImage(localPath, Buffer.from(data));
   }
 }

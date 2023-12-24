@@ -2,8 +2,8 @@
 title: 'Angular: Angular CLI の Jest サポートを試す'
 published_at: '2023-05-06 10:37'
 topics:
-  - 'Angular'
-  - 'Testing'
+  - 'angular'
+  - 'testing'
   - 'jest'
 published: true
 source: 'https://www.notion.so/Angular-Angular-CLI-Jest-aa5b128387fb4b2fbc916ec77c9f5d2a'
@@ -65,7 +65,7 @@ $ npm i -D jest jest-environment-jsdom
 
 依存パッケージが揃ったらあらためて `ng test` コマンドを実行する。自動生成される `AppComponent` には簡易なユニットテストがはじめから `app.component.spec.ts` に書かれているので、うまくセットアップできていればテストが通るはずだ。
 
-![](/images/angular-16-jest/2841ccc5-5f5b-48ec-aa66-bbc200023f4a/Untitled.png)
+![](/images/angular-16-jest/3c6255ea-b6c7-4055-8126-638d2819f0c3/2841ccc5-5f5b-48ec-aa66-bbc200023f4a.png)
 _ng testの実行結果_
 
 ## Jest ビルダーの設定

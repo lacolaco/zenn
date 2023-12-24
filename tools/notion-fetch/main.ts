@@ -1,6 +1,3 @@
-import 'dotenv/config';
-
-import * as path from 'node:path';
 import { parseArgs } from 'node:util';
 import { NotionDatabase } from './notion';
 import { LocalPostFactory } from './posts/factory';
@@ -11,8 +8,8 @@ if (process.env.NOTION_AUTH_TOKEN == null) {
   process.exit(1);
 }
 
-const postsDir = path.resolve(__dirname, '../../articles');
-const imagesDir = path.resolve(__dirname, '../../images');
+const postsDir = new URL('../../articles', import.meta.url).pathname;
+const imagesDir = new URL('../../images', import.meta.url).pathname;
 
 const { values } = parseArgs({
   args: process.argv.slice(2),
@@ -25,9 +22,12 @@ const { values } = parseArgs({
       type: 'boolean',
       short: 'D',
     },
+    verbose: {
+      type: 'boolean',
+    },
   },
 });
-const { force = false, 'dry-run': dryRun = false } = values;
+const { force = false, 'dry-run': dryRun = false, verbose = false } = values;
 
 async function main() {
   const db = new NotionDatabase();
@@ -36,8 +36,14 @@ async function main() {
   const postFactory = new LocalPostFactory(localPostsRepo, imagesRepo, { forceUpdate: force });
 
   // collect posts from notion
+  console.log('Fetching pages...');
   const pages = await db.queryBlogPages();
+  console.log(`Fetched ${pages.length} pages`);
   if (pages.length > 0) {
+    console.log('Creating posts...');
+    if (verbose) {
+      console.log(JSON.stringify(pages, null, 2));
+    }
     await postFactory.create(pages);
   }
   console.log('Done');

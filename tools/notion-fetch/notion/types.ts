@@ -7,6 +7,7 @@ export type QueryFilterObject = DatabaseQueryParams['filter'];
 export type PageObject = MatchType<
   ElementType<Awaited<ReturnType<Client['databases']['query']>>['results']>,
   {
+    object: 'page';
     properties: unknown;
   }
 >;
