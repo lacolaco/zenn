@@ -2,8 +2,8 @@
 title: 'Angular Signalsとコンポーネント間通信'
 published_at: '2023-08-02 12:02'
 topics:
-  - 'Angular'
-  - 'Signals'
+  - 'angular'
+  - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-Signals-9de77b78554f4e23b970c8ff5a57d2ce'
 type: 'tech'
