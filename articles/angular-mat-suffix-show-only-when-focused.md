@@ -2,8 +2,8 @@
 title: 'Angular MatSuffixをフォーカス中だけ表示する'
 published_at: '2023-10-18 11:50'
 topics:
-  - 'Angular'
-  - 'Angular Material'
+  - 'angular'
+  - 'angular material'
   - 'tailwindcss'
 published: true
 source: 'https://www.notion.so/Angular-MatSuffix-40f4e1df5de545b9b837f96a36605ba9'
@@ -13,7 +13,7 @@ emoji: '✨'
 
 Angular Material の MatFormField と MatInput を使う場面で、フォーカスにより MatSuffix の表示状態を制御する方法の一例を紹介する。ユーザーに対する入力中のヒントを表示するのに便利なケースがあるかもしれない。
 
-![](/images/angular-mat-suffix-show-only-when-focused/3c6255ea-b6c7-4055-8126-638d2819f0c3/1f8c90ee-66fa-4cc6-a4b3-268d3e7c5431/capture.gif)
+![](/images/angular-mat-suffix-show-only-when-focused/3c6255ea-b6c7-4055-8126-638d2819f0c3/1f8c90ee-66fa-4cc6-a4b3-268d3e7c5431.gif)
 _テキストフィールドにフォーカスがあるときだけMatSuffix要素が可視化される_
 
 サンプルコードでは TailwindCSS の標準ユーティリティクラスを使うが、原理的にはCSSで実現しているのと変わらない。
