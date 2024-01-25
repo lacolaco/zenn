@@ -26,6 +26,7 @@ jobs:
           app_id: ${{ secrets.WORKER_APP_ID }}
           private_key: ${{ secrets.WORKER_APP_PRIVATE_KEY }}
       - run: yarn install
+      - run: touch .env # create empty .env file
       - run: yarn notion-fetch ${{ github.event.inputs.forceUpdate && '--force' || '' }}
         env:
           NOTION_AUTH_TOKEN: ${{ secrets.NOTION_AUTH_TOKEN }}
