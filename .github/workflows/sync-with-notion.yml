@@ -19,6 +19,8 @@ jobs:
         with:
           node-version-file: package.json
           cache: yarn
+          registry-url: https://npm.pkg.github.com
+          scope: '@lacolaco'
       # https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#authenticating-with-github-app-generated-tokens
       - uses: tibdex/github-app-token@v2
         id: generate-token
