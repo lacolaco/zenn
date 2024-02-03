@@ -26,7 +26,14 @@ jobs:
           app_id: ${{ secrets.WORKER_APP_ID }}
           private_key: ${{ secrets.WORKER_APP_PRIVATE_KEY }}
       - run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: touch .env # create empty .env file
+      - name: use cache for notion-db
+        uses: actions/cache@v4
+        with:
+          path: .cache/lacolaco-notion-db
+          key: ${{ runner.os }}-lacolaco-notion-db
       - run: yarn notion-fetch ${{ github.event.inputs.forceUpdate && '--force' || '' }}
         env:
           NOTION_AUTH_TOKEN: ${{ secrets.NOTION_AUTH_TOKEN }}
