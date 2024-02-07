@@ -18,7 +18,7 @@
     "@lacolaco/notion-fetch": "1.1.0",
     "@notionhq/client": "2.2.14",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "20.10.5",
+    "@types/node": "20.11.16",
     "@types/prettier": "2.7.3",
     "dayjs": "^1.11.10",
     "js-yaml": "^4.1.0",
