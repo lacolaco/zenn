@@ -117,10 +117,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.10.tgz#bd123a74f243d2f3a1f046447bb9b363ee25d072"
   integrity sha512-whqLG6Sc70AbU73fFYvuYzaE4MNMBIlR1Y/IrUeOXFrWHxBEjjbZaQ3IXIQS8wJdAzue2GwYZCjOrgrU1oUHoA==
 
-"@lacolaco/notion-fetch@1.1.0":
-  version "1.1.0"
-  resolved "https://npm.pkg.github.com/download/@lacolaco/notion-fetch/1.1.0/d06092e2c7336f613096d830bcab99ed85143acf#d06092e2c7336f613096d830bcab99ed85143acf"
-  integrity sha512-pQqUKuvYNnhpg/cM7RuLWoTrQRXKbqg2RqBZEm/OhoAh2NzIUQg7XkXuVZZCrA20Gx26N+ORAjTkNDj74DfTyA==
+"@lacolaco/notion-fetch@1.1.3":
+  version "1.1.3"
+  resolved "https://npm.pkg.github.com/download/@lacolaco/notion-fetch/1.1.3/af8be83aa3e72ba13cd0ff8e3a71067a2e3e0940#af8be83aa3e72ba13cd0ff8e3a71067a2e3e0940"
+  integrity sha512-pmc7cZBPzCKV93jMHcS5SqzFEYvASqy9kZiKiI0p6v3APvN1ko7RMXFFE0kQrx+cqo71JXhoFnjHZb/1ZspIcA==
   dependencies:
     "@notionhq/client" "^2.2.14"
     cli-progress "^3.12.0"
