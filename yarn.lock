@@ -387,9 +387,9 @@ yocto-queue@^1.0.0:
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
 
 zenn-cli@^0.1.137:
-  version "0.1.152"
-  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.152.tgz#4bcf121edf5c5fdb468253f1f167989a3ab02a2a"
-  integrity sha512-8omvsPJvpfE2KU/JxTuqn1o1TaF7xFozT8c9iyJKHZWDUsKDo2JVcQFH0Fxf+XSInPhmB+G+off4B6ugxjiqzg==
+  version "0.1.155"
+  resolved "https://registry.yarnpkg.com/zenn-cli/-/zenn-cli-0.1.155.tgz#11b575bd3629cdc4ac873f5bc7b77a2c790313ed"
+  integrity sha512-PqxeLWVrqSrGGPaMiNM5myJcbmXHh/Ur6EhzLkezrDZa5uJe1jfD6COVEnCtRf86Y5P0qy5bejXifSTNdDmqOA==
 
 zod@^3.22.4:
   version "3.22.4"
