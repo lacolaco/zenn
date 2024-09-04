@@ -19,7 +19,7 @@
     "@notionhq/client": "2.2.14",
     "@types/js-yaml": "4.0.9",
     "@types/node": "20.11.16",
-    "@types/prettier": "2.7.3",
+    "@types/prettier": "3.0.0",
     "dayjs": "^1.11.10",
     "js-yaml": "^4.1.0",
     "p-limit": "^5.0.0",
