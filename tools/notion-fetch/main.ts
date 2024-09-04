@@ -51,12 +51,13 @@ async function main() {
         return { ...page, slug: page.properties.slug.rich_text[0].plain_text };
       }),
     ).then((pages) => postFactory.create(pages));
+
+    if (!dryRun) {
+      // update manifest
+      await writeManifest({ lastNotionFetch: new Date().toISOString() });
+    }
   }
 
-  if (!dryRun) {
-    // update manifest
-    await writeManifest({ lastNotionFetch: new Date().toISOString() });
-  }
   console.log('Done');
 }
 
