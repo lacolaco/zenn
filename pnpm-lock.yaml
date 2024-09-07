@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@lacolaco/notion-fetch':
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.4.1
+        version: 1.4.1
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -188,9 +188,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lacolaco/notion-fetch@1.2.0':
-    resolution: {integrity: sha512-c5U9E0ROH5yQhteXIklkm5ZTMGp0s6+n29I38oCzP5wLNny2Pi2TvhUzy1yuyw78R/OkoPOCr8fXuCD5dHZI2A==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-fetch/1.2.0/9f6175715d96e2d11cb648def45bd145e36f6bbf}
-    hasBin: true
+  '@lacolaco/notion-fetch@1.4.1':
+    resolution: {integrity: sha512-ctwCY1NZ+MDrotuI0xDScb9o/mf4J3okzkD6i0zdZSYP/9+0exUrZCA92E5w+lTLcYLNmlGdGsY+QMhC+d+9dA==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-fetch/1.4.1/be11dc9dfe8330c219073f797bf201eea9ced67f}
 
   '@notionhq/client@2.2.15':
     resolution: {integrity: sha512-XhdSY/4B1D34tSco/GION+23GMjaS9S2zszcqYkMHo8RcWInymF6L1x+Gk7EmHdrSxNFva2WM8orhC4BwQCwgw==}
@@ -205,19 +204,11 @@ packages:
   '@types/node@20.11.16':
     resolution: {integrity: sha512-gKb0enTmRCzXSSUJDq6/sPcqrfCv2mkkG6Jt/clpn5eiCbKTY+SgZUxo+p8ZKMof5dCp9vHQUAB7wOUTod22wQ==}
 
-  ansi-regex@5.0.1:
-    resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
-    engines: {node: '>=8'}
-
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-
-  cli-progress@3.12.0:
-    resolution: {integrity: sha512-tRkV3HJ1ASwm19THiiLIXLO7Im7wlTuKnvkYaTkyoAPefqjNg7W7DHKUlGRxy9vxDvbyCYQkQozvptuMkGCg8A==}
-    engines: {node: '>=4'}
 
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
@@ -229,9 +220,6 @@ packages:
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-
-  emoji-regex@8.0.0:
-    resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
 
   esbuild@0.23.1:
     resolution: {integrity: sha512-VVNz/9Sa0bs5SELtn3f7qhJCDPCF5oMEl5cO9/SSinpE9hbPVvxbd572HH5AKiP7WD8INO53GgfDDhRjkylHEg==}
@@ -253,10 +241,6 @@ packages:
 
   get-tsconfig@4.8.0:
     resolution: {integrity: sha512-Pgba6TExTZ0FJAn1qkJAjIeKoDJ3CsI2ChuLohJnZl/tTU8MVrq3b+2t5UOPfRa4RMsorClBjJALkJUMjG1PAw==}
-
-  is-fullwidth-code-point@3.0.0:
-    resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
-    engines: {node: '>=8'}
 
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -297,14 +281,6 @@ packages:
 
   rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
-
-  string-width@4.2.3:
-    resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
-    engines: {node: '>=8'}
-
-  strip-ansi@6.0.1:
-    resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
-    engines: {node: '>=8'}
 
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
@@ -417,10 +393,9 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@lacolaco/notion-fetch@1.2.0':
+  '@lacolaco/notion-fetch@1.4.1':
     dependencies:
       '@notionhq/client': 2.2.15
-      cli-progress: 3.12.0
       p-limit: 6.1.0
       pkg-dir: 8.0.0
       tslib: 2.7.0
@@ -446,15 +421,9 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  ansi-regex@5.0.1: {}
-
   argparse@2.0.1: {}
 
   asynckit@0.4.0: {}
-
-  cli-progress@3.12.0:
-    dependencies:
-      string-width: 4.2.3
 
   combined-stream@1.0.8:
     dependencies:
@@ -463,8 +432,6 @@ snapshots:
   dayjs@1.11.13: {}
 
   delayed-stream@1.0.0: {}
-
-  emoji-regex@8.0.0: {}
 
   esbuild@0.23.1:
     optionalDependencies:
@@ -508,8 +475,6 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  is-fullwidth-code-point@3.0.0: {}
-
   js-yaml@4.1.0:
     dependencies:
       argparse: 2.0.1
@@ -539,16 +504,6 @@ snapshots:
   rxjs@7.8.1:
     dependencies:
       tslib: 2.7.0
-
-  string-width@4.2.3:
-    dependencies:
-      emoji-regex: 8.0.0
-      is-fullwidth-code-point: 3.0.0
-      strip-ansi: 6.0.1
-
-  strip-ansi@6.0.1:
-    dependencies:
-      ansi-regex: 5.0.1
 
   tr46@0.0.3: {}
 

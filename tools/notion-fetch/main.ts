@@ -1,5 +1,4 @@
-import { BlogRepository } from '@lacolaco/notion-fetch';
-import { readFile, writeFile } from 'node:fs/promises';
+import { BlogDatabase } from '@lacolaco/notion-fetch';
 import { parseArgs } from 'node:util';
 import { LocalPostFactory } from './posts/factory';
 import { ImagesRepository, LocalPostsRepository } from './posts/repository';
@@ -39,9 +38,8 @@ async function main() {
 
   // collect posts from notion
   console.log('Fetching pages...');
-  const db = new BlogRepository(NOTION_AUTH_TOKEN);
-  const { lastNotionFetch } = await readManifest();
-  const pages = await db.fetchPages('zenn', { newerThan: new Date(lastNotionFetch) });
+  const db = new BlogDatabase(NOTION_AUTH_TOKEN);
+  const pages = await db.query('zenn', { dryRun });
   console.log(`Fetched ${pages.length} pages`);
 
   if (pages.length > 0) {
@@ -51,11 +49,6 @@ async function main() {
         return { ...page, slug: page.properties.slug.rich_text[0].plain_text };
       }),
     ).then((pages) => postFactory.create(pages));
-
-    if (!dryRun) {
-      // update manifest
-      await writeManifest({ lastNotionFetch: new Date().toISOString() });
-    }
   }
 
   console.log('Done');
@@ -65,12 +58,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-async function readManifest() {
-  const file = await readFile(new URL('../../notion-fetch-manifest.json', import.meta.url), 'utf-8');
-  return JSON.parse(file) as { lastNotionFetch: string };
-}
-
-async function writeManifest(manifest: { lastNotionFetch: string }) {
-  await writeFile(new URL('../../notion-fetch-manifest.json', import.meta.url), JSON.stringify(manifest, null, 2));
-}
