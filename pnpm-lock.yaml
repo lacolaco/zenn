@@ -8,9 +8,9 @@ importers:
 
   .:
     devDependencies:
-      '@lacolaco/notion-fetch':
-        specifier: 1.4.1
-        version: 1.4.1
+      '@lacolaco/notion-db':
+        specifier: 1.4.2
+        version: 1.4.2
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -188,8 +188,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lacolaco/notion-fetch@1.4.1':
-    resolution: {integrity: sha512-ctwCY1NZ+MDrotuI0xDScb9o/mf4J3okzkD6i0zdZSYP/9+0exUrZCA92E5w+lTLcYLNmlGdGsY+QMhC+d+9dA==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-fetch/1.4.1/be11dc9dfe8330c219073f797bf201eea9ced67f}
+  '@lacolaco/notion-db@1.4.2':
+    resolution: {integrity: sha512-C9HDH6cTE1ekpY3jSzJQIvowC67FGXa/vpCE6hrLvliMrDd1zJoQMHKNKbVyOdk8NhEcq6RIjDCxR50IdN2H/A==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-db/1.4.2/4963f83143f06946a2b4c7809a6f0c8d0780a425}
 
   '@notionhq/client@2.2.15':
     resolution: {integrity: sha512-XhdSY/4B1D34tSco/GION+23GMjaS9S2zszcqYkMHo8RcWInymF6L1x+Gk7EmHdrSxNFva2WM8orhC4BwQCwgw==}
@@ -393,7 +393,7 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@lacolaco/notion-fetch@1.4.1':
+  '@lacolaco/notion-db@1.4.2':
     dependencies:
       '@notionhq/client': 2.2.15
       p-limit: 6.1.0

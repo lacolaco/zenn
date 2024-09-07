@@ -1,4 +1,4 @@
-import { BlogDatabase } from '@lacolaco/notion-fetch';
+import { BlogDatabase } from '@lacolaco/notion-db';
 import { parseArgs } from 'node:util';
 import { LocalPostFactory } from './posts/factory';
 import { ImagesRepository, LocalPostsRepository } from './posts/repository';
