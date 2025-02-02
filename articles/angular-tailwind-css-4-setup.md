@@ -28,6 +28,8 @@ https://github.com/angular/angular-cli/blob/main/packages/angular/build/src/util
 
 Tailwind CSS 3系からAngularアプリケーションに組み込んで使っている場合、おそらく `tailwind.config.js` のようなJavaScript形式の設定ファイルをAngular CLIに読み込ませる形がほとんどだろう。以前のドキュメントではそのやり方で説明されていた。
 
+https://v3.tailwindcss.com/docs/guides/angular
+
 そのままでも動きはすると思うが、設定ファイルのCSS化は Tailwind CSS 4.0 の目玉でもあるので、既存アプリにおいても上記のPostCSSを使ったセットアップにアップグレードしたい。一度 PostCSS 経由でのセットアップにしておけば Angular CLI 内部での Tailwind CSS 統合に依存せず、Angular と Tailwind CSS 両方の継続的なアップグレードがしやすくなるだろう。そこで、既存のJavaScript設定ファイルを併用して段階的に移行しよう。
 
 公式ドキュメントではアップグレードガイドに書かれているとおり、 `@config` ディレクティブを使うことで、Tailwind CSSをインポートしているCSSファイルから、JavaScript設定ファイルの読み込みを指示できる。
