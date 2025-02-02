@@ -32,6 +32,8 @@ Tailwind CSS 3系からAngularアプリケーションに組み込んで使っ�
 
 公式ドキュメントではアップグレードガイドに書かれているとおり、 `@config` ディレクティブを使うことで、Tailwind CSSをインポートしているCSSファイルから、JavaScript設定ファイルの読み込みを指示できる。
 
+https://tailwindcss.com/docs/upgrade-guide#using-a-javascript-config-file
+
 ```css
 @import 'tailwindcss';
 
