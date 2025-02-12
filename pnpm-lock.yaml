@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@lacolaco/notion-db':
-        specifier: 1.4.4
-        version: 1.4.4
+        specifier: 1.4.5
+        version: 1.4.5
       '@notionhq/client':
         specifier: 2.2.15
         version: 2.2.15
@@ -188,8 +188,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lacolaco/notion-db@1.4.4':
-    resolution: {integrity: sha512-K8oecC+aezWUmubHZQSW6A5JgfBOJhBCZukg1a0A4gcOgfGmSyhThB7ntz1xCAPm9PS9i7nzWtjTT244X9HnUw==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-db/1.4.4/a462926f53ddf2d0137cd4283782f12fd1160fdc}
+  '@lacolaco/notion-db@1.4.5':
+    resolution: {integrity: sha512-F2/YyF19ToXTLwF/m3EUQvBZxzUPXYTdrrdHrh0IVxRS0JbqnEVtj2p8ciI18DWbbRNV2Pv7FrkPYSLaMOpYWw==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-db/1.4.5/051dca164edb5d4ae9948e469c3db5c84ae04dc4}
 
   '@notionhq/client@2.2.15':
     resolution: {integrity: sha512-XhdSY/4B1D34tSco/GION+23GMjaS9S2zszcqYkMHo8RcWInymF6L1x+Gk7EmHdrSxNFva2WM8orhC4BwQCwgw==}
@@ -263,8 +263,8 @@ packages:
       encoding:
         optional: true
 
-  p-limit@6.1.0:
-    resolution: {integrity: sha512-H0jc0q1vOzlEk0TqAKXKZxdl7kX3OFUzCnNVUnq5Pc3DGo0kpeaMuPqxQn235HibwBEb0/pm9dgKTjXy66fBkg==}
+  p-limit@6.2.0:
+    resolution: {integrity: sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA==}
     engines: {node: '>=18'}
 
   pkg-dir@8.0.0:
@@ -393,10 +393,10 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@lacolaco/notion-db@1.4.4':
+  '@lacolaco/notion-db@1.4.5':
     dependencies:
       '@notionhq/client': 2.2.15
-      p-limit: 6.1.0
+      p-limit: 6.2.0
       pkg-dir: 8.0.0
       tslib: 2.7.0
       zod: 3.23.8
@@ -489,7 +489,7 @@ snapshots:
     dependencies:
       whatwg-url: 5.0.0
 
-  p-limit@6.1.0:
+  p-limit@6.2.0:
     dependencies:
       yocto-queue: 1.1.1
 
