@@ -12,8 +12,8 @@ importers:
         specifier: 1.4.5
         version: 1.4.5
       '@notionhq/client':
-        specifier: 2.2.15
-        version: 2.2.15
+        specifier: 2.2.16
+        version: 2.2.16
       '@types/js-yaml':
         specifier: 4.0.9
         version: 4.0.9
@@ -191,8 +191,8 @@ packages:
   '@lacolaco/notion-db@1.4.5':
     resolution: {integrity: sha512-F2/YyF19ToXTLwF/m3EUQvBZxzUPXYTdrrdHrh0IVxRS0JbqnEVtj2p8ciI18DWbbRNV2Pv7FrkPYSLaMOpYWw==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-db/1.4.5/051dca164edb5d4ae9948e469c3db5c84ae04dc4}
 
-  '@notionhq/client@2.2.15':
-    resolution: {integrity: sha512-XhdSY/4B1D34tSco/GION+23GMjaS9S2zszcqYkMHo8RcWInymF6L1x+Gk7EmHdrSxNFva2WM8orhC4BwQCwgw==}
+  '@notionhq/client@2.2.16':
+    resolution: {integrity: sha512-3GlkfhLw8+Jw8U2iFEmHA6WfCgYhZCXLxgPdqDJkYMFotELNpQO+yGSy2QWURsG8ndu21sLt+FEOfDbNcCtFMg==}
     engines: {node: '>=12'}
 
   '@types/js-yaml@4.0.9':
@@ -395,7 +395,7 @@ snapshots:
 
   '@lacolaco/notion-db@1.4.5':
     dependencies:
-      '@notionhq/client': 2.2.15
+      '@notionhq/client': 2.2.16
       p-limit: 6.2.0
       pkg-dir: 8.0.0
       tslib: 2.7.0
@@ -403,7 +403,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@notionhq/client@2.2.15':
+  '@notionhq/client@2.2.16':
     dependencies:
       '@types/node-fetch': 2.6.11
       node-fetch: 2.7.0
