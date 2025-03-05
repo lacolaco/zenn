@@ -27,8 +27,7 @@ https://github.com/angular/angular/commit/919c4521ec1c340194e249e3db74e38f39d797
 
 レスポンスボディに宣言的な変換処理を行うための関数オプションを `map` から `parse` にリネームしました。おそらくZodやValibotなどのバリデーションライブラリとの機能的な親和性を考慮したものと思われます。
 
-<!--embed-->
-<!--{"object":"block","id":"1ad3521b-014a-8012-993c-e47213777164","parent":{"type":"page_id","page_id":"1ad3521b-014a-80e5-bde2-e61a84634c57"},"created_time":"2025-03-05T09:22:00.000Z","last_edited_time":"2025-03-05T09:22:00.000Z","created_by":{"object":"user","id":"f4f222d4-d508-405d-ba6c-da82ee26ee54"},"last_edited_by":{"object":"user","id":"f4f222d4-d508-405d-ba6c-da82ee26ee54"},"has_children":false,"archived":false,"in_trash":false,"type":"embed","embed":{"caption":[],"url":"https://x.com/Jean__Meche/status/1894176836239724874"}}-->
+https://x.com/Jean__Meche/status/1894176836239724874
 
 上記のツイートのサンプルコードにおける `map` オプションの部分が次のように書けるはずです。
 
