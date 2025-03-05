@@ -91,11 +91,11 @@ https://github.com/angular/angular/commit/bb14fe86e31fbb80daaa3898499f93d0e4ebc1
 
 Commits: [https://github.com/angular/angular-cli/commits/main/?since=2025-02-27&until=2025-03-05](https://github.com/angular/angular-cli/commits/main/?since=2025-02-27&until=2025-03-05)
 
-### `provideSercierRoutesConfig` 関数の廃止
+### `provideServerRoutesConfig` 関数の廃止
 
 https://github.com/angular/angular-cli/commit/d63e31c326b306a95b9c75bb48dda6b9372278bc
 
-SSR用の `provideSercierRoutesConfig` APIは開発者プレビューとして公開されていましたが、`provideSercierRouting` APIと置き換わる形で廃止されます。
+SSR用の `provideServerRoutesConfig` APIは開発者プレビューとして公開されていましたが、`provideServerRouting` APIと置き換わる形で廃止されます。
 
 ## angular/components
 
