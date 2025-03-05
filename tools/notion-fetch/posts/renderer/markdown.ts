@@ -160,7 +160,7 @@ const embed = (url: string) => {
     return `@[stackblitz](${url})\n\n`;
   }
   // Twitter status
-  if (parsedUrl.host === 'twitter.com' && parsedUrl.pathname.includes('/status/')) {
+  if (['twitter.com', 'x.com'].includes(parsedUrl.host) && parsedUrl.pathname.includes('/status/')) {
     return `${parsedUrl}\n\n`;
   }
   // Google slide (pub->embed replace)
