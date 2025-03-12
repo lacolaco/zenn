@@ -37,7 +37,7 @@ https://github.com/angular/angular-cli/commit/3c9172159c72f3c8ea116557ba5bf917a1
 
 Angular CLIの `ng serve` コマンドで実行される開発者サーバーがChrome DevToolsの試験的機能 “**Automatic Workspace Folders**” を利用できるようにする変更です。Chrome DevTools側でソースコードに加えた変更が自動的にAngular CLIで管理されるファイルにも反映されます。これまで手動でWorkspaceとローカルフォルダの紐づけ設定が必要でしたが、紐づけが自動化できるようになります。現在はChrome Canaryバージョンでのみ対応しています。
 
-https://chromium.googlesource.com/devtools/devtools-frontend/+/main/docs/ecosystem/automatic_workspace_folders.md
+[http://goo.gle/devtools-automatic-workspace-folders](http://goo.gle/devtools-automatic-workspace-folders)
 
 ### feat(@schematics/angular): use TypeScript module preserve option for new projects
 
