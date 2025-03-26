@@ -1,12 +1,12 @@
 ---
-title: 'Angular: Using Web Worker through Resource'
+title: 'Angular: Using Web Worker through Resources'
 published_at: '2025-03-26 10:33'
 topics:
   - 'angular'
   - 'web worker'
   - 'signals'
 published: true
-source: 'https://www.notion.so/Angular-Using-Web-Worker-through-Resource-1c23521b014a8006826df570a3e9e91c'
+source: 'https://www.notion.so/Angular-Using-Web-Worker-through-Resources-1c23521b014a8006826df570a3e9e91c'
 type: 'tech'
 emoji: '✨'
 ---
