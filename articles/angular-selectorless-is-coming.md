@@ -27,8 +27,8 @@ https://blog.angular.dev/the-future-is-standalone-475d7edbc706
 
 Angularの公式ロードマップでも、SelectorlessはStandalone Componentのエルゴノミクス向上とボイラープレート削減を目指すものとして以前から掲げられていた。
 
-> **Selectorless  
-> **  
+> Selectorless\*\*  
+> \*\*  
 > To reduce boilerplate and improve the ergonomics of standalone components we are now designing a solution that will make selectors optional. To use a component or directive you'll be able to import it and directly use it in a component's template.  
 > We're still in early stages of planning selectorless. We'll share a request for comments when we have an early design and we're ready for next steps.
 
