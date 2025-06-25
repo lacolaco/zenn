@@ -134,6 +134,10 @@ _ng testの実行中画面（Vitest）_
 ng test --no-watch
 ```
 
+実際に試したサンプルプロジェクトはGitHubで公開している。つまづいたら手元で動かしてみてほしい。
+
+https://github.com/lacolaco/angular-experimental-vitest
+
 ## まとめ
 
 Angular v20では、これまでの`@angular-devkit/build-angular:karma` に置き換わる新しいesbuildベースの`@angular/build:karma`ビルダーがデフォルトになった。まだ従来のビルダーに依存しているプロジェクトは、まずこの移行を済ませることが重要だ。
