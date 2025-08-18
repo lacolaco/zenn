@@ -12,8 +12,8 @@ importers:
         specifier: 1.4.5
         version: 1.4.5
       '@notionhq/client':
-        specifier: 3.1.3
-        version: 3.1.3
+        specifier: 4.0.2
+        version: 4.0.2
       '@types/js-yaml':
         specifier: 4.0.9
         version: 4.0.9
@@ -201,8 +201,8 @@ packages:
     resolution: {integrity: sha512-l7WqTCpQqC+HibkB9chghONQTYcxNQT0/rOJemBfmuKQRTu2vuV8B3yA395iKaUdDo7HI+0KvQaz9687Xskzkw==}
     engines: {node: '>=12'}
 
-  '@notionhq/client@3.1.3':
-    resolution: {integrity: sha512-M2gVWoo1dIvBeX/Yc4fvQCVh2g3HQjOxKBWX472Qzma2VNMJV3cPLi0J0A4dmOlkcfNQLVXmhuh54zGHpptZ7g==}
+  '@notionhq/client@4.0.2':
+    resolution: {integrity: sha512-4pk3dm4umhjsRI0umCnJ8lCZh0TMiaMdkY0rz6FV4OqVuTsmYFV3pk+YTR5S8792ZY2Rm4lJHlLj05HQVKDuIg==}
     engines: {node: '>=18'}
 
   '@types/js-yaml@4.0.9':
@@ -423,7 +423,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@notionhq/client@3.1.3': {}
+  '@notionhq/client@4.0.2': {}
 
   '@types/js-yaml@4.0.9': {}
 
