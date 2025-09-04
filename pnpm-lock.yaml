@@ -22,7 +22,7 @@ importers:
         version: 22.7.9
       dayjs:
         specifier: ^1.11.10
-        version: 1.11.13
+        version: 1.11.18
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
@@ -224,8 +224,8 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
-  dayjs@1.11.13:
-    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+  dayjs@1.11.18:
+    resolution: {integrity: sha512-zFBQ7WFRvVRhKcWoUh+ZA1g2HVgUbsZm9sbddh8EC5iv93sui8DVVz1Npvz+r6meo9VKfa8NyLWBsQK1VvIKPA==}
 
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
@@ -444,7 +444,7 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  dayjs@1.11.13: {}
+  dayjs@1.11.18: {}
 
   delayed-stream@1.0.0: {}
 
