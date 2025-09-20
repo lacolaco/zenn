@@ -27,5 +27,8 @@
     "typescript": "^5.0.0",
     "zenn-cli": "^0.1.137"
   },
-  "packageManager": "pnpm@10.12.1"
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "sharp": "^0.34.4"
+  }
 }

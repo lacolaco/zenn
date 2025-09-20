@@ -60,6 +60,40 @@ export class ImagesRepository {
       throw new Error(`Failed to fetch image: ${imageUrl}`);
     }
     const data = await resp.arrayBuffer();
-    await this.saveImage(localPath, Buffer.from(data));
+    let buffer = Buffer.from(data);
+
+    // Check if image size exceeds 2MB and resize if necessary
+    const maxSize = 2 * 1024 * 1024; // 2MB
+    if (buffer.length > maxSize) {
+      console.log(`[ImagesRepository] resizing ${localPath} (${Math.round(buffer.length / 1024 / 1024 * 100) / 100}MB)`);
+      buffer = await this.resizeToTargetSize(buffer, maxSize);
+    }
+
+    await this.saveImage(localPath, buffer as WriteFileData);
+  }
+
+  private async resizeToTargetSize(buffer: Buffer, maxSize: number): Promise<Buffer> {
+    const sharp = await import('sharp');
+    let currentBuffer = buffer;
+
+    while (currentBuffer.length > maxSize) {
+      const image = sharp.default(currentBuffer);
+      const metadata = await image.metadata();
+
+      if (!metadata.width || !metadata.height) {
+        throw new Error('Unable to get image dimensions');
+      }
+
+      // Calculate scale to achieve 50% file size (≈ 50% area = √0.5 ≈ 0.707 scale)
+      const scale = Math.sqrt(0.5);
+      const newWidth = Math.round(metadata.width * scale);
+      const newHeight = Math.round(metadata.height * scale);
+
+      currentBuffer = await image.resize(newWidth, newHeight).toBuffer();
+
+      console.log(`[ImagesRepository] compressed to ${Math.round(currentBuffer.length / 1024 / 1024 * 100) / 100}MB`);
+    }
+
+    return currentBuffer;
   }
 }
