@@ -43,8 +43,8 @@ importers:
         specifier: ^5.0.0
         version: 5.8.3
       zenn-cli:
-        specifier: ^0.1.137
-        version: 0.1.161
+        specifier: ^0.2.0
+        version: 0.2.5
 
 packages:
 
@@ -467,9 +467,9 @@ packages:
     resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
     engines: {node: '>=12.20'}
 
-  zenn-cli@0.1.161:
-    resolution: {integrity: sha512-PVdw0zj2GwtAaYbrvN/a5C2IHIzRhAu24AYkw16r344O8FYt/29v0pnGNQFKVfZdSZlgcl5HnH7jQWmlOVdXPw==}
-    engines: {node: '>=14.0.0'}
+  zenn-cli@0.2.5:
+    resolution: {integrity: sha512-DkVcFbpmuXIKMs2pqBigj/uIYwg0M7H8lP5I5GqLil2pDVO3sTvR9PlxFPIs+x8WIyj4LTfNN/beGzLr4jiKJw==}
+    engines: {node: '>=22.0.0'}
     hasBin: true
 
   zod@3.23.8:
@@ -817,6 +817,6 @@ snapshots:
 
   yocto-queue@1.1.1: {}
 
-  zenn-cli@0.1.161: {}
+  zenn-cli@0.2.5: {}
 
   zod@3.23.8: {}
