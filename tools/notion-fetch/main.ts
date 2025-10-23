@@ -39,14 +39,15 @@ async function main() {
   // collect posts from notion
   console.log('Fetching pages...');
   const db = new BlogDatabase(NOTION_AUTH_TOKEN);
-  const pages = await db.query('zenn', { dryRun });
+  const pages = await db.query2('zenn', { dryRun });
   console.log(`Fetched ${pages.length} pages`);
 
   if (pages.length > 0) {
     console.log(`Updating markdown files...`);
     await Promise.all(
       pages.map(async (page) => {
-        return { ...page, slug: page.properties.slug.rich_text[0].plain_text };
+        const content = await page.fetchChildren();
+        return { ...page, content, slug: page.properties.slug.rich_text[0].plain_text };
       }),
     ).then((pages) => postFactory.create(pages));
   }
