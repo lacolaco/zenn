@@ -13,7 +13,7 @@ emoji: '✨'
 
 Angular Material の MatFormField と MatInput を使う場面で、フォーカスにより MatSuffix の表示状態を制御する方法の一例を紹介する。ユーザーに対する入力中のヒントを表示するのに便利なケースがあるかもしれない。
 
-![](/images/angular-mat-suffix-show-only-when-focused/3c6255ea-b6c7-4055-8126-638d2819f0c3/1f8c90ee-66fa-4cc6-a4b3-268d3e7c5431.gif)
+![](/images/angular-mat-suffix-show-only-when-focused/capture.640ad8839c55779a.gif)
 _テキストフィールドにフォーカスがあるときだけMatSuffix要素が可視化される_
 
 サンプルコードでは TailwindCSS の標準ユーティリティクラスを使うが、原理的にはCSSで実現しているのと変わらない。
@@ -30,16 +30,16 @@ _テキストフィールドにフォーカスがあるときだけMatSuffix要�
   standalone: true,
   imports: [CommonModule, MatFormFieldModule, MatInputModule],
   template: `
-    <div class="container p-8">
-      <mat-form-field class="w-full">
-        <mat-label>Search</mat-label>
-        <input matInput type="text" />
+  <div class="container p-8">
+    <mat-form-field class="w-full">
+      <mat-label>Search</mat-label>
+      <input matInput type="text">
 
-        <div matSuffix class="px-2">
-          <span class="text-xs text-gray-500">Enter to submit</span>
-        </div>
-      </mat-form-field>
-    </div>
+      <div matSuffix class="px-2">
+        <span class="text-xs text-gray-500">Enter to submit</span>
+      </div>
+    </mat-form-field>
+  </div>
   `,
   styleUrls: ['./app.component.css'],
 })
@@ -60,12 +60,12 @@ https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-paren
 
 ```html
 <div class="container p-8">
-  <!-- "group" を追加 -->
-  <mat-form-field class="w-full group">
+	<!-- "group" を追加 -->
+  <mat-form-field class="w-full group"> 
     <mat-label>Search</mat-label>
-    <input matInput type="text" />
+    <input matInput type="text">
 
-    <!-- "invisible group-focus-within:visible" を追加 -->
+		<!-- "invisible group-focus-within:visible" を追加 -->
     <div matSuffix class="px-2 invisible group-focus-within:visible">
       <span class="text-xs text-gray-500">Enter to submit</span>
     </div>
@@ -77,12 +77,13 @@ https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-paren
 
 ```css
 .invisible {
-  visibility: hidden;
+	visibility: hidden;
 }
 
 .group:focus-within group-focus-within:visible {
-  visibility: visible;
+	visibility: visible;
 }
 ```
 
 今回は `visibility` で表示状態を切り替えているが、別に `display` による切り替えでも問題はない。
+

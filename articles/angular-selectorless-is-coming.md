@@ -27,8 +27,8 @@ https://blog.angular.dev/the-future-is-standalone-475d7edbc706
 
 Angularの公式ロードマップでも、SelectorlessはStandalone Componentのエルゴノミクス向上とボイラープレート削減を目指すものとして以前から掲げられていた。
 
-> Selectorless  
-> To reduce boilerplate and improve the ergonomics of standalone components we are now designing a solution that will make selectors optional. To use a component or directive you'll be able to import it and directly use it in a component's template.  
+> Selectorless
+> To reduce boilerplate and improve the ergonomics of standalone components we are now designing a solution that will make selectors optional. To use a component or directive you'll be able to import it and directly use it in a component's template.
 > We're still in early stages of planning selectorless. We'll share a request for comments when we have an early design and we're ready for next steps.
 
 [https://angular.dev/roadmap#future-work-explorations-and-prototyping](https://angular.dev/roadmap#future-work-explorations-and-prototyping)
@@ -51,9 +51,11 @@ export class Greeting {
 import { Greeting } from './greeting';
 
 @Component({
-  selector: 'app-root',
+	selector: 'app-root',
   imports: [Greeting],
-  template: ` <app-greeting name="World" /> `,
+  template: `
+    <app-greeting name="World" />
+  `,
 })
 export class App {}
 ```
@@ -64,9 +66,11 @@ Selectorlessの具体的なシンタックスは今後のRFCで提案される�
 import { Greeting } from './greeting';
 
 @Component({
-  selector: 'app-root',
+	selector: 'app-root',
   imports: [Greeting],
-  template: ` <Greeting name="World" /> `,
+  template: `
+    <Greeting name="World" />
+  `,
 })
 export class App {}
 ```
@@ -80,3 +84,4 @@ https://github.com/angular/angular/pull/60724/files#diff-6398e1ffddbcd90e365c156
 ## まとめ
 
 Selectorlessは、Angular開発における新たなコンポーネント実装のコンセプトである。Standalone Componentの定着によりフレームワークが解決すべき課題が次のステージへ進んでいるとも言える。セレクタという抽象化を取り除くことで、開発効率やアプリケーションのパフォーマンス、そしてコードの可読性を向上させることが期待される。おそらく5月にリリースされるAngular v20の期間には、もっと具体的な姿が見えてくるだろう。今後の動向にぜひ期待しよう。
+

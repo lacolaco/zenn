@@ -125,7 +125,7 @@ pnpm i -D @vitest/browser playwright
 npx playwright install
 ```
 
-![](/images/angular-unit-testing-runner-v20/3c6255ea-b6c7-4055-8126-638d2819f0c3/48326505-e3bf-47f4-b369-4e4c87efda29.png)
+![](/images/angular-unit-testing-runner-v20/CleanShot_2025-06-25_at_18.26.222x.39a2ac851d0220db.png)
 _ng testの実行中画面（Vitest）_
 
 デフォルトではVitestのWeb UIが立ち上がりwatchモードに入る。 `--no-watch` フラグを付けるか、ビルダーの設定に`watch: false`を加えれば一回限りの実行で結果を返すようになる。
@@ -145,3 +145,4 @@ Angular v20では、これまでの`@angular-devkit/build-angular:karma` に置�
 また、実験的機能 `@angular/build:unit-test` ビルダーにより、KarmaからVitestへの移行が段階的に進められるようになりつつある。第一段階ではKarma/Jasmine構成のままでビルダーだけを切り替える。第二段階では設定をほとんど変えないままにテストランナーを切り替えることができる。
 
 ユニットテスト実行環境がプロジェクト作成直後からデフォルトで整うのがAngular CLIの大きな利点のひとつだ。今後のアップデートの恩恵を受けるため、サードパーティに依存してJestやVitestを利用しているプロジェクトでも、様子を見ながら本家に帰ってくる準備を始めてもいいだろう。
+

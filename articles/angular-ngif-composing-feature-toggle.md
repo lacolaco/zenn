@@ -36,13 +36,13 @@ export class AuthDirective implements OnInit, OnDestroy {
 
 ```typescript
 combineLatest([this.authService.user$, this._permissions]).subscribe(
-  ([user, requiredPermissions]) => {
-    const permitted = requiredPermissions.every((p) =>
-      user.permissions.includes(p),
+      ([user, requiredPermissions]) => {
+        const permitted = requiredPermissions.every((p) =>
+          user.permissions.includes(p)
+        );
+        this.ngIfDirective.ngIf = permitted;
+      }
     );
-    this.ngIfDirective.ngIf = permitted;
-  },
-);
 ```
 
 このように `NgIf` と条件ロジックを合成したディレクティブを再利用可能にすることで、ディレクティブを使う側の責務は減ってコンポーネントが簡素になり、より宣言的なテンプレートに仕上がる。そしてDOM要素の生成・破棄のロジックはAngularの組み込みディレクティブに委譲しており、アプリケーションのユースケース的な関心だけを自前実装することができた。
@@ -54,3 +54,4 @@ combineLatest([this.authService.user$, this._permissions]).subscribe(
 ```
 
 `NgIf` に限らず、Angularの組み込みディレクティブを `hostDirectives` を使って自作ディレクティブに合成して実装量を減らし、クオリティが保証されたDOM操作実装に乗っかることが簡単になった。つまり、**UIライブラリ的な関心事だけを実装したディレクティブ**と、**アプリケーション的な関心事をそれに上乗せするディレクティブ**とを分けて実装し、再利用やテストがしやすいモジュール化を実現しやすくなったということだ。ぜひさまざまな場面でこの新機能を活用してほしい。
+

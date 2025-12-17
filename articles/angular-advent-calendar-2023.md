@@ -62,8 +62,8 @@ HTML標準の`button`要素を内包した独自のボタンコンポーネン�
 <button awesome-button disabled>&#60;button disabled&#62;</button>
 
 <h4>Input Buttons</h4>
-<input awesome-button type="button" value="<input type=button>" />
-<input awesome-button type="file" />
+<input awesome-button type="button" value="<input type=button>"/>
+<input awesome-button type="file">
 ```
 
 作成したコンポーネントに最低限のスタイルを加えます。元記事と同じく[open-props](https://open-props.style/)を使ってCSS変数を導入し、AwesomeButtonコンポーネントのスタイルを設定した状態で一段落です。
@@ -194,14 +194,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/:host-context
 https://developer.mozilla.org/ja/docs/Web/CSS/touch-action#manipulation
 
 ```css
-:host(
-    :where(
-        button,
-        input[type='button'],
-        input[type='submit'],
-        input[type='reset']
-      )
-  ),
+:host(:where(button,input[type='button'],input[type='submit'],input[type='reset'])),
 :host(:where(input[type='file'])::file-selector-button) {
   cursor: pointer;
   touch-action: manipulation;
@@ -268,3 +261,4 @@ export class AwesomeButton {
 今回の例では`input[type=file]`の特殊ケースを扱うことでCSSは少し複雑になりましたが、ネスト構文などを使えばもう少し整理されたCSSにできそうに思います。ただCSS変数の数がすごく多いので、変数管理のあたりは実用的にはまだまだ改善しなければならないですね。
 
 Angular Materialもそうですが、CSS変数がいよいよ本格的にUIコンポーネント設計の中で考慮すべきものとして普及してきているように感じています。来年はもっとCSS変数を活用して上手にコンポーネントのスタイリングを実装していきたいものです。
+

@@ -37,7 +37,7 @@ https://v3.tailwindcss.com/docs/guides/angular
 https://tailwindcss.com/docs/upgrade-guide#using-a-javascript-config-file
 
 ```css
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config "../tailwind.config.js";
 ```
@@ -47,3 +47,4 @@ https://tailwindcss.com/docs/upgrade-guide#using-a-javascript-config-file
 ## まとめ
 
 Angular プロジェクトでのTailwind CSS 4.0の組み込みは `.postcssrc.json`を使用したPostCSS経由のセットアップがシンプルで推奨される方法だ。既存プロジェクトでは@configディレクティブを使用してJavaScript設定ファイルからの段階的な移行が可能で、Angular CLIとの統合に依存せず、将来的なアップグレードも容易になる。
+

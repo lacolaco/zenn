@@ -51,12 +51,12 @@ import { counterSignal } from './signalized';
 @Component({
   selector: 'app-root',
   template: `
-    <p>{{ counter() }}</p>
-    <div>
-      <button (click)="counter.increment()">++</button>
-      <button (click)="counter.decrement()">--</button>
-      <button (click)="counter.reset()">RESET</button>
-    </div>
+  <p>{{ counter() }}</p>
+  <div>
+    <button (click)="counter.increment()">++</button>
+    <button (click)="counter.decrement()">--</button>
+    <button (click)="counter.reset()">RESET</button>
+  </div>
   `,
 })
 export class App {
@@ -73,3 +73,4 @@ export class App {
 ありがとうございました。Angularアドベントカレンダー、明日はtakataroさんです。
 
 https://qiita.com/advent-calendar/2024/angular
+

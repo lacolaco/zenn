@@ -1,0 +1,182 @@
+{
+  "2c53521b-014a-80d9-8279-f5c01f43773b": {
+    "lastModified": "2025-12-12T01:35:00.000Z",
+    "slug": "angular-animations-with-motion",
+    "filePath": "angular-animations-with-motion.md"
+  },
+  "2713521b-014a-800c-b4dd-ed9150c0dc1c": {
+    "lastModified": "2025-09-20T01:28:00.000Z",
+    "slug": "angular-ai-forward",
+    "filePath": "angular-ai-forward.md"
+  },
+  "23c3521b-014a-8036-9152-cc3d38813adf": {
+    "lastModified": "2025-07-26T10:19:00.000Z",
+    "slug": "angular-animations-enter-leave",
+    "filePath": "angular-animations-enter-leave.md"
+  },
+  "21d3521b-014a-80e0-a40b-cb6943377b34": {
+    "lastModified": "2025-06-25T10:02:00.000Z",
+    "slug": "angular-unit-testing-runner-v20",
+    "filePath": "angular-unit-testing-runner-v20.md"
+  },
+  "1d03521b-014a-8070-af87-dfbe63ce9c9a": {
+    "lastModified": "2025-04-09T15:04:00.000Z",
+    "slug": "angular-selectorless-is-coming",
+    "filePath": "angular-selectorless-is-coming.md"
+  },
+  "1d03521b-014a-80be-ae58-f852f4628521": {
+    "lastModified": "2025-04-09T07:36:00.000Z",
+    "slug": "weekly-commits-on-angular-2025-04-09",
+    "filePath": "weekly-commits-on-angular-2025-04-09.md"
+  },
+  "1c23521b-014a-8006-826d-f570a3e9e91c": {
+    "lastModified": "2025-03-26T02:03:00.000Z",
+    "slug": "angular-using-web-worker-through-resource",
+    "filePath": "angular-using-web-worker-through-resource.md"
+  },
+  "1bb3521b-014a-80de-aa71-c45e578737b9": {
+    "lastModified": "2025-03-19T06:09:00.000Z",
+    "slug": "weekly-commits-on-angular-2025-03-19",
+    "filePath": "weekly-commits-on-angular-2025-03-19.md"
+  },
+  "1ad3521b-014a-80e5-bde2-e61a84634c57": {
+    "lastModified": "2025-03-12T09:00:00.000Z",
+    "slug": "weekly-commits-on-angular-2025-03-12",
+    "filePath": "weekly-commits-on-angular-2025-03-12.md"
+  },
+  "1b43521b-014a-8044-8298-efca294f5fde": {
+    "lastModified": "2025-03-12T06:35:00.000Z",
+    "slug": "weekly-commits-on-angular-2025-03-05",
+    "filePath": "weekly-commits-on-angular-2025-03-05.md"
+  },
+  "1a63521b-014a-808f-9266-e92dc6f86dfc": {
+    "lastModified": "2025-02-26T10:09:00.000Z",
+    "slug": "weekly-commits-on-angular-2025-02-26",
+    "filePath": "weekly-commits-on-angular-2025-02-26.md"
+  },
+  "1983521b-014a-80d0-8a7c-c09020dd3420": {
+    "lastModified": "2025-02-12T02:05:00.000Z",
+    "slug": "angular-http-resource-quick-overview",
+    "filePath": "angular-http-resource-quick-overview.md"
+  },
+  "1913521b-014a-80f0-9c8a-f2b4dde093d1": {
+    "lastModified": "2025-02-05T02:50:00.000Z",
+    "slug": "angular-cdk-overlay-with-animations",
+    "filePath": "angular-cdk-overlay-with-animations.md"
+  },
+  "18e3521b-014a-80d9-af62-f945ecfa18f3": {
+    "lastModified": "2025-02-02T06:49:00.000Z",
+    "slug": "angular-tailwind-css-4-setup",
+    "filePath": "angular-tailwind-css-4-setup.md"
+  },
+  "1763521b-014a-80ca-916d-d87cfc630eca": {
+    "lastModified": "2025-01-09T13:27:00.000Z",
+    "slug": "angular-let-tailwindcss-intellisense",
+    "filePath": "angular-let-tailwindcss-intellisense.md"
+  },
+  "14d3521b-014a-803e-a815-c7030c8e4287": {
+    "lastModified": "2025-01-09T13:02:00.000Z",
+    "slug": "angular-signal-forms-prototype",
+    "filePath": "angular-signal-forms-prototype.md"
+  },
+  "14d3521b-014a-8059-9134-c652a0a858c2": {
+    "lastModified": "2024-12-02T12:49:00.000Z",
+    "slug": "angular-signalized-counter",
+    "filePath": "angular-signalized-counter.md"
+  },
+  "12e3521b-014a-80da-a5a9-ed157e6bc9b1": {
+    "lastModified": "2024-10-29T14:06:00.000Z",
+    "slug": "angular-v19-resource",
+    "filePath": "angular-v19-resource.md"
+  },
+  "12d3521b-014a-80f3-95ff-d9c289dd689e": {
+    "lastModified": "2024-10-28T14:22:00.000Z",
+    "slug": "angular-v19-linked-signal",
+    "filePath": "angular-v19-linked-signal.md"
+  },
+  "11a3521b-014a-8026-b45e-fb2c2fc99ee0": {
+    "lastModified": "2024-10-09T09:32:00.000Z",
+    "slug": "angular-v19-effect-changes",
+    "filePath": "angular-v19-effect-changes.md"
+  },
+  "d98c0b65-806e-4a10-a239-b329958ab674": {
+    "lastModified": "2024-09-25T06:02:00.000Z",
+    "slug": "angular-v19-prerendering",
+    "filePath": "angular-v19-prerendering.md"
+  },
+  "52edeabe-72e3-44cc-9edd-d2ccf9148002": {
+    "lastModified": "2024-09-18T14:55:00.000Z",
+    "slug": "angular-material-disabled-interactive",
+    "filePath": "angular-material-disabled-interactive.md"
+  },
+  "7b14ed47-6933-4797-8ef0-c29e83922a49": {
+    "lastModified": "2024-06-15T00:46:00.000Z",
+    "slug": "testing-angular-applications-with-vitest",
+    "filePath": "testing-angular-applications-with-vitest.md"
+  },
+  "fc06702a-e32a-483e-a546-4ed5b9c3b702": {
+    "lastModified": "2024-02-24T05:25:00.000Z",
+    "slug": "angular-model-inputs",
+    "filePath": "angular-model-inputs.md"
+  },
+  "190478da-4fdf-4db6-a71f-4942d2011d2a": {
+    "lastModified": "2024-01-11T06:50:00.000Z",
+    "slug": "angular-signal-inputs",
+    "filePath": "angular-signal-inputs.md"
+  },
+  "aa5b1283-87fb-4b2f-bc91-6ec77c9f5d2a": {
+    "lastModified": "2023-12-30T10:05:00.000Z",
+    "slug": "angular-16-jest",
+    "filePath": "angular-16-jest.md"
+  },
+  "23c54aef-56ff-4d4c-99b0-35e052b80056": {
+    "lastModified": "2023-12-30T10:05:00.000Z",
+    "slug": "why-inject-function-wins",
+    "filePath": "why-inject-function-wins.md"
+  },
+  "02ff5a35-36af-4d69-9609-1ea3f818ad95": {
+    "lastModified": "2023-12-30T10:05:00.000Z",
+    "slug": "angular-inputs-stream-pattern",
+    "filePath": "angular-inputs-stream-pattern.md"
+  },
+  "c30c4744-b390-4755-8495-a126d32ad0d9": {
+    "lastModified": "2023-12-30T10:05:00.000Z",
+    "slug": "angular-ngif-composing-feature-toggle",
+    "filePath": "angular-ngif-composing-feature-toggle.md"
+  },
+  "c0a2a317-2b8f-47ef-821d-9ef5e602c5f9": {
+    "lastModified": "2023-12-30T10:04:00.000Z",
+    "slug": "angular-signals-component-design-patterns",
+    "filePath": "angular-signals-component-design-patterns.md"
+  },
+  "4e8bcf7e-4c2c-4d31-806b-ff592edf4232": {
+    "lastModified": "2023-12-30T10:04:00.000Z",
+    "slug": "rethink-template-driven-forms",
+    "filePath": "rethink-template-driven-forms.md"
+  },
+  "e6e80b9f-4a39-4d25-905f-4b4711f09f37": {
+    "lastModified": "2023-12-30T10:01:00.000Z",
+    "slug": "angular-signal-equal-option",
+    "filePath": "angular-signal-equal-option.md"
+  },
+  "9de77b78-554f-4e23-b970-c8ff5a57d2ce": {
+    "lastModified": "2023-12-30T10:01:00.000Z",
+    "slug": "angular-signals-and-component-communication",
+    "filePath": "angular-signals-and-component-communication.md"
+  },
+  "4b13c6c0-76da-42c3-81d1-81affb15f518": {
+    "lastModified": "2023-12-30T10:01:00.000Z",
+    "slug": "angular-host-element-with-tailwindcss-classes",
+    "filePath": "angular-host-element-with-tailwindcss-classes.md"
+  },
+  "40f4e1df-5de5-45b9-b837-f96a36605ba9": {
+    "lastModified": "2023-12-30T10:00:00.000Z",
+    "slug": "angular-mat-suffix-show-only-when-focused",
+    "filePath": "angular-mat-suffix-show-only-when-focused.md"
+  },
+  "119f8e2c-8fc7-40f4-aa76-755373a0b009": {
+    "lastModified": "2023-12-30T09:58:00.000Z",
+    "slug": "angular-advent-calendar-2023",
+    "filePath": "angular-advent-calendar-2023.md"
+  }
+}

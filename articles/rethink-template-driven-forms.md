@@ -28,8 +28,8 @@ Angular のフォームAPIにはテンプレート駆動フォームとリアク
 
 そもそもフォームにおけるスケーラビリティとはどのような性質を指すのか、[公式ドキュメント](https://angular.jp/guide/forms-overview#scalability)ではこう書かれている。
 
-> If forms are a central part of your application, scalability is very important. Being able to reuse form models across components is critical.  
-> Reactive forms are more scalable than template-driven forms. They provide direct access to the underlying form API, and use [synchronous data flow](https://angular.jp/guide/forms-overview#data-flow-in-reactive-forms) between the view and the data model, which makes creating large-scale forms easier. Reactive forms require less setup for testing, and testing does not require deep understanding of change detection to properly test form updates and validation.  
+> If forms are a central part of your application, scalability is very important. Being able to reuse form models across components is critical.
+> Reactive forms are more scalable than template-driven forms. They provide direct access to the underlying form API, and use [synchronous data flow](https://angular.jp/guide/forms-overview#data-flow-in-reactive-forms) between the view and the data model, which makes creating large-scale forms easier. Reactive forms require less setup for testing, and testing does not require deep understanding of change detection to properly test form updates and validation.
 > Template-driven forms focus on simple scenarios and are not as reusable. They abstract away the underlying form API, and use [asynchronous data flow](https://angular.jp/guide/forms-overview#data-flow-in-template-driven-forms) The abstraction of template-driven forms also affects testing. Tests are deeply reliant on manual change detection execution to run properly, and require more setup.
 
 リアクティブフォームはテンプレートから独立したフォームモデルを TypeScript コードで直接扱うため、特定のコンポーネントに依存しない再利用性の高いモジュールに切り出すことが簡単である。これが第一のスケーラビリティであるようだ。つまり、アプリケーションが大きくなり、同じようなフォームを構築する場面が増えた時にもフォームに関する部分を再利用できるというDRYの観点である。
@@ -59,13 +59,11 @@ v16.0 時点ではまだ `[(ngModel)]="signal"` という記述はできない�
   imports: [CommonModule, FormsModule],
   template: `
     <h1>Signals with template-driven forms</h1>
-
+    
     <form #form="ngForm" (ngSubmit)="onSubmit()">
-      <input
-        name="message"
-        [ngModel]="message()"
-        (ngModelChange)="message.set($event)"
-      />
+      <input name="message" 
+        [ngModel]="message()" 
+        (ngModelChange)="message.set($event)" >
 
       <button [disabled]="!form.valid">submit</button>
     </form>
@@ -113,3 +111,4 @@ export class App {
   - とはいえ Signals には RxJS との相互運用 API もあるため、大した違いではなさそうだ。
 
 このような状況でリアクティブフォームを使うなら、これまでとは違う惰性ではない理由付けが必要だ。軽い用途にはテンプレート駆動、プロダクション用途ならリアクティブフォームという安直な評価はもはやできそうにない。それぞれのアプリケーションにとって、Signalsを得てもなおリアクティブフォームを選択することで何が得られるのかをもう一度考えるべきだろう。
+

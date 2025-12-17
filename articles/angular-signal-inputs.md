@@ -18,7 +18,7 @@ Signal InputsはSignals RFCの中でもSignal-based Componentsのセクション
 
 https://github.com/angular/angular/discussions/49682
 
-> In signal-based components, all component inputs are signals.
+> In signal-based components, all component inputs are signals. 
 
 ここで書かれているように、コンポーネントのインプットプロパティをSignalとして宣言できる。従来のSignalではないオブジェクトでは、インプットの変更に反応して処理をおこなうために `ngOnChanges` ライフサイクルフックや、setterによる代入処理への割り込みが必要だったが、Signal Inputsでは通常のSignalと同様に`computed`や`effect`によってリアクティブな処理ができる。
 
@@ -53,3 +53,4 @@ Signal InputsによってすべてのインプットプロパティはSignal型�
 - [https://justangular.com/blog/signal-inputs-are-here-to-change-the-game](https://justangular.com/blog/signal-inputs-are-here-to-change-the-game)
 - [https://netbasal.com/revolutionizing-angular-introducing-the-new-signal-input-api-d0fc3c8777f2](https://netbasal.com/revolutionizing-angular-introducing-the-new-signal-input-api-d0fc3c8777f2)
 - [https://github.com/angular/angular/pull/53872](https://github.com/angular/angular/pull/53872)
+

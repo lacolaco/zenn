@@ -32,13 +32,13 @@ https://twitter.com/Jean__Meche/status/1847074532689170437
 @Component({
   selector: 'app-product-viewer',
   template: `
-    @if (productResource.value(); as product) {
-      <p>Title: {{ product.title }}</p>
-    } @else if (productResource.error()) {
-      <p>load failed</p>
-    } @else if (productResource.isLoading()) {
-      <p>loading...</p>
-    }
+  @if (productResource.value(); as product) {
+    <p> Title: {{ product.title }} </p>
+  } @else if (productResource.error(); ) {
+    <p> load failed </p>
+  } @else if(productResource.isLoading()) {
+    <p> loading... </p>
+  }
   `,
 })
 export class ProductViewer {
@@ -75,21 +75,21 @@ export class ProductViewer {
   productData = signal<Product | null>(null);
   isProductLoading = signal<boolean>(false);
 
-  constructor() {
-    effect(async (onCleanup) => {
-      const productId = this.productId();
-      this.isProductLoading.set(true);
-      const abortCtrl = new AbortController();
-      onCleanup(() => abortCtrl.abort());
-
-      const resp = await fetch(`https://dummyjson.com/products/${productId}`, {
+	constructor() {
+	  effect(async (onCleanup) => {
+		  const productId = this.productId();
+		  this.isProductLoading.set(true);
+		  const abortCtrl = new AbortController();
+      onCleanup(() => abortCtrl.abort())
+		  
+		  const resp = await fetch(`https://dummyjson.com/products/${productId}`, {
         signal: abortCtrl.signal,
       });
-      const data = (await resp.json()) as Promise<Product>;
+      const data = await resp.json() as Promise<Product>;
       this.productData.set(data);
       this.isProductLoading.set(false);
-    });
-  }
+	  });
+	}
 }
 ```
 
@@ -107,11 +107,10 @@ export class ProductViewer {
   productResource: ResourceRef<Product> = resource({
     request: () => this.productId(), // load on productId change
     loader: ({ request: productId, abortSignal }) => {
-      const destroy$ = fromEvent(abortSignal, 'abort');
+      const destroy$ = fromEvent(abortSignal, "abort");
       return firstValueFrom(
-        this.http
-          .get<Product>(`https://dummyjson.com/products/${productId}`)
-          .pipe(takeUntil(destroy$)),
+        this.http.get<Product>(`https://dummyjson.com/products/${productId}`)
+          .pipe(takeUntil(destroy$))
       );
     },
   });
@@ -128,9 +127,7 @@ export class ProductViewer {
   productResource: ResourceRef<Product> = rxResource({
     request: () => this.productId(), // load on productId change
     loader: ({ request: productId }) => {
-      return this.http.get<Product>(
-        `https://dummyjson.com/products/${productId}`,
-      );
+      return this.http.get<Product>(`https://dummyjson.com/products/${productId}`);
     },
   });
 }
@@ -150,3 +147,4 @@ Angularのフレームワークコアからだんだんと`Observable`の第一�
 今回のサンプルコードもStackblitzに置いているので好きに使ってほしい。
 
 @[stackblitz](https://stackblitz.com/edit/stackblitz-starters-fb3yue?ctl=1&embed=1&file=src%2Fmain.ts)
+

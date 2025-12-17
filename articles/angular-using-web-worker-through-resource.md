@@ -37,6 +37,7 @@ addEventListener('message', ({ data }) => {
   // delay for 1 second to simulate a slow calculation
   setTimeout(() => postMessage(response), 1000);
 });
+
 ```
 
 ## Web Worker over Resource
@@ -65,13 +66,12 @@ function echo(message: string): Promise<string> {
   selector: 'app-root',
   imports: [FormsModule],
   template: `
-    <div>
-      <input type="text" [(ngModel)]="message" />
-      <p>
-        Worker:
-        {{ workerMessage.isLoading() ? 'Waiting...' : workerMessage.value() }}
-      </p>
-    </div>
+  <div>
+    <input type="text" [(ngModel)]="message" />
+    <p> Worker: {{ 
+      workerMessage.isLoading() ? 'Waiting...' : workerMessage.value() 
+    }}</p>
+  </div>
   `,
 })
 export class AppComponent {
@@ -82,9 +82,10 @@ export class AppComponent {
     loader: ({ request }) => echo(request.message),
   });
 }
+
 ```
 
-![](/images/angular-using-web-worker-through-resource/3c6255ea-b6c7-4055-8126-638d2819f0c3/b4c6abe2-5bb0-41d4-a5c8-4578a74260f3.gif)
+![image](/images/angular-using-web-worker-through-resource/CleanShot_2025-03-26_at_10.21.55.5980536265efaf29.gif)
 
 キャプチャから実際に動いている様子が確認できる。同様のことはもちろん`resource` を使わなくても実現できるが、`resource`でラップすることによる利点もある。もちろんResourceインターフェースの`isLoading()`や`error()`などのSignalが使いやすいのはもちろんだが、特に大きいのは、RxJSでいうところの`switchMap`的な効果、つまり同時に複数の解決が走って値の更新がコンフリクトするということが起きない点だ。
 
@@ -100,3 +101,4 @@ export class AppComponent {
 今回のコードの全体はGitHubで公開している。
 
 https://github.com/lacolaco/angular-webworker-resource-example
+

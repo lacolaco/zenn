@@ -48,7 +48,9 @@ import angular from '@analogjs/vite-plugin-angular';
 const isCI = !!process.env['CI'];
 
 export default defineConfig({
-  plugins: [angular({ tsconfig: 'tsconfig.spec.json' })],
+  plugins: [
+    angular({ tsconfig: 'tsconfig.spec.json' }),
+  ],
   test: {
     globals: true,
     setupFiles: ['src/setup-vitest.ts'],
@@ -78,7 +80,7 @@ import {
 
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting(),
+  platformBrowserDynamicTesting()
 );
 ```
 
@@ -89,7 +91,7 @@ getTestBed().initTestEnvironment(
 `package.json` の `test` スクリプトを `vitest` を実行するように編集する。`ng test` を実行するための設定は不要なため、`angular.json` 内の`archtect.test` 設定は消してしまってよい。
 
 :::message
-テストを実行して`@analogjs/vite-plugin-angular`のESM読み込みに失敗するようなエラーが出る場合は、VitestのコンフィグファイルがESMとして読み込まれていない。  
+テストを実行して`@analogjs/vite-plugin-angular`のESM読み込みに失敗するようなエラーが出る場合は、VitestのコンフィグファイルがESMとして読み込まれていない。
 これを解決するには、`package.json`で`type: “module”`を指定するか、Vitestの設定ファイル名を`vitest.config.mts`に変更してESMであることを示すとよい。
 :::
 
@@ -99,3 +101,4 @@ getTestBed().initTestEnvironment(
 - `@analogjs/vite-plugin-angular` はv1.xになり以前よりは安定したが、未知のトラブルを踏む覚悟は必要
 - とはいえ、Karma → Jest の置き換えよりは躓くポイントが少ないように思える。特にES Module周りや、JSDOM周り
 - まだ単純なテストケースしか試していないので、今の時点でどこまで機能するかは未知数。ぜひこれを読んで気になった人も試してみてほしい。
+

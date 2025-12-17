@@ -23,11 +23,13 @@ https://design.digital.go.jp/components/button/#h4-ボタンの無効化（disab
 
 個別のケースにおいて `disabled` を使うべきか `aria-disabled` を使うべきかという是非についてはここでは扱わないが、どちらの方法も選択可能な技術的オプションとして持っておきたい。その点で、今回の記事では2023年あたりから Angular Material のコンポーネントに実装されはじめた `disabledInteractive` 機能について解説をする。
 
-## Angular Materialの `disabledInteractive`
+## Angular Materialの `disabledInteractive` 
 
 Angular MaterialのMatButtonコンポーネントには `disabledInteractive` プロパティがある。このプロパティを追加したプルリクエストには次のように説明が書かれている。
 
 > Native disabled buttons don't allow focus and prevent the button from dispatching events. In some cases this can be problematic, because it prevents the app from showing to the user why the button is disabled.
+>
+> These changes introduce a new opt-in input that will style buttons as disabled and set `aria-disabled="true"`, but not set the native `disabled` attribute, allowing them to be interactive.
 
 https://github.com/angular/components/pull/28242
 
@@ -44,14 +46,12 @@ https://material.angular.io/components/button/examples#button-disabled-interacti
   mat-raised-button
   disabled
   disabledInteractive
-  matTooltip="This is a tooltip!"
->
-  Disabled button allowing interactivity
-</button>
+  matTooltip="This is a tooltip!">Disabled button allowing interactivity</button>
 
-<button mat-raised-button disabled matTooltip="This is a tooltip!">
-  Default disabled button
-</button>
+<button
+  mat-raised-button
+  disabled
+  matTooltip="This is a tooltip!">Default disabled button</button>
 ```
 
 `disabledInteractive` プロパティは、そのMatButtonの`disabled` プロパティが`true` のときにインタラクト可能にするかどうかを制御する。インタラクト可能な状態では、あらゆるイベントは通常状態と同じく発火される。この例では`disabledInteractive`がついているボタンの方だけマウスオーバーによりツールチップを表示できる。
@@ -67,3 +67,4 @@ https://material.angular.io/components/button/overview#interactive-disabled-butt
 https://github.com/angular/components/pulls
 
 あくまでもオプトインであり、この機能は「使うべきベストプラクティス」として用意されているわけではない。システムの要件次第ではこういった対応が必要になるケースがあり、そういうときにAngular Materialでは実現できないと判断されることを避けるためのものだろう。必要だと思えば使えばよいし、そうでないなら使わなくてよい。しかし存在は知っておくことで実装の幅は広がるはずだ。
+

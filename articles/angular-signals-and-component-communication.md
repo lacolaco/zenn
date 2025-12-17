@@ -12,7 +12,7 @@ emoji: '✨'
 
 Angularアプリケーションの実装でSignalsを使う場面が増えたので、コンポーネント間の通信において手に馴染む実装パターンがわかってきた。それをいくつかメモしておく。
 
-## Plain Input/Output
+## Plain Input/Output 
 
 子コンポーネントのほうは何の変哲もない、普通のInput/Outputを持っている。親はInput/Outputに対するバインディングにSignalを直接割り当てる。いままでのAngularと大きく変わらないSignalの使い方だと思われる。これだと単に親コンポーネントの状態管理がRxJSのSubjectからSignalに置き換わっただけだという感触。
 
@@ -41,11 +41,11 @@ export class SushiSelectorComponent {
   standalone: true,
   imports: [CommonModule, SushiSelectorComponent],
   template: `
-    <app-sushi-selector
-      [value]="$selectedSushi()"
+    <app-sushi-selector 
+      [value]="$selectedSushi()" 
       (valueChange)="$selectedSushi.set($event)"
-    />
-    <p>Selected Sushi: {{ $selectedSushi() }}</p>
+    /> 
+    <p> Selected Sushi: {{ $selectedSushi() }} </p>
   `,
 })
 export class App {
@@ -59,7 +59,7 @@ export class App {
 
 https://dev.to/oz/application-state-management-with-angular-signals-1371
 
-## Signalized Input/Output
+## Signalized Input/Output 
 
 子コンポーネントの内部でもSignalを使うパターンとして、まずはInput/Outputのインターフェースはそのままに、内部の状態保持をSignalizeしたもの。クラスフィールドとして `$value` Signalを持ち、InputはこのSignalへの入力に、OutputはこのSignalからの出力に接続する。
 
@@ -122,8 +122,10 @@ export class SushiSelectorComponent {
   standalone: true,
   imports: [CommonModule, SushiSelectorComponent],
   template: `
-    <app-sushi-selector [$value]="$selectedSushi" />
-    <p>Selected Sushi: {{ $selectedSushi() }}</p>
+    <app-sushi-selector 
+      [$value]="$selectedSushi" 
+    /> 
+    <p> Selected Sushi: {{ $selectedSushi() }} </p>
   `,
 })
 export class App {
@@ -138,3 +140,4 @@ export class App {
 ちなみにこのような双方向バインディングについては `model` APIで検討されているため、このメンタルモデルに慣れておくと将来的にはSignalをより使いこなす準備とも言えるかもしれない。
 
 [https://github.com/angular/angular/discussions/49682](https://github.com/angular/angular/discussions/49682)
+

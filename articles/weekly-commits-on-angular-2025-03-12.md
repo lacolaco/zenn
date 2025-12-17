@@ -31,7 +31,7 @@ https://github.com/angular/angular/commit/92250493ffc2201e118f399f2ae46d792390fb
 
 Commits: [https://github.com/angular/angular-cli/commits/main/?since=2025-03-06&until=2025-03-12](https://github.com/angular/angular-cli/commits/main/?since=2025-03-06&until=2025-03-12)
 
-### feat(@angular/build): integrate Chrome automatic workspace folders ·
+### feat(@angular/build): integrate Chrome automatic workspace folders · 
 
 https://github.com/angular/angular-cli/commit/3c9172159c72f3c8ea116557ba5bf917a15d2f07
 
@@ -39,13 +39,13 @@ Angular CLIの `ng serve` コマンドで実行される開発者サーバーが
 
 http://goo.gle/devtools-automatic-workspace-folders
 
-### feat(@schematics/angular): use TypeScript module preserve option for new projects
+### feat(@schematics/angular): use TypeScript module preserve option for new projects 
 
 https://github.com/angular/angular-cli/commit/03180fe0358662f8fd3255ad546994da3e3bda9c
 
 `ng new` コマンドで作成されるプロジェクトの`tsconfig`設定が変更されました。`module` プロパティの値がデフォルトで`preserve` となります。esbuildベースの新しいビルダーにおけるモジュール解決と一致しており、既存プロジェクトにおいても同じように変更することが推奨されそうです。また、この設定により`"esModuleInterop": true` や `"moduleResolution": "bundler”` 、`”resolveJsonModule”: true` などの明示的な指定も不要になります。
 
-### fix(@schematics/angular): generate component templates with a .ng.html file extension
+### fix(@schematics/angular): generate component templates with a .ng.html file extension 
 
 https://github.com/angular/angular-cli/commit/dc2f65999a64453a26b61c96080b732fdc4147c8
 
@@ -76,3 +76,4 @@ https://github.com/angular/components/commit/227e83d242a83d680d8cd39b36f6385c9f6
 https://github.com/angular/components/commit/db090cac310118915c91cec6187ef9c1cfa7ced5
 
 過去のバージョンで非推奨APIとしてマークされていたものがv20.0での破壊的変更として削除されています。
+
