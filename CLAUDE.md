@@ -30,7 +30,7 @@ Launches Zenn CLI preview server.
 
 ### Fetch from Notion
 ```bash
-pnpm notion-fetch
+pnpm notion-sync
 ```
 Fetches blog posts from Notion database and generates/updates Markdown files in `articles/`.
 
@@ -40,6 +40,7 @@ Options:
 - `--force` or `-f`: Force update all posts even if unchanged
 - `--dry-run` or `-D`: Preview changes without writing files
 - `--verbose`: Show detailed logs
+- `--mode <mode>`: Sync mode (`incremental` or `all`, default: `incremental`)
 
 ## Architecture
 
@@ -51,48 +52,40 @@ Options:
 ├── books/             # Zenn books (currently empty)
 ├── images/            # Article images (managed by notion-fetch)
 ├── tools/             # Custom tooling
-│   └── notion-fetch/  # Notion to Zenn converter
-│       ├── main.ts              # Entry point
-│       ├── notion/              # Notion API integration
-│       ├── posts/               # Post processing logic
-│       │   ├── factory.ts       # Post creation orchestration
-│       │   ├── repository.ts    # File system operations
-│       │   └── renderer/        # Markdown rendering
-│       │       ├── frontmatter.ts
-│       │       ├── markdown.ts
-│       │       └── renderer.ts
-│       └── env.d.ts
+│   └── notion-sync/   # Notion to Zenn converter
+│       ├── main.ts    # Entry point
+│       └── test.ts    # Tests for output validation
 └── tsconfig.json
 ```
 
-### notion-fetch Tool
+### notion-sync Tool
 
-**Purpose**: Syncs blog posts from Notion database to local Markdown files for Zenn.
+**Purpose**: Syncs blog posts from Notion database to local Markdown files for Zenn using `@lacolaco/notion-sync`.
 
 **Flow**:
-1. Queries Notion database via `@lacolaco/notion-db` for pages tagged with 'zenn'
+1. Queries Notion database for pages with `distribution='zenn'`
 2. Fetches page content (blocks) from Notion API
-3. Converts Notion blocks to Markdown using custom renderers
+3. Converts Notion blocks to Markdown with Zenn-specific customizations
 4. Downloads external images to `images/{slug}/` directory
 5. Generates frontmatter with Zenn-specific metadata (title, emoji, topics, published status, etc.)
-6. Formats output with Prettier
-7. Writes to `articles/{slug}.md` (skips if unchanged unless `--force`)
+6. Writes to `articles/{slug}.md` (incremental sync by default)
 
-**Key Components**:
-- `LocalPostFactory`: Orchestrates post creation, manages deferred image download tasks using RxJS
-- `LocalPostsRepository`: Handles file I/O for Markdown posts
-- `ImagesRepository`: Downloads and manages article images
-- `renderPage()`: Converts Notion blocks to formatted Markdown with frontmatter
+**Key Customizations**:
+- **Frontmatter**: Topics converted to lowercase, Asia/Tokyo timezone for `published_at`
+- **Embed blocks**: Stackblitz URLs → `@[stackblitz](URL)` format
+- **Metadata extraction**: Custom `icon`, `createdAtOverride`, `type` fields
+- **Filter**: Only published articles synced
 
 **Image Handling**:
-- External images are downloaded asynchronously using RxJS `forkJoin`
-- Stored in `images/{slug}/` subdirectories
-- Old images are cleared on post update
+- Images downloaded with deterministic hash-based filenames
+- Stored as `/images/{slug}/{filename}.{hash}.{ext}` (2-tier structure)
+- Large images (>2MB) auto-resized
 
 **Change Detection**:
-- Compares rendered Markdown with existing file content
-- Skips writing if unchanged (saves I/O and avoids unnecessary git diffs)
-- Use `--force` to bypass change detection
+- Manifest-based incremental sync
+- Skips unchanged posts automatically
+- Use `--force` to regenerate all posts
+- Use `--mode all` to sync all posts regardless of manifest
 
 ### TypeScript Configuration
 

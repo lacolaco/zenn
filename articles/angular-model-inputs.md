@@ -41,7 +41,7 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   template: `
     <label>Full Name: </label>
-    <input type="text" name="fullname" [(ngModel)]="value" />
+    <input type="text" name="fullname" [(ngModel)]="value" >
   `,
 })
 export class NameInputComponent {
@@ -59,16 +59,16 @@ export class NameInputComponent {
   standalone: true,
   imports: [NameInputComponent],
   template: `
-    <!-- one-way binding -->
-    <name-input [value]="name" />
+		<!-- one-way binding -->
+    <name-input [value]="name" /> 
 
-    <!-- one-way listening -->
-    <name-input (valueChange)="onChange($event)" />
+		<!-- one-way listening -->
+    <name-input (valueChange)="onChange($event)" /> 
 
-    <!-- 2-way binding -->
-    <name-input [(value)]="name" />
+		<!-- 2-way binding -->
+    <name-input [(value)]="name" /> 
 
-    <!-- signal-to-signal 2-way binding -->
+		<!-- signal-to-signal 2-way binding -->
     <name-input [(value)]="nameSignal" />
   `,
 })
@@ -107,3 +107,4 @@ Model Inputsの導入により、より多くのユースケースにおいて�
 https://netbasal.com/angulars-model-function-explored-a-comprehensive-overview-4481d023c822
 
 https://angular.io/api/core/model
+

@@ -65,8 +65,8 @@ export class StatelessCounterComponent {
 Angular Signalsによってリアクティブな状態管理をRxJSやObservable、外部ライブラリなどを使わずに実現できるようになった。
 
 ```html
-<app-stateless-counter
-  [count]="count()"
+<app-stateless-counter 
+  [count]="count()" 
   (increment)="increment()"
   (decrement)="decrement()"
   (reset)="reset()"
@@ -128,7 +128,7 @@ export class UserListUsecase {
 
   async getUsers(): Promise<User[]> {
     return lastValueFrom(
-      this.#http.get<User[]>('https://jsonplaceholder.typicode.com/users'),
+      this.#http.get<User[]>('https://jsonplaceholder.typicode.com/users')
     );
   }
 }
@@ -168,7 +168,7 @@ export class SimplePdsUserListComponent implements OnInit {
 }
 ```
 
-![](/images/angular-signals-component-design-patterns/3c6255ea-b6c7-4055-8126-638d2819f0c3/4b8207c2-8347-4723-a9f3-7508c872c062.png)
+![](/images/angular-signals-component-design-patterns/simple-pds.c9f96748d9626c35.png)
 _Simple PDS Component_
 
 ### このパターンの特徴
@@ -191,16 +191,16 @@ Simple PDSパターンではコンポーネントが状態管理の責任を持�
 
 PDS+CQS パターンの主要な構成要素は、**ステート**・**ユースケース**・**コンテナコンポーネント**の3つである。状態管理の責任をプレゼンテーション側からドメイン側のステートに移した上で、コンポーネントとステートの間のデータの流れは、ユースケースによって状態の更新を行うコマンドと状態の読み取りを行うクエリに分離される。この3つの構成要素と2つの分離原則の関係を図示すると次のようになる。
 
-![](/images/angular-signals-component-design-patterns/3c6255ea-b6c7-4055-8126-638d2819f0c3/36d4d687-5e55-4d2d-809d-0c5e006b2159.png)
+![](/images/angular-signals-component-design-patterns/pds-cqs.b5158f22090ce52c.png)
 _PDS+CQS Component_
 
 このパターンが適用されるコンポーネントはアプリケーションの中で多くないし、あまり増やすべきではない。主にページ単位の状態を扱うことになる Routed Component や、クライアントサイドでの状態の操作が多い複雑なUIを構築するコンポーネントに適している。このパターンでは対象範囲の状態管理を一箇所に集約してカプセル化するため、UIを構成するほとんどのコンポーネントをステートレスコンポーネントとして実装できることが利点である。
 
-## PDS+CQSサンプル: TodoList
+## PDS+CQSサンプル: TodoList 
 
 このパターンの実装例として、簡単なTODOリストを作ってみよう。
 
-### SignalState
+### SignalState 
 
 まずは `SignalState<T>` というインターフェースの導入を検討する。このインターフェースは `asReadonly()` メソッドを持ち、 `ReadonlyState<T>` を返す。 `ReadonlyState<T>` は与えられた型を読み取り専用の `Signal` 型に変換した型だ。 （書き込み可能なSignalは `WritableSignal` 型に限られる）
 
@@ -249,7 +249,7 @@ export class TodoListState implements SignalState<State> {
     return this.todos().filter((todo) => !todo.completed);
   });
 
-  addTodo(title: string): void {
+	addTodo(title: string): void {
     this.todos.update((todos) => [
       {
         id: todos.length + 1,
@@ -311,10 +311,9 @@ export class TodoListUsecase {
 コンテナコンポーネントはステートクラスの存在を直接知ることはなく、ユースケースクラスだけに依存する。状態管理についてはユースケースクラスが提供する `state` フィールドだけを知っており、その裏の実体については隠蔽されている。
 
 ```html
-<app-todo-list-view
+<app-todo-list-view 
   [items]="usecase.state.todos()"
-  (changeCompleted)="usecase.setTodoCompleted($event.id, $event.completed)"
-/>
+  (changeCompleted)="usecase.setTodoCompleted($event.id, $event.completed)" />
 ```
 
 ```typescript
@@ -342,11 +341,12 @@ export class PdsCqsTodoListComponent {
 
 今回紹介したコンポーネント設計パターンにおける責任についてまとめると次のようになる。
 
-| パターン                   | UI構築         | 状態管理       | ビジネスロジック |
-| :------------------------- | :------------- | :------------- | :--------------- |
-| ステートレスコンポーネント | コンポーネント | なし           | なし             |
-| ステートフルコンポーネント | コンポーネント | コンポーネント | なし             |
-| Simple PDS                 | コンポーネント | コンポーネント | ユースケース     |
-| PDS+CQS                    | コンポーネント | ステート       | ユースケース     |
+| パターン | UI構築 | 状態管理 | ビジネスロジック |
+| ------- | ------- | ------- | ------- |
+| ステートレスコンポーネント | コンポーネント | なし | なし |
+| ステートフルコンポーネント | コンポーネント | コンポーネント | なし |
+| Simple PDS | コンポーネント | コンポーネント | ユースケース |
+| PDS+CQS | コンポーネント | ステート | ユースケース |
 
 どのパターンにもそれに適した場面があり、目的に合わせて組み合わせて使うものである。ただし、アプリケーションの全体を通して、複雑なコンポーネントよりも単純なパターンのコンポーネントのほうが多くの割合を占めるようにするべきだ。そうすることでアプリケーションの大部分をユニットテストしやすい状態に保つことができる。
+

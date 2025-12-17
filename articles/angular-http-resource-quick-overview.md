@@ -21,14 +21,15 @@ https://github.com/angular/angular/pull/59876
 使い方は次のようになるだろう。すでに`resource`を使っている人からすればそれほど目新しくはない。`httpResource`関数の戻り値は`HttpResponseResource`型であり、これは`Resource`型のサブタイプである。なので`resource`関数の戻り値と同じように、`isLoading`や`value`といったシグナルを返すフィールドを持っている。シグナルなので、状態が変われば自動的にコンポーネントは再描画される。
 
 ```typescript
-@Component({
+@Component({ 
   template: `
-    @if (data.isLoading()) {
-      <p>Loading</p>
-    } @else {
-      {{ data.value() }}
-    }
-  `,
+  @if (data.isLoading()) {
+    <p>Loading</p>
+  } 
+  @else {
+    {{ data.value() }}
+  }
+  `
 })
 export class App {
   readonly data = httpResource<Data>('/api/data');
@@ -42,14 +43,15 @@ export class App {
 たとえば、コンポーネントが親コンポーネントから受け取ったインプット値に対応したHTTPリクエストを送るなら次のようになる。
 
 ```typescript
-@Component({
+@Component({ 
   template: `
-    @if (userData.isLoading()) {
-      <p>Loading</p>
-    } @else {
-      {{ userData.value() }}
-    }
-  `,
+  @if (userData.isLoading()) {
+    <p>Loading</p>
+  } 
+  @else {
+    {{ userData.value() }}
+  }
+  `
 })
 export class App {
   readonly userId = input.required<number>();
@@ -63,21 +65,22 @@ export class App {
 `resource`関数の`request`と同じように、この第一引数の関数が`undefined`を返せばリクエストを送らずにキャンセルできる。初期状態ではリクエストせず追加のイベントを待つ場合に使われるだろう。
 
 ```typescript
-@Component({
+@Component({ 
   template: `
-    @if (userData.isLoading()) {
-      <p>Loading</p>
-    } @else {
-      {{ userData.value() }}
-    }
-  `,
+  @if (userData.isLoading()) {
+    <p>Loading</p>
+  } 
+  @else {
+    {{ userData.value() }}
+  }
+  `
 })
 export class App {
   readonly userId = signal<number>(-1);
 
   readonly userData = httpResource<UserData>(
     // undefinedを返すとリクエストが送信されない
-    () => (this.userId() < 0 ? undefiend : `/api/user/${this.userId()}`),
+    () => this.userId() < 0 ? undefiend : `/api/user/${this.userId()}`,
   );
 }
 ```
@@ -142,3 +145,4 @@ const res = httpResource('/data', { injector: TestBed.inject(Injector) });
 ## Conclusion
 
 以上見てきたように、`httpResource`は`HttpClient`と`resource`の組み合わせを簡略化する実験的APIだ。アプリケーションのリアクティブ化を進める中で、HTTPリクエストをシグナルベースで扱いたい場合に有用なツールとなるだろう。現時点では実験的な機能であるため、今後のAPIの変更には注意が必要だ。
+

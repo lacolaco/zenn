@@ -36,14 +36,14 @@ https://github.com/angular/angular/blob/prototype/signal-forms/packages/forms/ex
 ```typescript
 const nameSchema = group({
   first: field(''),
-  last: field(''),
-});
+  last: field('')
+})
 ```
 
 `group()` や `field()` によって生成されるそれぞれのパーツには `disabled()` や `validate()` などのロジックを指定するメソッドがあります。これらのメソッドは現在の値をシグナルとして受け取って結果を返す関数の形を取ります。次の例では、`validate()`メソッドの引数として渡される関数は内部的に`computed()`で処理されるため、`value()`シグナルに更新があるたびにバリデーションが実行されるということでしょう。
 
 ```typescript
-field(0).validate((value) => (value() > 9 ? 'too big' : null));
+field(0).validate(value => value() > 9 ? 'too big' : null)
 ```
 
 `xlink()`という特別なメソッドは別のフィールドの値に依存したロジックを定義するためのものです。パスワードの確認フィールドなどが想定されますね。次の例ではファーストネームとラストネームが同じであるときにエラーにしています。
@@ -51,13 +51,11 @@ field(0).validate((value) => (value() > 9 ? 'too big' : null));
 ```typescript
 const nameSchema = group({
   first: field(''),
-  last: field(''),
+  last: field('')
 }).xlink({
-  last: (schema, form) =>
-    schema.validate((value) =>
-      form.first.$() === value() ? 'cannot be the same as your first name' : '',
-    ),
-});
+  last: (schema, form) => schema
+    .validate(value => form.first.$() === value() ? 'cannot be the same as your first name' : '')
+})
 ```
 
 定義済みのスキーマは別のスキーマの定義にマージすることもできるようです。
@@ -69,15 +67,15 @@ const userSchema = group({
     street: field(''),
     city: field(''),
     state: field(''),
-    zip: field(''),
-  }),
-});
+    zip: field('')
+  })
+})
 ```
 
 ここまではスキーマを定義しただけで、スキーマは値の保持などを行いません。次の`form()`関数にスキーマを与えることによって状態を含むフォームモデルとして完成します。
 
 ```typescript
-const nameForm = form(nameSchema, { first: 'John', last: 'Doe' });
+const nameForm = form(nameSchema, {first: 'John', last: 'Doe'});
 ```
 
 今のプロトタイプでは現在の入力値を取り出すシグナルは `.$` というシグネチャのようです。フォームモデルはスキーマの各パーツごとに状態をシグナルとして取り出すことができます。次の例だと、`nameForm.$`も取得できますし、`nameForm.first.$`も取得できます。それぞれのシグナルには書き込みもできて、シグナルに値を書き込むとフォームモデルも更新されます。
@@ -85,9 +83,9 @@ const nameForm = form(nameSchema, { first: 'John', last: 'Doe' });
 ```typescript
 const nameSignal = nameForm.$;
 const firstNameSignal = nameForm.first.$;
-nameSignal(); // => {first: 'John', last: 'Doe'}
-nameSignal.set({ first: 'Bob', last: 'Loblaw' });
-firstNameSignal(); // => 'Bob'
+nameSignal() // => {first: 'John', last: 'Doe'}
+nameSignal.set({first: 'Bob', last: 'Loblaw'});
+firstNameSignal() // => 'Bob'
 ```
 
 ざっと見てきましたが、このアイデアの特徴は次の点です。
@@ -109,9 +107,9 @@ firstNameSignal(); // => 'Bob'
 > Main idea: have a directive `ngField` that sets a field as the current field for all controls beneath it. controls can then inject the current field and register themselves to control its value and/or use some of the field's values in its bindings. To facilitate binding all of the relevant properties/attributes, another directive `ngBindField` binds all applicable bindings for common native controls.
 
 ```typescript
-import { Component, signal } from '@angular/core';
-import { NativeInput } from './native-controls';
-import { FormField, NgBindField, NgField } from './ngfield';
+import {Component, signal} from '@angular/core';
+import {NativeInput} from './native-controls';
+import {FormField, NgBindField, NgField} from './ngfield';
 
 @Component({
   selector: 'app-root',
@@ -120,8 +118,7 @@ import { FormField, NgBindField, NgField } from './ngfield';
       <label ngBindField></label>:
       <input ngBindField />
     </div>
-    <input [ngField]="field" ngBindField />
-    <!-- could have input[ngField] auto-bind -->
+    <input [ngField]="field" ngBindField /> <!-- could have input[ngField] auto-bind -->
   `,
   imports: [NgField, NgBindField, NativeInput],
 })
@@ -149,3 +146,4 @@ export class App {
 Angularアドベントカレンダーに参加してくださったみなさん、ありがとうございました！また来年も知見を交換していきましょう。よいお年を！
 
 https://qiita.com/advent-calendar/2024/angular
+

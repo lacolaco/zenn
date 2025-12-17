@@ -25,7 +25,7 @@ https://netbasal.com/unleash-the-power-of-di-functions-in-angular-2eb9f2697d66
 
 ```typescript
 class Foo {
-  constructor(@Inject(Bar) bar: Bar) {}
+	constructor(@Inject(Bar) bar: Bar) {}
 }
 ```
 
@@ -33,8 +33,8 @@ class Foo {
 
 ```typescript
 class Foo {
-  // 型パラメータから判断して自動的に @Inject(Bar) が生成される
-  constructor(bar: Bar) {}
+	// 型パラメータから判断して自動的に @Inject(Bar) が生成される
+	constructor(bar: Bar) {}
 }
 ```
 
@@ -63,3 +63,4 @@ https://github.com/angular/angular/pull/49492
 コンストラクタ引数による依存性の注入をやめなければ、TypeScript の実験的実装に依存し続けることになる。今後しばらくはTypeScriptがサポートを切ることはないらしいが、今後さまざまなライブラリやツールが標準デコレーターを前提とした形で登場してくるだろう。そのとき、非標準のデコレーターでしかサポートされていないParameter Decoratorsの存在が足を引っ張る可能性は高い。
 
 もはやどちらを使うか選べる段階は終わったと考えるべきだ。 `inject()` 関数が依存性の注入を利用するただひとつの安定APIである。
+

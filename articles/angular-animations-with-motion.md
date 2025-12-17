@@ -29,7 +29,9 @@ Motionの基本的な使い方では、`animate()` 関数の第一引数にア�
 <section class="bg-white p-6 rounded-lg shadow-md">
   <h2 class="text-xl font-semibold mb-4 text-gray-700">Fade In Animation</h2>
   <app-animated-box #fadeBox> Fade </app-animated-box>
-  <button (click)="runFadeAnimation(fadeBox)" class="btn-base">Animate</button>
+  <button (click)="runFadeAnimation(fadeBox)" class="btn-base">
+    Animate
+  </button>
 </section>
 ```
 
@@ -51,11 +53,7 @@ import { animate } from 'motion';
 export class MotionDemo {
   protected runFadeAnimation(box: AnimatedBox): void {
     // getElement(): ElementRef.nativeElementを返している
-    animate(
-      box.getElement(),
-      { opacity: [0, 1] },
-      { duration: 0.6, ease: 'easeInOut' },
-    );
+    animate(box.getElement(), { opacity: [0, 1] }, { duration: 0.6, ease: 'easeInOut' });
   }
 }
 ```
@@ -75,23 +73,23 @@ https://blog.lacolaco.net/posts/angular-animations-enter-leave
 例として、配列に新たな要素が追加されたらフェードイン、削除されたらフェードアウトするようなビューを考える。次のように、`items`配列にある要素の数だけ`AnimatedBox`が表示されるようにする。そしてボタンを押すと要素が入ったり消えたりトグルする。配列の要素に対応して表示される`AnimatedBox`のタグには`(animate.enter)`イベントと`(animate.leave)`イベントのリスナーが設定され、それぞれ対応するコンポーネントのメソッドを呼び出している。
 
 ```html
-<!-- Fade In/Out on Enter/Leave Demo -->
-<section class="bg-white p-6 rounded-lg shadow-md">
-  <div class="mt-4 flex gap-4">
-    @for (item of items(); track item) {
-    <app-animated-box
-      #itemBox
-      (animate.enter)="onItemEnter(itemBox, $event)"
-      (animate.leave)="onItemLeave(itemBox, $event)"
-    >
-      Item {{ item }}
-    </app-animated-box>
-    }
-  </div>
-  <button (click)="toggleItem()" class="btn-base">
-    {{ items().length === 1 ? 'Add' : 'Remove' }} Item
-  </button>
-</section>
+    <!-- Fade In/Out on Enter/Leave Demo -->
+    <section class="bg-white p-6 rounded-lg shadow-md">
+      <div class="mt-4 flex gap-4">
+        @for (item of items(); track item) {
+        <app-animated-box
+          #itemBox
+          (animate.enter)="onItemEnter(itemBox, $event)"
+          (animate.leave)="onItemLeave(itemBox, $event)"
+        >
+          Item {{ item }}
+        </app-animated-box>
+        }
+      </div>
+      <button (click)="toggleItem()" class="btn-base">
+        {{ items().length === 1 ? 'Add' : 'Remove' }} Item
+      </button>
+    </section>
 ```
 
 コンポーネントクラスのほうは次のようになる。それぞれのメソッドは第一引数に`AnimatedBox`コンポーネントの参照を、第二引数にアニメーションイベントオブジェクトを受け取っている。基本的な例と同じようにMotionの`animate`関数を使ってアニメーションしたあと、アニメーションが完了したことをAngularに伝えるために`event.animationComplete()`を`then`コールバックの中で呼び出している。
@@ -112,10 +110,11 @@ protected onItemLeave(box: AnimatedBox, event: AnimationCallbackEvent): void {
 }
 ```
 
-![](/images/angular-animations-with-motion/3c6255ea-b6c7-4055-8126-638d2819f0c3/3bfa090d-b53d-4327-84b5-525c410066a8.gif)
+![image](/images/angular-animations-with-motion/CleanShot_2025-12-12_at_10.13.03.9a9ca12306a6107d.gif)
 
 これだけでコンポーネントの生成と破棄のタイミングにあわせたアニメーションができるため、CSSアニメーションに慣れていない場合はおすすめしたい。
 
 トレードオフとして、CSSアニメーションだけで実現する場合と比べてライブラリのサイズが気になるところだが、Motionは非常に軽量である。公式ドキュメントによれば、HTML/CSSアニメーション機能だけなら2.3kb程度だということだ。アニメーションひとつのために払うには割高だが、アニメーションを多用するアプリケーションであれば、アニメーション定義をTypeScriptで管理したいというニーズに応えられる優れたソリューションではないかと思う。
 
 また、Angular専用ライブラリではないので、世の中にアニメーション実装例の知見が多かったり、Figma Makeのようなプロトタイプツールが生成した実装を流用しやすいのもポイントだ。非推奨となった`@angular/animations` に代わる新たなアプローチとしてぜひ試してみてほしい。
+

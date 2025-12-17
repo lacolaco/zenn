@@ -14,13 +14,13 @@ Angularの `@let` 構文によるテンプレート内変数でTailwind CSSの�
 
 次の画像のように、Tailwind CSS IntelliSense によってクラス文字列であると認識され、入力補完が効くし、入力後には色のプレビューアイコンも表示される。完璧である。
 
-![](/images/angular-let-tailwindcss-intellisense/3c6255ea-b6c7-4055-8126-638d2819f0c3/010c5b82-5a02-4646-86ad-2fb2907d46a2.png)
+![](/images/angular-let-tailwindcss-intellisense/CleanShot_2025-01-09_at_21.41.322x.6a27d7a9684259ba.png)
 _VS Code上でTailwind CSSのユーティリティクラスの入力補完が動作している様子を示したスクリーンショット_
 
-![](/images/angular-let-tailwindcss-intellisense/3c6255ea-b6c7-4055-8126-638d2819f0c3/4b3c0dc8-7718-4cbf-95ed-6a25fd9053f9.png)
+![](/images/angular-let-tailwindcss-intellisense/CleanShot_2025-01-09_at_21.34.452x.05480b1d1c3500dc.png)
 _テンプレート内変数の文字列がTailwind CSSのユーティリティクラスだと認識されている様子を示したスクリーンショット_
 
-## `classAttributes`
+## `classAttributes` 
 
 やったことは簡単で、Tailwind CSS IntelliSense の `classAttributes` 設定を変更しただけである。
 
@@ -43,3 +43,4 @@ https://github.com/tailwindlabs/tailwindcss-intellisense?tab=readme-ov-file#tail
 ```
 
 この設定を `.vscode/settings.json` に加えるなりユーザー設定を変更するなりして、VS Code拡張を再起動すると冒頭のスクリーンショットのように機能する。再起動しないと反映されないので注意。
+

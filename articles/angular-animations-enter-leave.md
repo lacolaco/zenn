@@ -51,7 +51,7 @@ https://github.com/angular/angular/discussions/62524
 さらに複雑な制御を行いたい場合、たとえばサードパーティライブラリを使ったアニメーションをしたいときなどは、イベントバインディング形式を使うこともできる。次のように、`(animate.enter)` イベントでコールバックメソッドを呼び出すと、アニメーション対象のDOM要素参照を引数に受け取って好きな処理を実行できる。
 
 ```html
-<div (animate.enter)="animateEnter($event)">Hello</div>
+  <div (animate.enter)="animateEnter($event)">Hello</div>
 ```
 
 ```typescript
@@ -81,3 +81,4 @@ https://github.com/angular/angular/discussions/62524
 Angular v20.2で導入される新しいEnter/Leaveアニメーションは、コンポーネントやDOM要素の表示・非表示に簡単にアニメーションを適用できる強力なAPIだ。簡単なアニメーションであればCSSクラスの付け外しだけで簡単に実装でき、複雑なユースケースにおいてもコールバック関数を使って柔軟なアニメーション制御が可能になる。サードパーティのアニメーションライブラリとの親和性も十分に期待できる。
 
 おそらくv20.2段階では開発者プレビュー版となるだろうが、リリースが楽しみだ。
+

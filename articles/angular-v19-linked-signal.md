@@ -39,11 +39,11 @@ const initialOptions = ['apple', 'banana', 'cheese'];
 })
 export class FavoriteFoodSelector {
   options = input(initialOptions);
-
+  
   selectedFood = /* ??? */
-
+  
   selectFood(food: string) {
-    this.selectedFood.set(food);
+    this.selectedFood.set(food); 
   }
 }
 ```
@@ -53,11 +53,11 @@ export class FavoriteFoodSelector {
 ```typescript
 export class FavoriteFoodSelector {
   options = input(initialOptions);
-
-  selectedFood = signal<string | null>(null);
-
+  
+  selectedFood = signal<string|null>(null);
+  
   selectFood(food: string) {
-    this.selectedFood.set(food);
+    this.selectedFood.set(food); 
   }
 }
 ```
@@ -67,18 +67,18 @@ export class FavoriteFoodSelector {
 ```typescript
 export class FavoriteFoodSelector {
   options = input(initialOptions);
-
-  selectedFood = signal<string | null>(null);
-
+  
+  selectedFood = signal<string|null>(null);
+  
   constructor() {
-    effect(() => {
-      this.options(); // 変更の購読のためのgetter呼び出し
-      this.selectedFood.set(null);
-    });
+	  effect(() => {
+	    this.options(); // 変更の購読のためのgetter呼び出し
+	    this.selectedFood.set(null);
+	  })
   }
-
+  
   selectFood(food: string) {
-    this.selectedFood.set(food);
+    this.selectedFood.set(food); 
   }
 }
 ```
@@ -88,14 +88,14 @@ export class FavoriteFoodSelector {
 ```typescript
 export class FavoriteFoodSelector {
   options = input(initialOptions);
-
+  
   selectedFood = computed(() => {
-    this.options(); // 変更の購読のためのgetter呼び出し
-    return signal<string | null>(null);
+	  this.options(); // 変更の購読のためのgetter呼び出し
+	  return signal<string|null>(null);
   });
 
   selectFood(food: string) {
-    this.selectedFood().set(food);
+    this.selectedFood().set(food); 
   }
 }
 ```
@@ -105,12 +105,12 @@ export class FavoriteFoodSelector {
 ```typescript
 export class FavoriteFoodSelector {
   options = input(initialOptions);
-
+  
   selectedFood = linkedSignal({
     source: this.options,
     computation: (): string | null => null, // Unselect on input change
   });
-
+  
   selectFood(food: string) {
     this.selectedFood.set(food); // Linked signal is writable
   }
@@ -131,6 +131,9 @@ export class FavoriteFoodSelector {
 - 従来の`signal()`と`computed()`の組み合わせよりも、より簡潔で直感的な記述が可能。
 - 実験的APIであるため、正式リリース前後で変更される可能性がある点に注意が必要。
 
+https://github.com/angular/angular/pull/58189
+
 今回のサンプルコードはStackblitzに置いてあるので自由に使ってほしい。
 
 @[stackblitz](https://stackblitz.com/edit/stackblitz-starters-fmerva?ctl=1&embed=1&file=src%2Fmain.ts)
+

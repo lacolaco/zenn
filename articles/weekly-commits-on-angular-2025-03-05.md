@@ -52,7 +52,7 @@ https://github.com/angular/angular/commit/51b8ff23cefb5112937dec9727a5b5d6e913aa
 
 ```typescript
 @Component({
-  template: '{{ greet`Hello, ${name()}` }}',
+  template: '{{ greet`Hello, ${name()}` }}'
 })
 export class MyComp {
   name = input();
@@ -106,3 +106,4 @@ Commits: [https://github.com/angular/components/commits/main/?since=2025-02-27&u
 https://github.com/angular/components/commit/fc46997442b72bc1ba395fcd5f008b0358e5c91f
 
 `angular/cdk-experimental`パッケージにARIA Roleのlistboxに対応する`CdkListbox`ディレクティブの実装が追加されました。また、`CdkListbox`におけるキーボード操作やtypeahead機能など見た目とは別の振る舞いについては新たに `ui-patterns` というサブパッケージが追加されたようです。今後他のCDKディレクティブの裏側でも活用されることが予想されます。
+

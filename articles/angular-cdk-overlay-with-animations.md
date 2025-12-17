@@ -17,21 +17,23 @@ https://material.angular.io/cdk/overlay/overview
 
 このOverlayを使ったことがある開発者なら一度はぶつかったことのある壁といえば、オーバーレイに表示したコンポーネントが閉じるときにどうやってアニメーションするかだろう。たとえば、ユーザーになにかのメッセージを一定時間だけ表示してフェードアウトする、いわゆるトーストメッセージというやつを作ってみよう。
 
-![](/images/angular-cdk-overlay-with-animations/3c6255ea-b6c7-4055-8126-638d2819f0c3/8a472097-9cb7-43ee-ab5c-b1a18cb1a7c3.gif)
+![](/images/angular-cdk-overlay-with-animations/CleanShot_2025-02-05_at_10.45.17.dac9b39dba38f05e.gif)
 _テキストを表示して一定時間後にフェードアウトするトーストメッセージ_
 
 トーストとして表示されるビューを`ToastContainer`コンポーネントとし、素朴にCDK Overlayを使うと次のようなコードになる。動的に生成したコンポーネントはそれを破棄するのも開発者の責任である。`overlay.dispose()` を呼び出すことでオーバーレイとその上に表示されていたコンポーネントがすべて破棄される。これでトーストが一定時間後に消えるようになった。
 
 ```typescript
 @Component({
-  template: ` <div>{{ message() }}</div> `,
+  template: `
+    <div>{{message()}}</div>
+  `,
   styles: `
-    :host {
-      display: block;
-      padding: 16px;
-      border-radius: 8px;
-      background-color: lightblue;
-    }
+  :host {
+    display: block;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: lightblue;
+  }
   `,
 })
 export class ToastContainer {
@@ -41,9 +43,9 @@ export class ToastContainer {
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Toast Demo</h1>
+  <h1>Toast Demo</h1>
 
-    <button (click)="openToast()">open toast</button>
+  <button (click)="openToast()">open toast</button>
   `,
 })
 export class App {
@@ -86,14 +88,14 @@ https://material.angular.io/components/snack-bar/overview
 
 ```typescript
 export class ToastContainer {
-  //...
+	//...
 
   #onCompleteExit?: () => void;
 
   registerOnCompleteExit(fn: () => void) {
     this.#onCompleteExit = fn;
   }
-
+  
   exit() {
     // todo
   }
@@ -116,7 +118,7 @@ export class App {
 }
 ```
 
-## `animationend`
+## `animationend` 
 
 残りはToastContainerの実装である。やることは2つある。
 
@@ -126,25 +128,26 @@ export class App {
 まずはアニメーションを開始させる仕組みを作ろう。使うのはCSSとSignal、クラスバインディングだけでいい。内部的に`animationState`フィールドを持ち、初期値を設定しておく。exitメソッドが呼び出されたらこの値が`exit`に変更する。あとは`animationState`の値に連動して`toast-container-exit`クラスをコンポーネントのホスト要素に付与し、このクラスを使ってCSSアニメーションを書けばよい。
 
 ```typescript
+
 @Component({
   styles: `
-    :host {
+  :host {
+    opacity: 1;
+  }
+
+  :host(.toast-container-exit) {
+    animation: toast-exit 500ms linear forwards;
+  }
+   
+  @keyframes toast-exit {
+    from {
       opacity: 1;
     }
 
-    :host(.toast-container-exit) {
-      animation: toast-exit 500ms linear forwards;
+    to {
+      opacity: 0;
     }
-
-    @keyframes toast-exit {
-      from {
-        opacity: 1;
-      }
-
-      to {
-        opacity: 0;
-      }
-    }
+  }
   `,
   host: {
     '[class.toast-container-exit]': "animationState() === 'exit'",
@@ -214,3 +217,4 @@ https://github.com/angular/components/pull/30057
 - Angular CDKのOverlayを使ったポップアップUIにフェードアウトアニメーションを実装する方法を紹介した
 - CSSアニメーションと animationend イベントを組み合わせることで、アニメーション完了を待ってからオーバーレイを破棄する実装が可能
 - Angular MaterialのSnackBarと同様のアプローチを採用し、シンプルで信頼性の高い実装を実現できた
+

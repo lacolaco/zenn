@@ -65,7 +65,7 @@ $ npm i -D jest jest-environment-jsdom
 
 依存パッケージが揃ったらあらためて `ng test` コマンドを実行する。自動生成される `AppComponent` には簡易なユニットテストがはじめから `app.component.spec.ts` に書かれているので、うまくセットアップできていればテストが通るはずだ。
 
-![](/images/angular-16-jest/3c6255ea-b6c7-4055-8126-638d2819f0c3/2841ccc5-5f5b-48ec-aa66-bbc200023f4a.png)
+![](/images/angular-16-jest/Untitled.daea397d99853454.png)
 _ng testの実行結果_
 
 ## Jest ビルダーの設定
@@ -106,3 +106,4 @@ https://github.com/thymikee/jest-preset-angular
 Jest サポートのモチベーションは Karma を標準ツールセットから外すことだから、しばらくはこれまでKarmaだけでテストを実行してきたプロジェクトの脱Karmaを主眼としてサポートを拡張するだろう。よって、すでにJest化しているプロジェクトはそのままでいいはずだ。
 
 v16のうちは、もし Karma に強く依存したテストがあれば依存を弱め、できるだけブラウザ環境が不要なテストをJestに移行しやすく書き直していく準備をするのがよいだろう。どうしてもブラウザ環境が必要なテストは、冒頭に紹介したブログ記事で書かれているように、Web Test Runner への移行サポートも計画されているからそれまで待とう。
+

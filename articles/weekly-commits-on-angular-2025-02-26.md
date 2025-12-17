@@ -124,3 +124,4 @@ https://github.com/angular/components/commit/dc8f98e9e34f9af6572a6cf08f9c263f7e4
 https://github.com/angular/components/commit/6a5943d8b0fe6042c885e608d7d2a071e27dd802
 
 これまでは2つ別々のディレクティブだった`MatButton`と`MatAnchor`がひとつのディレクティブとして統合されました。ディレクティブの使用方法については基本的に互換性が保たれているので特に移行作業は必要ありません。
+
