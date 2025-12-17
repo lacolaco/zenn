@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Zenn content repository for publishing articles. It includes a custom tool (`notion-fetch`) that fetches blog posts from Notion and converts them to Zenn-compatible Markdown format.
+This is a Zenn content repository for publishing articles. It includes a custom tool (`notion-sync`) that fetches blog posts from Notion and converts them to Zenn-compatible Markdown format.
 
 ## Package Manager
 
@@ -50,7 +50,7 @@ Options:
 /
 ├── articles/          # Zenn articles (Markdown)
 ├── books/             # Zenn books (currently empty)
-├── images/            # Article images (managed by notion-fetch)
+├── images/            # Article images (managed by notion-sync)
 ├── tools/             # Custom tooling
 │   └── notion-sync/   # Notion to Zenn converter
 │       ├── main.ts    # Entry point
@@ -99,3 +99,29 @@ Options:
 - The project has no test suite
 - Prettier is configured in `.prettierrc.json` (single quotes, trailing commas, 80 char width)
 - Articles are written in Markdown and must include Zenn frontmatter (title, emoji, type, topics, published)
+
+## Development Guidelines
+
+### Impact Scope Pre-verification
+
+**Apply when**: Code changes, renames, migrations, refactoring
+
+Before executing changes, investigate full impact scope across 3 axes:
+
+1. **Addition**: What to add/change (names, paths, configs)
+2. **Deletion**: What to remove/deprecate (old names, obsolete configs, unused files)
+3. **Dependency**: What depends on it (CI/CD, docs, type definitions, tool configs)
+
+Investigation checklist:
+- Use Grep to find all references to old/new names
+- Check CI/CD workflows for hardcoded values
+- Verify documentation (CLAUDE.md, README, etc.)
+- Check type definitions and configuration files
+- Identify obsolete files for deletion
+
+Complete all changes in a single atomic operation after investigation.
+
+**Ex**: Renaming `notion-fetch` → `notion-sync`:
+- Grep for `notion-fetch` (finds workflow, docs, .prettierignore)
+- Check env vars in code (finds NOTION_DATABASE_ID is unused)
+- Plan: Update 5 locations + delete 2 items → Execute all at once
