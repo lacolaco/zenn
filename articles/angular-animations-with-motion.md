@@ -1,11 +1,11 @@
 ---
-title: 'Angular: Motionを使ったアニメーション'
+title: 'Angular: Motionを使ったアニメーション (1)'
 published_at: '2025-12-12 10:13'
 topics:
   - 'angular'
   - 'motion'
 published: true
-source: 'https://www.notion.so/Angular-Motion-2c53521b014a80d98279f5c01f43773b'
+source: 'https://www.notion.so/Angular-Motion-1-2cf3521b014a80379804cfe9b0bb82e0'
 type: 'tech'
 emoji: '✨'
 ---
@@ -110,7 +110,7 @@ protected onItemLeave(box: AnimatedBox, event: AnimationCallbackEvent): void {
 }
 ```
 
-![image](/images/angular-animations-with-motion/CleanShot_2025-12-12_at_10.13.03.9a9ca12306a6107d.gif)
+![image](/images/angular-animations-with-motion/CleanShot_2025-12-12_at_10.13.03.6be5c9e6c6b31203.gif)
 
 これだけでコンポーネントの生成と破棄のタイミングにあわせたアニメーションができるため、CSSアニメーションに慣れていない場合はおすすめしたい。
 
