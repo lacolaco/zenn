@@ -178,5 +178,10 @@
     "lastModified": "2023-12-30T09:58:00.000Z",
     "slug": "angular-advent-calendar-2023",
     "filePath": "angular-advent-calendar-2023.md"
+  },
+  "2d33521b-014a-80b6-b3ae-d7578424fcc0": {
+    "lastModified": "2025-12-24T23:47:00.000Z",
+    "slug": "angular-provide-http-client-by-default",
+    "filePath": "angular-provide-http-client-by-default.md"
   }
 }
