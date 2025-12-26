@@ -12,13 +12,13 @@
     "notion-sync": "tsx --env-file .env tools/notion-sync/main.ts"
   },
   "engines": {
-    "node": "^22.0.0"
+    "node": "^24.0.0"
   },
   "devDependencies": {
     "@lacolaco/notion-sync": "^2.4.2",
     "@notionhq/client": "3.1.3",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "22.18.11",
+    "@types/node": "24.10.4",
     "dayjs": "^1.11.10",
     "js-yaml": "^4.1.0",
     "prettier": "^3.0.0",
