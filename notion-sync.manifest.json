@@ -180,8 +180,13 @@
     "filePath": "angular-advent-calendar-2023.md"
   },
   "2d33521b-014a-80b6-b3ae-d7578424fcc0": {
-    "lastModified": "2025-12-24T23:47:00.000Z",
+    "lastModified": "2025-12-25T00:06:00.000Z",
     "slug": "angular-provide-http-client-by-default",
     "filePath": "angular-provide-http-client-by-default.md"
+  },
+  "2e93521b-014a-8057-9534-cd937331ad0b": {
+    "lastModified": "2026-01-30T14:03:00.000Z",
+    "slug": "angular-vitest-browser-mode-testing-library",
+    "filePath": "angular-vitest-browser-mode-testing-library.md"
   }
 }
