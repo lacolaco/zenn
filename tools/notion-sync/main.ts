@@ -157,11 +157,8 @@ async function main() {
 
       // Extract channels (formerly categories)
       const channels: string[] =
-        'channels' in page.properties &&
-        page.properties.channels.type === 'multi_select'
-          ? page.properties.channels.multi_select.map(
-              (opt: { name: string }) => opt.name,
-            )
+        'channels' in page.properties && page.properties.channels.type === 'multi_select'
+          ? page.properties.channels.multi_select.map((opt: { name: string }) => opt.name)
           : [];
 
       return {
@@ -179,19 +176,11 @@ async function main() {
         filePath: resolve(rootDir, 'articles', `${metadata.slug}.md`),
       }),
       getImageOutput: (image, metadata) => {
-        const urlFilename =
-          image.url.split('?')[0].split('#')[0].split('/').pop() ?? '';
+        const urlFilename = image.url.split('?')[0].split('#')[0].split('/').pop() ?? '';
         const dotIndex = urlFilename.lastIndexOf('.');
-        const name =
-          dotIndex > 0 ? urlFilename.substring(0, dotIndex) : urlFilename;
-        const ext =
-          dotIndex > 0
-            ? urlFilename.substring(dotIndex + 1).toLowerCase()
-            : 'png';
-        const hash = createHash('sha256')
-          .update(image.blockId)
-          .digest('hex')
-          .substring(0, 16);
+        const name = dotIndex > 0 ? urlFilename.substring(0, dotIndex) : urlFilename;
+        const ext = dotIndex > 0 ? urlFilename.substring(dotIndex + 1).toLowerCase() : 'png';
+        const hash = createHash('sha256').update(image.blockId).digest('hex').substring(0, 16);
         const filename = `${name}.${hash}.${ext}`;
         return {
           src: `/images/${metadata.slug}/${filename}`,
@@ -207,12 +196,8 @@ async function main() {
 
         // Merge 'angular' channel into topics for Zenn
         const tags: string[] = (baseFields.tags || []).map((tag: string) => tag.toLowerCase());
-        const angularChannel = metadata.channels.find(
-          (ch) => ch.toLowerCase() === 'angular',
-        );
-        const topics = angularChannel
-          ? [angularChannel.toLowerCase(), ...tags]
-          : tags;
+        const angularChannel = metadata.channels.find((ch) => ch.toLowerCase() === 'angular');
+        const topics = angularChannel ? [angularChannel.toLowerCase(), ...tags] : tags;
 
         return {
           title: baseFields.title,
