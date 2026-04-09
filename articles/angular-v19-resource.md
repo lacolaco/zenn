@@ -2,7 +2,6 @@
 title: 'Angular v19: resource() の解説'
 published_at: '2024-10-29 22:38'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-v19-resource-12e3521b014a80daa5a9ed157e6bc9b1'

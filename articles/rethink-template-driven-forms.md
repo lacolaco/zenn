@@ -2,7 +2,6 @@
 title: 'Angular: テンプレート駆動フォーム再考'
 published_at: '2023-05-07 09:41'
 topics:
-  - 'angular'
   - 'forms'
 published: true
 source: 'https://www.notion.so/Angular-4e8bcf7e4c2c4d31806bff592edf4232'

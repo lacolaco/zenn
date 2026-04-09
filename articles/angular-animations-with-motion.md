@@ -2,7 +2,6 @@
 title: 'Angular: Motionを使ったアニメーション'
 published_at: '2025-12-12 10:13'
 topics:
-  - 'angular'
   - 'motion'
 published: true
 source: 'https://www.notion.so/Angular-Motion-2c53521b014a80d98279f5c01f43773b'

@@ -1,8 +1,7 @@
 ---
 title: 'Angular: 新しい Enter/Leave アニメーションAPIの解説'
 published_at: '2025-07-26 19:15'
-topics:
-  - 'angular'
+topics: []
 published: true
 source: 'https://www.notion.so/Angular-Enter-Leave-API-23c3521b014a80369152cc3d38813adf'
 type: 'tech'

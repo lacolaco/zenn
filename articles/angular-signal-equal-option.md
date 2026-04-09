@@ -2,7 +2,6 @@
 title: 'Angular Signalの等値判定をカスタマイズする '
 published_at: '2023-08-09 13:05'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-Signal-e6e80b9f4a394d25905f4b4711f09f37'

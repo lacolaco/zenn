@@ -2,7 +2,6 @@
 title: 'Angular v19: linkedSignal() の解説'
 published_at: '2024-10-28 23:10'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-v19-linkedSignal-12d3521b014a80f395ffd9c289dd689e'

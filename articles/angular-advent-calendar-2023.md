@@ -1,8 +1,7 @@
 ---
 title: 'Angularでのボタンコンポーネントの作成'
 published_at: '2023-12-25 00:00'
-topics:
-  - 'angular'
+topics: []
 published: true
 source: 'https://www.notion.so/Angular-119f8e2c8fc740f4aa76755373a0b009'
 type: 'tech'

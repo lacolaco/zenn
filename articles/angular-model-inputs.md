@@ -2,7 +2,6 @@
 title: 'Angular: Model Inputsで何が変わるのか'
 published_at: '2024-02-24 12:18'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-Model-Inputs-fc06702ae32a483ea5464ed5b9c3b702'

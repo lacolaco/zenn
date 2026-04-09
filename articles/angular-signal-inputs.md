@@ -2,7 +2,6 @@
 title: 'Angular: Signal Inputsで何が変わるのか'
 published_at: '2024-01-11 14:48'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-Signal-Inputs-190478da4fdf4db6a71f4942d2011d2a'

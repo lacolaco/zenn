@@ -2,7 +2,6 @@
 title: 'AngularのSignal Forms（プロトタイプ）をチラ見する'
 published_at: '2024-12-25 00:00'
 topics:
-  - 'angular'
   - 'signals'
   - 'forms'
 published: true

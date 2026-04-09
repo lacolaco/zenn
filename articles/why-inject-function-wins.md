@@ -2,7 +2,6 @@
 title: 'Angular: 依存性の注入にコンストラクタ引数ではなくinject関数を使うべき理由'
 published_at: '2023-03-23 09:44'
 topics:
-  - 'angular'
   - 'dependency injection'
   - 'typescript'
 published: true

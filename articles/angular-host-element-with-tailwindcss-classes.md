@@ -2,7 +2,6 @@
 title: 'Angular: ホスト要素にTailwindCSSのクラスを付与する'
 published_at: '2023-09-06 12:58'
 topics:
-  - 'angular'
   - 'tailwindcss'
 published: true
 source: 'https://www.notion.so/Angular-TailwindCSS-4b13c6c076da42c381d181affb15f518'

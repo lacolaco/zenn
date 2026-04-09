@@ -2,7 +2,6 @@
 title: 'Angular v19: effect() の変更点'
 published_at: '2024-10-09 18:14'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-v19-effect-11a3521b014a8026b45efb2c2fc99ee0'

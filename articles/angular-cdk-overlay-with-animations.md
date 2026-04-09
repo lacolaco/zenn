@@ -2,7 +2,6 @@
 title: 'Angular: CDK Overlay でフェードアウトするポップアップを作る'
 published_at: '2025-02-05 11:34'
 topics:
-  - 'angular'
   - 'angular cdk'
   - 'css'
 published: true

@@ -2,7 +2,6 @@
 title: 'Angular MatSuffixをフォーカス中だけ表示する'
 published_at: '2023-10-18 11:50'
 topics:
-  - 'angular'
   - 'angular material'
   - 'tailwindcss'
 published: true

@@ -2,7 +2,6 @@
 title: 'Angular: httpResource Quick Overview '
 published_at: '2025-02-12 10:42'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-httpResource-Quick-Overview-1983521b014a80d08a7cc09020dd3420'

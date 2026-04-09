@@ -2,7 +2,6 @@
 title: 'Angular: Tailwind CSS 4.0のセットアップ'
 published_at: '2025-02-02 14:54'
 topics:
-  - 'angular'
   - 'tailwindcss'
 published: true
 source: 'https://www.notion.so/Angular-Tailwind-CSS-4-0-18e3521b014a80d9af62f945ecfa18f3'

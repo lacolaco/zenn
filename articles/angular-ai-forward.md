@@ -2,7 +2,6 @@
 title: 'AngularはAI志向のフレームワークへ'
 published_at: '2025-09-20 09:48'
 topics:
-  - 'angular'
   - 'ai'
   - 'mcp'
 published: true

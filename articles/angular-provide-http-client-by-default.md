@@ -2,7 +2,6 @@
 title: 'Angular: provideHttpClient はもう不要（でも必要）'
 published_at: '2025-12-25 01:12'
 topics:
-  - 'angular'
   - 'アドベントカレンダー'
 published: true
 source: 'https://www.notion.so/Angular-provideHttpClient-2d33521b014a80b6b3aed7578424fcc0'

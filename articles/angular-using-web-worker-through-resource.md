@@ -2,7 +2,6 @@
 title: 'Angular: Using Web Worker through Resources'
 published_at: '2025-03-26 10:33'
 topics:
-  - 'angular'
   - 'web worker'
   - 'signals'
 published: true

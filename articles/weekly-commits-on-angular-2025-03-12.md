@@ -1,8 +1,7 @@
 ---
 title: 'Weekly Commits on Angular 2025-03-12'
 published_at: '2025-03-12 17:10'
-topics:
-  - 'angular'
+topics: []
 published: true
 source: 'https://www.notion.so/Weekly-Commits-on-Angular-2025-03-12-1ad3521b014a80e5bde2e61a84634c57'
 type: 'tech'

@@ -2,7 +2,6 @@
 title: 'Angular v19のプリレンダリングと静的サイト構築'
 published_at: '2024-09-25 12:01'
 topics:
-  - 'angular'
   - 'ssg'
 published: true
 source: 'https://www.notion.so/Angular-v19-d98c0b65806e4a10a239b329958ab674'

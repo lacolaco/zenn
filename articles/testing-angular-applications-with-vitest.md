@@ -2,7 +2,6 @@
 title: 'AngularアプリケーションをVitestでテストする'
 published_at: '2023-08-05 22:19'
 topics:
-  - 'angular'
   - 'testing'
   - 'vitest'
 published: true

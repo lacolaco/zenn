@@ -1,8 +1,7 @@
 ---
 title: 'Angular: Selectorlessがもうすぐやってくる'
 published_at: '2025-04-09 23:13'
-topics:
-  - 'angular'
+topics: []
 published: true
 source: 'https://www.notion.so/Angular-Selectorless-1d03521b014a8070af87dfbe63ce9c9a'
 type: 'tech'

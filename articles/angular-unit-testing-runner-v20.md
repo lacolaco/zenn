@@ -2,7 +2,6 @@
 title: 'Angular CLIの新しいUnit Testing Runnerを試す'
 published_at: '2025-06-25 18:56'
 topics:
-  - 'angular'
   - 'angular cli'
   - 'testing'
 published: true

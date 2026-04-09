@@ -2,7 +2,6 @@
 title: 'Angular: Vitest Browser Modeへの移行とTesting Library Custom Matcher'
 published_at: '2026-01-30 23:03'
 topics:
-  - 'angular'
   - 'testing'
   - 'vitest'
   - 'testing library'

@@ -2,7 +2,6 @@
 title: 'Angular: ドメインロジックをシグナル化する（カウンター編）'
 published_at: '2024-12-03 00:00'
 topics:
-  - 'angular'
   - 'signals'
 published: true
 source: 'https://www.notion.so/Angular-14d3521b014a80599134c652a0a858c2'

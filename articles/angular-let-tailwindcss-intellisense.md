@@ -2,7 +2,6 @@
 title: 'Angular: テンプレート内変数でTailwind CSS IntelliSenseの入力補完を有効にする'
 published_at: '2025-01-09 22:01'
 topics:
-  - 'angular'
   - 'tailwindcss'
 published: true
 source: 'https://www.notion.so/Angular-Tailwind-CSS-IntelliSense-1763521b014a80ca916dd87cfc630eca'
