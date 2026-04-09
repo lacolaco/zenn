@@ -1,7 +1,8 @@
-import { syncNotionBlog } from '@lacolaco/notion-sync';
+import { syncNotionDatasource } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
@@ -15,6 +16,7 @@ interface ZennMetadata {
   icon: string;
   createdAtOverride: string | null;
   type: 'tech' | 'idea';
+  channels: string[];
 }
 
 if (process.env.NOTION_AUTH_TOKEN == null) {
@@ -121,22 +123,23 @@ async function resizeOversizedImages() {
 }
 
 async function main() {
-  const result = await syncNotionBlog({
-    notionToken: NOTION_AUTH_TOKEN,
-    datasourceId: DATASOURCE_ID,
-    distribution: 'zenn',
-    postsDir: `${rootDir}/articles`,
-    imagesDir: `${rootDir}/images`,
+  const result = await syncNotionDatasource({
+    notion: {
+      token: NOTION_AUTH_TOKEN,
+      datasourceId: DATASOURCE_ID,
+    },
+    queryFilter: {
+      and: [
+        { property: 'distribution', multi_select: { contains: 'zenn' } },
+        { property: 'published', checkbox: { equals: true } },
+      ],
+    },
     manifestPath: `${rootDir}/notion-sync.manifest.json`,
+    metadataFilePath: resolve(rootDir, 'articles', 'metadata.json'),
     verbose,
     mode: mode as 'incremental' | 'all',
     force,
     dryRun,
-
-    // Filter: Published articles only (distribution='zenn' handled by config)
-    filterPost: (metadata) => {
-      return metadata.published;
-    },
 
     // Custom metadata extraction
     extractMetadata: (page, defaultExtractor) => {
@@ -152,16 +155,50 @@ async function main() {
       // Type: default to 'tech' (Zenn requirement)
       const type: 'tech' | 'idea' = 'tech';
 
+      // Extract channels (formerly categories)
+      const channels: string[] =
+        'channels' in page.properties &&
+        page.properties.channels.type === 'multi_select'
+          ? page.properties.channels.multi_select.map(
+              (opt: { name: string }) => opt.name,
+            )
+          : [];
+
       return {
         ...metadata,
         icon,
         createdAtOverride,
         type,
+        channels,
       };
     },
 
     // Markdown rendering options
     renderMarkdown: {
+      getPageOutput: (metadata) => ({
+        filePath: resolve(rootDir, 'articles', `${metadata.slug}.md`),
+      }),
+      getImageOutput: (image, metadata) => {
+        const urlFilename =
+          image.url.split('?')[0].split('#')[0].split('/').pop() ?? '';
+        const dotIndex = urlFilename.lastIndexOf('.');
+        const name =
+          dotIndex > 0 ? urlFilename.substring(0, dotIndex) : urlFilename;
+        const ext =
+          dotIndex > 0
+            ? urlFilename.substring(dotIndex + 1).toLowerCase()
+            : 'png';
+        const hash = createHash('sha256')
+          .update(image.blockId)
+          .digest('hex')
+          .substring(0, 16);
+        const filename = `${name}.${hash}.${ext}`;
+        return {
+          src: `/images/${metadata.slug}/${filename}`,
+          filePath: resolve(rootDir, 'images', metadata.slug, filename),
+        };
+      },
+
       // Custom frontmatter generation for Zenn
       generateFrontmatter: (baseFields, metadata, renderContext) => {
         const { source_url, created_time } = baseFields;
@@ -169,10 +206,19 @@ async function main() {
 
         const publishedAt = new Date(zennMetadata.createdAtOverride || created_time).toISOString();
 
+        // Merge 'angular' channel into topics for Zenn
+        const tags: string[] = (baseFields.tags || []).map((tag: string) => tag.toLowerCase());
+        const angularChannel = zennMetadata.channels.find(
+          (ch) => ch.toLowerCase() === 'angular',
+        );
+        const topics = angularChannel
+          ? [angularChannel.toLowerCase(), ...tags]
+          : tags;
+
         return {
           title: baseFields.title,
           published_at: dayjs(publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm'),
-          topics: (baseFields.tags || []).map((tag: string) => tag.toLowerCase()),
+          topics,
           published: baseFields.published ?? false,
           source: source_url,
           type: zennMetadata.type,

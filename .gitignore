@@ -5,5 +5,3 @@ node_modules
 
 # notion-sync generated metadata
 articles/metadata.json
-articles/tags.json
-articles/categories.json

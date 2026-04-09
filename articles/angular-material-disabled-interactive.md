@@ -2,9 +2,9 @@
 title: 'Angular MaterialのdisabledInteractive'
 published_at: '2024-09-18 11:30'
 topics:
+  - 'angular'
   - 'angular material'
   - 'アクセシビリティ'
-  - 'angular'
 published: true
 source: 'https://www.notion.so/Angular-Material-disabledInteractive-52edeabe72e344cc9eddd2ccf9148002'
 type: 'tech'
