@@ -100,6 +100,10 @@ Options:
 - Prettier is configured in `.prettierrc.json` (single quotes, trailing commas, 80 char width)
 - Articles are written in Markdown and must include Zenn frontmatter (title, emoji, type, topics, published)
 
+## Dependency Investigation
+
+npmパッケージの情報（CHANGELOG、README、API）を調べるとき、`node_modules` 内のファイルを直接Readする。`npm view` やWeb検索はインストール前・未公開時のフォールバック。
+
 ## Development Guidelines
 
 ### Impact Scope Pre-verification
