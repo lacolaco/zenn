@@ -1,4 +1,4 @@
-import { syncNotionDatasource } from '@lacolaco/notion-sync';
+import { syncNotionDatasource, type PostMetadata } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -123,7 +123,7 @@ async function resizeOversizedImages() {
 }
 
 async function main() {
-  const result = await syncNotionDatasource({
+  const result = await syncNotionDatasource<PostMetadata & ZennMetadata>({
     notion: {
       token: NOTION_AUTH_TOKEN,
       datasourceId: DATASOURCE_ID,
@@ -157,11 +157,8 @@ async function main() {
 
       // Extract channels (formerly categories)
       const channels: string[] =
-        'channels' in page.properties &&
-        page.properties.channels.type === 'multi_select'
-          ? page.properties.channels.multi_select.map(
-              (opt: { name: string }) => opt.name,
-            )
+        'channels' in page.properties && page.properties.channels.type === 'multi_select'
+          ? page.properties.channels.multi_select.map((opt: { name: string }) => opt.name)
           : [];
 
       return {
@@ -179,19 +176,11 @@ async function main() {
         filePath: resolve(rootDir, 'articles', `${metadata.slug}.md`),
       }),
       getImageOutput: (image, metadata) => {
-        const urlFilename =
-          image.url.split('?')[0].split('#')[0].split('/').pop() ?? '';
+        const urlFilename = image.url.split('?')[0].split('#')[0].split('/').pop() ?? '';
         const dotIndex = urlFilename.lastIndexOf('.');
-        const name =
-          dotIndex > 0 ? urlFilename.substring(0, dotIndex) : urlFilename;
-        const ext =
-          dotIndex > 0
-            ? urlFilename.substring(dotIndex + 1).toLowerCase()
-            : 'png';
-        const hash = createHash('sha256')
-          .update(image.blockId)
-          .digest('hex')
-          .substring(0, 16);
+        const name = dotIndex > 0 ? urlFilename.substring(0, dotIndex) : urlFilename;
+        const ext = dotIndex > 0 ? urlFilename.substring(dotIndex + 1).toLowerCase() : 'png';
+        const hash = createHash('sha256').update(image.blockId).digest('hex').substring(0, 16);
         const filename = `${name}.${hash}.${ext}`;
         return {
           src: `/images/${metadata.slug}/${filename}`,
@@ -202,18 +191,13 @@ async function main() {
       // Custom frontmatter generation for Zenn
       generateFrontmatter: (baseFields, metadata, renderContext) => {
         const { source_url, created_time } = baseFields;
-        const zennMetadata = metadata as typeof metadata & ZennMetadata;
 
-        const publishedAt = new Date(zennMetadata.createdAtOverride || created_time).toISOString();
+        const publishedAt = new Date(metadata.createdAtOverride || created_time).toISOString();
 
         // Merge 'angular' channel into topics for Zenn
         const tags: string[] = (baseFields.tags || []).map((tag: string) => tag.toLowerCase());
-        const angularChannel = zennMetadata.channels.find(
-          (ch) => ch.toLowerCase() === 'angular',
-        );
-        const topics = angularChannel
-          ? [angularChannel.toLowerCase(), ...tags]
-          : tags;
+        const angularChannel = metadata.channels.find((ch) => ch.toLowerCase() === 'angular');
+        const topics = angularChannel ? [angularChannel.toLowerCase(), ...tags] : tags;
 
         return {
           title: baseFields.title,
@@ -221,8 +205,8 @@ async function main() {
           topics,
           published: baseFields.published ?? false,
           source: source_url,
-          type: zennMetadata.type,
-          emoji: zennMetadata.icon,
+          type: metadata.type,
+          emoji: metadata.icon,
         };
       },
 
