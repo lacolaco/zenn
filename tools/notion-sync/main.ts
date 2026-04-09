@@ -1,4 +1,4 @@
-import { syncNotionDatasource } from '@lacolaco/notion-sync';
+import { syncNotionDatasource, type PostMetadata } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -123,7 +123,7 @@ async function resizeOversizedImages() {
 }
 
 async function main() {
-  const result = await syncNotionDatasource({
+  const result = await syncNotionDatasource<PostMetadata & ZennMetadata>({
     notion: {
       token: NOTION_AUTH_TOKEN,
       datasourceId: DATASOURCE_ID,
@@ -202,13 +202,12 @@ async function main() {
       // Custom frontmatter generation for Zenn
       generateFrontmatter: (baseFields, metadata, renderContext) => {
         const { source_url, created_time } = baseFields;
-        const zennMetadata = metadata as typeof metadata & ZennMetadata;
 
-        const publishedAt = new Date(zennMetadata.createdAtOverride || created_time).toISOString();
+        const publishedAt = new Date(metadata.createdAtOverride || created_time).toISOString();
 
         // Merge 'angular' channel into topics for Zenn
         const tags: string[] = (baseFields.tags || []).map((tag: string) => tag.toLowerCase());
-        const angularChannel = zennMetadata.channels.find(
+        const angularChannel = metadata.channels.find(
           (ch) => ch.toLowerCase() === 'angular',
         );
         const topics = angularChannel
@@ -221,8 +220,8 @@ async function main() {
           topics,
           published: baseFields.published ?? false,
           source: source_url,
-          type: zennMetadata.type,
-          emoji: zennMetadata.icon,
+          type: metadata.type,
+          emoji: metadata.icon,
         };
       },
 
