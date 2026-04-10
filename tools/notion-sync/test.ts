@@ -27,7 +27,10 @@ test('existing article has exact frontmatter schema', async () => {
   const lines = frontmatter.split('\n').filter((l) => l.trim() && !l.startsWith('  '));
   const allowedFields = ['title:', 'published_at:', 'topics:', 'published:', 'source:', 'type:', 'emoji:'];
   for (const line of lines) {
-    assert.ok(allowedFields.some((field) => line.startsWith(field)), `Unexpected frontmatter field: ${line}`);
+    assert.ok(
+      allowedFields.some((field) => line.startsWith(field)),
+      `Unexpected frontmatter field: ${line}`,
+    );
   }
 });
 
@@ -42,7 +45,10 @@ test('existing article uses correct image path format', async () => {
       const path3Tier = match.match(/\/images\/([^/]+)\/([^/]+)\/([^)]+)/);
       const path2Tier = match.match(/\/images\/([^/]+)\/([^)]+)/);
 
-      assert.ok(path3Tier || path2Tier, `Image path must be valid: /images/{slug}/{file} or /images/{slug}/{dir}/{file}. Got: ${match}`);
+      assert.ok(
+        path3Tier || path2Tier,
+        `Image path must be valid: /images/{slug}/{file} or /images/{slug}/{dir}/{file}. Got: ${match}`,
+      );
 
       if (path3Tier) {
         const [, slug, dir, file] = path3Tier;

@@ -1,4 +1,4 @@
-import { syncNotionDatasource, type PostMetadata } from '@lacolaco/notion-sync';
+import { syncNotionDatasource, extractProperty, type PostMetadata } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -12,11 +12,14 @@ dayjs.extend(utc);
 dayjs.extend(tz);
 
 // Custom metadata type for Zenn articles
-interface ZennMetadata {
+interface ZennMetadata extends PostMetadata {
   icon: string;
   createdAtOverride: string | null;
   type: 'tech' | 'idea';
   channels: string[];
+  published: boolean;
+  tags: string[];
+  sourceUrl: string;
 }
 
 if (process.env.NOTION_AUTH_TOKEN == null) {
@@ -123,7 +126,7 @@ async function resizeOversizedImages() {
 }
 
 async function main() {
-  const result = await syncNotionDatasource<PostMetadata & ZennMetadata>({
+  const result = await syncNotionDatasource<ZennMetadata>({
     notion: {
       token: NOTION_AUTH_TOKEN,
       datasourceId: DATASOURCE_ID,
@@ -142,31 +145,19 @@ async function main() {
     dryRun,
 
     // Custom metadata extraction
-    extractMetadata: (page, defaultExtractor) => {
+    extractMetadata: (page, defaultExtractor): ZennMetadata => {
       const metadata = defaultExtractor(page);
       const icon = page.icon && page.icon.type === 'emoji' ? page.icon.emoji : '✨';
-      const createdAtOverride =
-        'created_at_override' in page.properties &&
-        page.properties.created_at_override.type === 'date' &&
-        page.properties.created_at_override.date?.start
-          ? page.properties.created_at_override.date.start
-          : null;
-
-      // Type: default to 'tech' (Zenn requirement)
-      const type: 'tech' | 'idea' = 'tech';
-
-      // Extract channels (formerly categories)
-      const channels: string[] =
-        'channels' in page.properties && page.properties.channels.type === 'multi_select'
-          ? page.properties.channels.multi_select.map((opt: { name: string }) => opt.name)
-          : [];
 
       return {
         ...metadata,
         icon,
-        createdAtOverride,
-        type,
-        channels,
+        createdAtOverride: extractProperty<string>(page, 'created_at_override') ?? null,
+        type: 'tech',
+        channels: extractProperty<string[]>(page, 'channels') ?? [],
+        published: Boolean(extractProperty<boolean>(page, 'published')),
+        tags: extractProperty<string[]>(page, 'tags') ?? [],
+        sourceUrl: page.url,
       };
     },
 
@@ -189,22 +180,20 @@ async function main() {
       },
 
       // Custom frontmatter generation for Zenn
-      generateFrontmatter: (baseFields, metadata, renderContext) => {
-        const { source_url, created_time } = baseFields;
-
-        const publishedAt = new Date(metadata.createdAtOverride || created_time).toISOString();
-
+      generateFrontmatter: (baseFields, metadata) => {
         // Merge 'angular' channel into topics for Zenn
-        const tags: string[] = (baseFields.tags || []).map((tag: string) => tag.toLowerCase());
+        const tags = metadata.tags.map((tag) => tag.toLowerCase());
         const angularChannel = metadata.channels.find((ch) => ch.toLowerCase() === 'angular');
         const topics = angularChannel ? [angularChannel.toLowerCase(), ...tags] : tags;
 
         return {
           title: baseFields.title,
-          published_at: dayjs(publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm'),
+          published_at: dayjs(metadata.createdAtOverride ?? metadata.date)
+            .tz('Asia/Tokyo')
+            .format('YYYY-MM-DD HH:mm'),
           topics,
-          published: baseFields.published ?? false,
-          source: source_url,
+          published: metadata.published,
+          source: metadata.sourceUrl,
           type: metadata.type,
           emoji: metadata.icon,
         };
