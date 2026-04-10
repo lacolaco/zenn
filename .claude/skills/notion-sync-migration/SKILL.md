@@ -77,6 +77,7 @@ Breaking Changesの一覧を列挙し、現在のコード（`tools/notion-sync/
 - Migration Guideの Before/After に従う
 - 型パラメータの追加など、Breaking Change以外の改善も適用する
 - 不要になった型アサーション（`as`キャスト）は削除する
+- 消費者コードが明示的に抽出しているフィールドは、ライブラリ内部が同じ値を返す場合でも削除しない。消費者の意図的な依存境界を尊重する
 
 ### 6. 検証
 
