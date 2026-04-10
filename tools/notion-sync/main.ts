@@ -148,11 +148,13 @@ async function main() {
     extractMetadata: (page, defaultExtractor): ZennMetadata => {
       const metadata = defaultExtractor(page);
       const icon = page.icon && page.icon.type === 'emoji' ? page.icon.emoji : '✨';
+      const createdAtOverride = extractProperty<string>(page, 'created_at_override') ?? null;
 
       return {
         ...metadata,
+        date: createdAtOverride ? new Date(createdAtOverride) : metadata.date,
         icon,
-        createdAtOverride: extractProperty<string>(page, 'created_at_override') ?? null,
+        createdAtOverride,
         type: 'tech',
         channels: extractProperty<string[]>(page, 'channels') ?? [],
         published: Boolean(extractProperty<boolean>(page, 'published')),
