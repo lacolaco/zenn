@@ -104,6 +104,22 @@ Options:
 
 npmパッケージの情報（CHANGELOG、README、API）を調べるとき、`node_modules` 内のファイルを直接Readする。`npm view` やWeb検索はインストール前・未公開時のフォールバック。
 
+## Repository Settings
+
+### Merge Configuration
+
+- Squash merge only (`allow_squash_merge: true`, others disabled)
+- Auto-delete branches on merge (`delete_branch_on_merge: true`) → `--delete-branch` 不要
+- Branch protection: なし
+
+### Merge Command
+
+```bash
+gh pr merge <PR#> --squash
+```
+
+`--delete-branch` は指定しない（リポジトリ設定で自動削除される）。
+
 ## Development Guidelines
 
 ### Impact Scope Pre-verification
