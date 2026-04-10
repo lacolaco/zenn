@@ -14,6 +14,7 @@ dayjs.extend(tz);
 // Custom metadata type for Zenn articles
 interface ZennMetadata extends PostMetadata {
   icon: string;
+  createdAtOverride: string | null;
   type: 'tech' | 'idea';
   channels: string[];
   published: boolean;
@@ -151,6 +152,7 @@ async function main() {
       return {
         ...metadata,
         icon,
+        createdAtOverride: extractProperty<string>(page, 'created_at_override') ?? null,
         type: 'tech',
         channels: extractProperty<string[]>(page, 'channels') ?? [],
         published: Boolean(extractProperty<boolean>(page, 'published')),
@@ -186,7 +188,9 @@ async function main() {
 
         return {
           title: baseFields.title,
-          published_at: dayjs(metadata.date).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm'),
+          published_at: dayjs(metadata.createdAtOverride ?? metadata.date)
+            .tz('Asia/Tokyo')
+            .format('YYYY-MM-DD HH:mm'),
           topics,
           published: metadata.published,
           source: metadata.sourceUrl,
