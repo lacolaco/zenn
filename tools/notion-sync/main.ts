@@ -1,4 +1,4 @@
-import { syncNotionDatasource, extractProperty, type PostMetadata } from '@lacolaco/notion-sync';
+import { syncNotionDatasource, extractProperty, type EntryMetadata } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -12,7 +12,7 @@ dayjs.extend(utc);
 dayjs.extend(tz);
 
 // Custom metadata type for Zenn articles
-interface ZennMetadata extends PostMetadata {
+interface ZennMetadata extends EntryMetadata {
   icon: string;
   createdAtOverride: string | null;
   type: 'tech' | 'idea';
@@ -138,7 +138,6 @@ async function main() {
       ],
     },
     manifestPath: `${rootDir}/notion-sync.manifest.json`,
-    metadataFilePath: resolve(rootDir, 'articles', 'metadata.json'),
     verbose,
     mode: mode as 'incremental' | 'all',
     force,
