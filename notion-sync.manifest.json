@@ -193,5 +193,10 @@
     "lastModified": "2026-04-08T23:08:00.000Z",
     "slug": "angular-debounced-resource",
     "filePath": "/Users/lacolaco/works/zenn/articles/angular-debounced-resource.md"
+  },
+  "34a3521b-014a-808f-9211-c3a1b715c44d": {
+    "lastModified": "2026-04-22T14:44:00.000Z",
+    "slug": "angular-v22-onpush-by-default",
+    "filePath": "/home/runner/work/zenn/zenn/articles/angular-v22-onpush-by-default.md"
   }
 }
