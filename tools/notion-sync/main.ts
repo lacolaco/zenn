@@ -1,4 +1,4 @@
-import { syncNotionDatasource, extractProperty, type EntryMetadata } from '@lacolaco/notion-sync';
+import { syncNotionDatasource, type EntryMetadata } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -11,8 +11,8 @@ import tz from 'dayjs/plugin/timezone.js';
 dayjs.extend(utc);
 dayjs.extend(tz);
 
-// Custom metadata type for Zenn articles
 interface ZennMetadata extends EntryMetadata {
+  slug: string;
   icon: string;
   createdAtOverride: string | null;
   type: 'tech' | 'idea';
@@ -21,6 +21,16 @@ interface ZennMetadata extends EntryMetadata {
   tags: string[];
   sourceUrl: string;
 }
+
+type ZennDatasource = {
+  title: string;
+  date: Date;
+  slug: string | undefined;
+  created_at_override: string | undefined;
+  channels: string[] | undefined;
+  published: boolean;
+  tags: string[] | undefined;
+};
 
 if (process.env.NOTION_AUTH_TOKEN == null) {
   console.error('Please set NOTION_AUTH_TOKEN');
@@ -126,7 +136,7 @@ async function resizeOversizedImages() {
 }
 
 async function main() {
-  const result = await syncNotionDatasource<ZennMetadata>({
+  const result = await syncNotionDatasource<ZennMetadata, ZennDatasource>({
     notion: {
       token: NOTION_AUTH_TOKEN,
       datasourceId: DATASOURCE_ID,
@@ -143,21 +153,21 @@ async function main() {
     force,
     dryRun,
 
-    // Custom metadata extraction
-    extractMetadata: (page, defaultExtractor): ZennMetadata => {
-      const metadata = defaultExtractor(page);
+    extractMetadata: (page, get): ZennMetadata => {
       const icon = page.icon && page.icon.type === 'emoji' ? page.icon.emoji : '✨';
-      const createdAtOverride = extractProperty<string>(page, 'created_at_override') ?? null;
+      const createdAtOverride = get('created_at_override') ?? null;
+      const date = get('date');
 
       return {
-        ...metadata,
-        date: createdAtOverride ? new Date(createdAtOverride) : metadata.date,
+        title: get('title'),
+        date: createdAtOverride ? new Date(createdAtOverride) : date,
+        slug: get('slug') ?? page.id,
         icon,
         createdAtOverride,
         type: 'tech',
-        channels: extractProperty<string[]>(page, 'channels') ?? [],
-        published: Boolean(extractProperty<boolean>(page, 'published')),
-        tags: extractProperty<string[]>(page, 'tags') ?? [],
+        channels: get('channels') ?? [],
+        published: Boolean(get('published')),
+        tags: get('tags') ?? [],
         sourceUrl: page.url,
       };
     },
