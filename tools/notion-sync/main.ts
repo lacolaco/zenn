@@ -1,7 +1,7 @@
 import { syncNotionDatasource, type EntryMetadata } from '@lacolaco/notion-sync';
 import { parseArgs } from 'node:util';
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import dayjs from 'dayjs';
@@ -147,7 +147,8 @@ async function main() {
         { property: 'published', checkbox: { equals: true } },
       ],
     },
-    manifestPath: `${rootDir}/notion-sync.manifest.json`,
+    cwd: rootDir,
+    manifestPath: 'notion-sync.manifest.json',
     verbose,
     mode: mode as 'incremental' | 'all',
     force,
@@ -175,7 +176,7 @@ async function main() {
     // Markdown rendering options
     renderMarkdown: {
       getPageOutput: (metadata) => ({
-        filePath: resolve(rootDir, 'articles', `${metadata.slug}.md`),
+        filePath: join('articles', `${metadata.slug}.md`),
       }),
       getImageOutput: (image, metadata) => {
         const urlFilename = image.url.split('?')[0].split('#')[0].split('/').pop() ?? '';
@@ -186,7 +187,7 @@ async function main() {
         const filename = `${name}.${hash}.${ext}`;
         return {
           src: `/images/${metadata.slug}/${filename}`,
-          filePath: resolve(rootDir, 'images', metadata.slug, filename),
+          filePath: join('images', metadata.slug, filename),
         };
       },
 
