@@ -32,7 +32,7 @@ importers:
         version: 4.1.1
       prettier:
         specifier: ^3.0.0
-        version: 3.6.2
+        version: 3.8.3
       rxjs:
         specifier: ^7.8.0
         version: 7.8.2
@@ -459,8 +459,8 @@ packages:
   package-manager-detector@1.6.0:
     resolution: {integrity: sha512-61A5ThoTiDG/C8s8UMZwSorAGwMJ0ERVGj2OjoW5pAalsNOg15+iQiPzrLJ4jhZ1HJzmC2PIHT2oEiH3R5fzNA==}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.8.3:
+    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -837,7 +837,7 @@ snapshots:
 
   package-manager-detector@1.6.0: {}
 
-  prettier@3.6.2: {}
+  prettier@3.8.3: {}
 
   resolve-pkg-maps@1.0.0: {}
 
