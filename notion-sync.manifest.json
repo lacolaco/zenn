@@ -1,197 +1,208 @@
 {
   "2c53521b-014a-80d9-8279-f5c01f43773b": {
     "lastModified": "2026-03-28T16:15:00.000Z",
-    "slug": "angular-animations-with-motion",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-animations-with-motion.md"
+    "filePath": "articles/angular-animations-with-motion.md",
+    "imagePaths": [
+      "images/angular-animations-with-motion/CleanShot_2025-12-12_at_10.13.03.9a9ca12306a6107d.gif"
+    ]
   },
   "2713521b-014a-800c-b4dd-ed9150c0dc1c": {
     "lastModified": "2026-03-28T16:15:00.000Z",
-    "slug": "angular-ai-forward",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-ai-forward.md"
+    "filePath": "articles/angular-ai-forward.md",
+    "imagePaths": [
+      "images/angular-ai-forward/image.e6e689e0744a413f.png",
+      "images/angular-ai-forward/image.b74ae42b7dbbd657.png",
+      "images/angular-ai-forward/image.210b96fcf07bc985.png",
+      "images/angular-ai-forward/image.818a8f3a067898fd.png",
+      "images/angular-ai-forward/Angular__AI_Developer_Event_-_YouTube_-_15_27.24119becc1c59b30.png",
+      "images/angular-ai-forward/CleanShot_2025-09-20_at_09.20.092x.2845d3d0327e000c.png",
+      "images/angular-ai-forward/image.f0d57d56d0472b2d.png"
+    ]
   },
   "23c3521b-014a-8036-9152-cc3d38813adf": {
     "lastModified": "2026-03-28T16:15:00.000Z",
-    "slug": "angular-animations-enter-leave",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-animations-enter-leave.md"
+    "filePath": "articles/angular-animations-enter-leave.md"
   },
   "21d3521b-014a-80e0-a40b-cb6943377b34": {
     "lastModified": "2026-03-28T16:22:00.000Z",
-    "slug": "angular-unit-testing-runner-v20",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-unit-testing-runner-v20.md"
+    "filePath": "articles/angular-unit-testing-runner-v20.md",
+    "imagePaths": [
+      "images/angular-unit-testing-runner-v20/CleanShot_2025-06-25_at_18.26.222x.39a2ac851d0220db.png"
+    ]
   },
   "1d03521b-014a-8070-af87-dfbe63ce9c9a": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-selectorless-is-coming",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-selectorless-is-coming.md"
+    "filePath": "articles/angular-selectorless-is-coming.md"
   },
   "1d03521b-014a-80be-ae58-f852f4628521": {
     "lastModified": "2026-03-28T17:07:00.000Z",
-    "slug": "weekly-commits-on-angular-2025-04-09",
-    "filePath": "/Users/lacolaco/works/zenn/articles/weekly-commits-on-angular-2025-04-09.md"
+    "filePath": "articles/weekly-commits-on-angular-2025-04-09.md"
   },
   "1c23521b-014a-8006-826d-f570a3e9e91c": {
     "lastModified": "2026-03-28T16:22:00.000Z",
-    "slug": "angular-using-web-worker-through-resource",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-using-web-worker-through-resource.md"
+    "filePath": "articles/angular-using-web-worker-through-resource.md",
+    "imagePaths": [
+      "images/angular-using-web-worker-through-resource/CleanShot_2025-03-26_at_10.21.55.5980536265efaf29.gif"
+    ]
   },
   "1bb3521b-014a-80de-aa71-c45e578737b9": {
     "lastModified": "2026-03-28T16:53:00.000Z",
-    "slug": "weekly-commits-on-angular-2025-03-19",
-    "filePath": "/Users/lacolaco/works/zenn/articles/weekly-commits-on-angular-2025-03-19.md"
+    "filePath": "articles/weekly-commits-on-angular-2025-03-19.md"
   },
   "1ad3521b-014a-80e5-bde2-e61a84634c57": {
     "lastModified": "2026-03-28T16:53:00.000Z",
-    "slug": "weekly-commits-on-angular-2025-03-12",
-    "filePath": "/Users/lacolaco/works/zenn/articles/weekly-commits-on-angular-2025-03-12.md"
+    "filePath": "articles/weekly-commits-on-angular-2025-03-12.md"
   },
   "1b43521b-014a-8044-8298-efca294f5fde": {
     "lastModified": "2026-03-28T16:53:00.000Z",
-    "slug": "weekly-commits-on-angular-2025-03-05",
-    "filePath": "/Users/lacolaco/works/zenn/articles/weekly-commits-on-angular-2025-03-05.md"
+    "filePath": "articles/weekly-commits-on-angular-2025-03-05.md"
   },
   "1a63521b-014a-808f-9266-e92dc6f86dfc": {
     "lastModified": "2026-03-28T16:53:00.000Z",
-    "slug": "weekly-commits-on-angular-2025-02-26",
-    "filePath": "/Users/lacolaco/works/zenn/articles/weekly-commits-on-angular-2025-02-26.md"
+    "filePath": "articles/weekly-commits-on-angular-2025-02-26.md"
   },
   "1983521b-014a-80d0-8a7c-c09020dd3420": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-http-resource-quick-overview",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-http-resource-quick-overview.md"
+    "filePath": "articles/angular-http-resource-quick-overview.md"
   },
   "1913521b-014a-80f0-9c8a-f2b4dde093d1": {
     "lastModified": "2026-03-28T16:16:00.000Z",
-    "slug": "angular-cdk-overlay-with-animations",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-cdk-overlay-with-animations.md"
+    "filePath": "articles/angular-cdk-overlay-with-animations.md",
+    "imagePaths": [
+      "images/angular-cdk-overlay-with-animations/CleanShot_2025-02-05_at_10.45.17.dac9b39dba38f05e.gif"
+    ]
   },
   "18e3521b-014a-80d9-af62-f945ecfa18f3": {
     "lastModified": "2026-03-28T16:22:00.000Z",
-    "slug": "angular-tailwind-css-4-setup",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-tailwind-css-4-setup.md"
+    "filePath": "articles/angular-tailwind-css-4-setup.md"
   },
   "1763521b-014a-80ca-916d-d87cfc630eca": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-let-tailwindcss-intellisense",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-let-tailwindcss-intellisense.md"
+    "filePath": "articles/angular-let-tailwindcss-intellisense.md",
+    "imagePaths": [
+      "images/angular-let-tailwindcss-intellisense/CleanShot_2025-01-09_at_21.41.322x.6a27d7a9684259ba.png",
+      "images/angular-let-tailwindcss-intellisense/CleanShot_2025-01-09_at_21.34.452x.05480b1d1c3500dc.png"
+    ]
   },
   "14d3521b-014a-803e-a815-c7030c8e4287": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-signal-forms-prototype",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-signal-forms-prototype.md"
+    "filePath": "articles/angular-signal-forms-prototype.md"
   },
   "14d3521b-014a-8059-9134-c652a0a858c2": {
     "lastModified": "2026-04-09T01:03:00.000Z",
-    "slug": "angular-signalized-counter",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-signalized-counter.md"
+    "filePath": "articles/angular-signalized-counter.md"
   },
   "12e3521b-014a-80da-a5a9-ed157e6bc9b1": {
     "lastModified": "2026-03-28T16:23:00.000Z",
-    "slug": "angular-v19-resource",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-v19-resource.md"
+    "filePath": "articles/angular-v19-resource.md"
   },
   "12d3521b-014a-80f3-95ff-d9c289dd689e": {
     "lastModified": "2026-03-28T16:23:00.000Z",
-    "slug": "angular-v19-linked-signal",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-v19-linked-signal.md"
+    "filePath": "articles/angular-v19-linked-signal.md"
   },
   "11a3521b-014a-8026-b45e-fb2c2fc99ee0": {
     "lastModified": "2026-03-28T16:22:00.000Z",
-    "slug": "angular-v19-effect-changes",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-v19-effect-changes.md"
+    "filePath": "articles/angular-v19-effect-changes.md"
   },
   "d98c0b65-806e-4a10-a239-b329958ab674": {
     "lastModified": "2026-03-28T16:23:00.000Z",
-    "slug": "angular-v19-prerendering",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-v19-prerendering.md"
+    "filePath": "articles/angular-v19-prerendering.md",
+    "imagePaths": [
+      "images/angular-v19-prerendering/CleanShot_2024-09-25_at_11.56.002x.49888c615379845d.png"
+    ]
   },
   "52edeabe-72e3-44cc-9edd-d2ccf9148002": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-material-disabled-interactive",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-material-disabled-interactive.md"
+    "filePath": "articles/angular-material-disabled-interactive.md"
   },
   "7b14ed47-6933-4797-8ef0-c29e83922a49": {
     "lastModified": "2026-03-28T16:53:00.000Z",
-    "slug": "testing-angular-applications-with-vitest",
-    "filePath": "/Users/lacolaco/works/zenn/articles/testing-angular-applications-with-vitest.md"
+    "filePath": "articles/testing-angular-applications-with-vitest.md"
   },
   "fc06702a-e32a-483e-a546-4ed5b9c3b702": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-model-inputs",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-model-inputs.md"
+    "filePath": "articles/angular-model-inputs.md"
   },
   "190478da-4fdf-4db6-a71f-4942d2011d2a": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-signal-inputs",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-signal-inputs.md"
+    "filePath": "articles/angular-signal-inputs.md"
   },
   "aa5b1283-87fb-4b2f-bc91-6ec77c9f5d2a": {
     "lastModified": "2026-03-28T16:15:00.000Z",
-    "slug": "angular-16-jest",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-16-jest.md"
+    "filePath": "articles/angular-16-jest.md",
+    "imagePaths": [
+      "images/angular-16-jest/Untitled.daea397d99853454.png"
+    ]
   },
   "23c54aef-56ff-4d4c-99b0-35e052b80056": {
     "lastModified": "2026-03-28T17:07:00.000Z",
-    "slug": "why-inject-function-wins",
-    "filePath": "/Users/lacolaco/works/zenn/articles/why-inject-function-wins.md"
+    "filePath": "articles/why-inject-function-wins.md"
   },
   "02ff5a35-36af-4d69-9609-1ea3f818ad95": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-inputs-stream-pattern",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-inputs-stream-pattern.md"
+    "filePath": "articles/angular-inputs-stream-pattern.md"
   },
   "c30c4744-b390-4755-8495-a126d32ad0d9": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-ngif-composing-feature-toggle",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-ngif-composing-feature-toggle.md"
+    "filePath": "articles/angular-ngif-composing-feature-toggle.md"
   },
   "c0a2a317-2b8f-47ef-821d-9ef5e602c5f9": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-signals-component-design-patterns",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-signals-component-design-patterns.md"
+    "filePath": "articles/angular-signals-component-design-patterns.md",
+    "imagePaths": [
+      "images/angular-signals-component-design-patterns/simple-pds.c9f96748d9626c35.png",
+      "images/angular-signals-component-design-patterns/pds-cqs.b5158f22090ce52c.png"
+    ]
   },
   "4e8bcf7e-4c2c-4d31-806b-ff592edf4232": {
     "lastModified": "2026-03-28T16:53:00.000Z",
-    "slug": "rethink-template-driven-forms",
-    "filePath": "/Users/lacolaco/works/zenn/articles/rethink-template-driven-forms.md"
+    "filePath": "articles/rethink-template-driven-forms.md"
   },
   "e6e80b9f-4a39-4d25-905f-4b4711f09f37": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-signal-equal-option",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-signal-equal-option.md"
+    "filePath": "articles/angular-signal-equal-option.md"
   },
   "9de77b78-554f-4e23-b970-c8ff5a57d2ce": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-signals-and-component-communication",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-signals-and-component-communication.md"
+    "filePath": "articles/angular-signals-and-component-communication.md"
   },
   "4b13c6c0-76da-42c3-81d1-81affb15f518": {
     "lastModified": "2026-03-28T16:16:00.000Z",
-    "slug": "angular-host-element-with-tailwindcss-classes",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-host-element-with-tailwindcss-classes.md"
+    "filePath": "articles/angular-host-element-with-tailwindcss-classes.md",
+    "imagePaths": [
+      "images/angular-host-element-with-tailwindcss-classes/Untitled.b4659f6b809c1ee9.png",
+      "images/angular-host-element-with-tailwindcss-classes/Untitled.c68ee4d0697b108d.png"
+    ]
   },
   "40f4e1df-5de5-45b9-b837-f96a36605ba9": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-mat-suffix-show-only-when-focused",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-mat-suffix-show-only-when-focused.md"
+    "filePath": "articles/angular-mat-suffix-show-only-when-focused.md",
+    "imagePaths": [
+      "images/angular-mat-suffix-show-only-when-focused/capture.640ad8839c55779a.gif"
+    ]
   },
   "119f8e2c-8fc7-40f4-aa76-755373a0b009": {
     "lastModified": "2026-03-28T16:15:00.000Z",
-    "slug": "angular-advent-calendar-2023",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-advent-calendar-2023.md"
+    "filePath": "articles/angular-advent-calendar-2023.md"
   },
   "2d33521b-014a-80b6-b3ae-d7578424fcc0": {
     "lastModified": "2026-03-28T16:17:00.000Z",
-    "slug": "angular-provide-http-client-by-default",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-provide-http-client-by-default.md"
+    "filePath": "articles/angular-provide-http-client-by-default.md"
   },
   "2e93521b-014a-8057-9534-cd937331ad0b": {
     "lastModified": "2026-03-28T16:23:00.000Z",
-    "slug": "angular-vitest-browser-mode-testing-library",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-vitest-browser-mode-testing-library.md"
+    "filePath": "articles/angular-vitest-browser-mode-testing-library.md"
   },
   "3253521b-014a-8157-a3b6-d0d63eae2c6e": {
-    "lastModified": "2026-04-08T23:08:00.000Z",
-    "slug": "angular-debounced-resource",
-    "filePath": "/Users/lacolaco/works/zenn/articles/angular-debounced-resource.md"
+    "lastModified": "2026-04-27T00:02:00.000Z",
+    "filePath": "articles/angular-debounced-resource.md"
+  },
+  "34a3521b-014a-808f-9211-c3a1b715c44d": {
+    "lastModified": "2026-04-22T14:44:00.000Z",
+    "filePath": "articles/angular-v22-onpush-by-default.md"
+  },
+  "34f3521b-014a-8014-9b66-c11891b89391": {
+    "lastModified": "2026-04-27T08:05:00.000Z",
+    "filePath": "articles/angular-builtin-summarizer-resource.md"
   }
 }
