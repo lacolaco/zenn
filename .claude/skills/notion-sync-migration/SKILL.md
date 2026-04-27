@@ -85,11 +85,12 @@ Breaking Changesの一覧を列挙し、現在のコード（`tools/notion-sync/
 
 ```bash
 npx tsc --noEmit -p tools/tsconfig.json
-pnpm notion-sync -- --dry-run
+pnpm notion-sync --dry-run
 pnpm format
 ```
 
 dry-runの出力を確認し、queryFilterやmetadata生成が正しく動作していることを検証する。
+`--mode all` を付与した二重検証で `queryFilter` の動作（取得件数）を裏取りすると信頼度が上がる。
 
 ### 7. コミット・PR
 
