@@ -198,9 +198,13 @@ async function main() {
         const angularChannel = metadata.channels.find((ch) => ch.toLowerCase() === 'angular');
         const topics = angularChannel ? [angularChannel.toLowerCase(), ...tags] : tags;
 
+        const publishedAtBase = metadata.createdAtOverride
+          ? new Date(metadata.createdAtOverride)
+          : metadata.date;
+
         return {
           title: baseFields.title,
-          published_at: dayjs(metadata.createdAtOverride ?? metadata.date)
+          published_at: dayjs(publishedAtBase.toISOString())
             .tz('Asia/Tokyo')
             .format('YYYY-MM-DD HH:mm'),
           topics,
