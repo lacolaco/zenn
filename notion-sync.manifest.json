@@ -194,11 +194,15 @@
     "filePath": "articles/angular-vitest-browser-mode-testing-library.md"
   },
   "3253521b-014a-8157-a3b6-d0d63eae2c6e": {
-    "lastModified": "2026-04-08T23:08:00.000Z",
+    "lastModified": "2026-04-27T00:02:00.000Z",
     "filePath": "articles/angular-debounced-resource.md"
   },
   "34a3521b-014a-808f-9211-c3a1b715c44d": {
     "lastModified": "2026-04-22T14:44:00.000Z",
     "filePath": "articles/angular-v22-onpush-by-default.md"
+  },
+  "34f3521b-014a-8014-9b66-c11891b89391": {
+    "lastModified": "2026-04-27T08:05:00.000Z",
+    "filePath": "articles/angular-builtin-summarizer-resource.md"
   }
 }
