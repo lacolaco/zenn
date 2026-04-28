@@ -135,7 +135,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: touch .env
-      - run: pnpm notion-sync -- --dry-run
+      - run: pnpm notion-sync --dry-run
         env:
           NOTION_AUTH_TOKEN: ${{ secrets.NOTION_AUTH_TOKEN }}
 
