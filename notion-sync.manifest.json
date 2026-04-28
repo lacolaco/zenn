@@ -135,7 +135,7 @@
     ]
   },
   "23c54aef-56ff-4d4c-99b0-35e052b80056": {
-    "lastModified": "2026-03-28T17:07:00.000Z",
+    "lastModified": "2026-04-27T23:21:00.000Z",
     "filePath": "articles/why-inject-function-wins.md"
   },
   "02ff5a35-36af-4d69-9609-1ea3f818ad95": {
@@ -147,7 +147,7 @@
     "filePath": "articles/angular-ngif-composing-feature-toggle.md"
   },
   "c0a2a317-2b8f-47ef-821d-9ef5e602c5f9": {
-    "lastModified": "2026-03-28T16:17:00.000Z",
+    "lastModified": "2026-04-27T23:20:00.000Z",
     "filePath": "articles/angular-signals-component-design-patterns.md",
     "imagePaths": [
       "images/angular-signals-component-design-patterns/simple-pds.c9f96748d9626c35.png",
@@ -194,15 +194,15 @@
     "filePath": "articles/angular-vitest-browser-mode-testing-library.md"
   },
   "3253521b-014a-8157-a3b6-d0d63eae2c6e": {
-    "lastModified": "2026-04-27T00:02:00.000Z",
+    "lastModified": "2026-04-27T23:20:00.000Z",
     "filePath": "articles/angular-debounced-resource.md"
   },
   "34a3521b-014a-808f-9211-c3a1b715c44d": {
-    "lastModified": "2026-04-22T14:44:00.000Z",
+    "lastModified": "2026-04-27T15:23:00.000Z",
     "filePath": "articles/angular-v22-onpush-by-default.md"
   },
   "34f3521b-014a-8014-9b66-c11891b89391": {
-    "lastModified": "2026-04-27T08:05:00.000Z",
+    "lastModified": "2026-04-27T23:21:00.000Z",
     "filePath": "articles/angular-builtin-summarizer-resource.md"
   }
 }

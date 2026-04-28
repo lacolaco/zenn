@@ -4,7 +4,7 @@ published_at: '2026-04-08 11:03'
 topics:
   - 'angular'
   - 'signals'
-  - '状態管理'
+  - 'state management'
 published: true
 source: 'https://www.notion.so/Angular-v22-debounced-Resource-3253521b014a8157a3b6d0d63eae2c6e'
 type: 'tech'
