@@ -362,7 +362,7 @@ jobs:
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:
-      - uses: re-actors/alls-green@v1
+      - uses: re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe # v1.2.2
         with:
           allowed-skips: renovate-review, content-review, code-review
           jobs: ${{ toJSON(needs) }}
