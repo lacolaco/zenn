@@ -39,7 +39,7 @@ jobs:
       content_changed: ${{ !github.event.pull_request.draft && steps.content-paths.outputs.content == 'true' }}
       has_non_renovate_commits: ${{ steps.non-renovate-commits.outputs.has_non_renovate_commits == 'true' }}
     steps:
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: content-paths
         with:
           filters: |
@@ -48,7 +48,7 @@ jobs:
               - 'images/**'
               - 'notion-sync.manifest.json'
 
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: code-paths
         with:
           predicate-quantifier: 'every'
