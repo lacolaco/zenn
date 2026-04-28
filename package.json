@@ -8,6 +8,8 @@
   "type": "module",
   "scripts": {
     "format": "prettier --write 'tools'",
+    "format:check": "prettier --check 'tools'",
+    "typecheck": "tsc --noEmit -p tools/tsconfig.json",
     "start": "zenn",
     "notion-sync": "tsx --env-file .env tools/notion-sync/main.ts"
   },

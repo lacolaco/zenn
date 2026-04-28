@@ -1,0 +1,398 @@
+name: CI
+
+# PR検証・レビュー・自動マージの統合ワークフロー
+#
+# フロー:
+#   ┌─ classify ─→ content-review (needs: classify)
+#   │             → code-review    (needs: classify)
+#   ├─ CI jobs (format-check, typecheck, notion-sync-dry-run)
+#   ├─ renovate-review (needs: classify, non-renovateコミットがなければ実行)
+#   ↓
+#   ok (alls-green gate, 唯一のrequired check)
+#   ↓
+#   auto-merge
+#
+# レビュー条件:
+#   - renovate-review: author == renovate[bot] かつ non-renovateコミットなし
+#   - content-review:  content_changed && author != renovate[bot]
+#   - code-review:     code_changed && (author != renovate[bot] or non-renovateコミットあり)
+#
+# 自動マージ条件:
+#   ok成功 かつ (renovate-review成功 or (content-review成功 かつ code-review未実行))
+#
+# draft PR:
+#   - CI jobsのみ実行、reviewはスキップ
+#   - draft解除時にready_for_reviewで再実行
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      code_changed: ${{ !github.event.pull_request.draft && steps.code-paths.outputs.code == 'true' }}
+      content_changed: ${{ !github.event.pull_request.draft && steps.content-paths.outputs.content == 'true' }}
+      has_non_renovate_commits: ${{ steps.non-renovate-commits.outputs.has_non_renovate_commits == 'true' }}
+    steps:
+      - uses: dorny/paths-filter@v3
+        id: content-paths
+        with:
+          filters: |
+            content:
+              - 'articles/**'
+              - 'images/**'
+              - 'notion-sync.manifest.json'
+
+      - uses: dorny/paths-filter@v3
+        id: code-paths
+        with:
+          predicate-quantifier: 'every'
+          filters: |
+            code:
+              - '**'
+              - '!articles/**'
+              - '!images/**'
+              - '!notion-sync.manifest.json'
+
+      - name: Check for non-renovate commits
+        id: non-renovate-commits
+        if: github.event.pull_request.user.login == 'renovate[bot]'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          NON_RENOVATE=$(gh api "repos/${REPO}/pulls/${PR_NUMBER}/commits" --paginate --jq '[.[].author.login // empty] | .[]' | grep -v 'renovate\[bot\]' | head -1 || true)
+          if [[ -n "$NON_RENOVATE" ]]; then
+            echo "has_non_renovate_commits=true" >> "$GITHUB_OUTPUT"
+            echo "Non-renovate commits detected by: $NON_RENOVATE"
+          else
+            echo "has_non_renovate_commits=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify classification
+        if: ${{ !github.event.pull_request.draft }}
+        env:
+          CODE: ${{ steps.code-paths.outputs.code }}
+          CONTENT: ${{ steps.content-paths.outputs.content }}
+        run: |
+          if [[ "$CODE" != "true" && "$CONTENT" != "true" ]]; then
+            echo "::error::Classification failed: no code or content changes detected. Possible paths-filter issue."
+            exit 1
+          fi
+
+  # === CI (always runs) ===
+
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          registry-url: https://npm.pkg.github.com
+          scope: '@lacolaco'
+      - run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm format:check
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          registry-url: https://npm.pkg.github.com
+          scope: '@lacolaco'
+      - run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm typecheck
+
+  notion-sync-dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          registry-url: https://npm.pkg.github.com
+          scope: '@lacolaco'
+      - run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: touch .env
+      - run: pnpm notion-sync --dry-run
+        env:
+          NOTION_AUTH_TOKEN: ${{ secrets.NOTION_AUTH_TOKEN }}
+
+  # === Reviews (standard interface: outputs.approved) ===
+
+  renovate-review:
+    needs: classify
+    if: >-
+      github.event.pull_request.user.login == 'renovate[bot]' &&
+      needs.classify.outputs.has_non_renovate_commits != 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      approved: ${{ steps.gate.outputs.approved }}
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: koki-develop/claude-renovate-review@v1
+        id: review
+        with:
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          allowed-tools: |
+            WebFetch(domain:github.com)
+            WebFetch(domain:npm.pkg.github.com)
+            WebFetch(domain:raw.githubusercontent.com)
+            WebFetch(domain:www.npmjs.com)
+            WebFetch(domain:nodejs.org)
+            WebFetch(domain:developers.notion.com)
+
+      - name: Gate
+        id: gate
+        if: always()
+        env:
+          SAFETY: ${{ steps.review.outputs.safety-assessment }}
+        run: |
+          if [[ "$SAFETY" == "safe" ]]; then
+            echo "approved=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "approved=false" >> "$GITHUB_OUTPUT"
+            echo "::error::Renovate review: ${SAFETY:-unknown}"
+            exit 1
+          fi
+
+  content-review:
+    needs: classify
+    if: >-
+      needs.classify.outputs.content_changed == 'true' &&
+      github.event.pull_request.user.login != 'renovate[bot]'
+    runs-on: ubuntu-latest
+    outputs:
+      approved: ${{ steps.gate.outputs.approved }}
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Review content with Claude
+        id: review
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          allowed_bots: 'lacolaco-actions-worker[bot]'
+          prompt: |
+            このPRに含まれるZenn記事コンテンツの変更をレビューしてください。
+            `gh pr diff ${{ github.event.pull_request.number }}` でdiffを取得し、コンテンツファイル（articles/**, images/**）の変更のみを対象に文面チェックを行ってください。
+            コード変更が含まれる場合がありますが、レビュー対象外です。
+
+            チェック項目:
+            - 明らかな誤字脱字・typo（日本語・英語両方）
+            - 技術用語のスペルミス
+            - マークダウン構文の明らかな誤り（閉じ忘れ等）
+
+            チェック対象外（指摘しないこと）:
+            - 文体・表現の好み
+            - 内容の技術的正誤
+            - frontmatter（---で囲まれたYAML部分）の変更
+            - 画像ファイルの変更
+            - コードファイルの変更
+            - manifest.jsonの変更
+
+            結果をJSONで返してください。問題がなければ approved: true、問題があれば approved: false。summary にレビューの要約、issues 配列に具体的な指摘を入れてください。
+          claude_args: >-
+            --allowed-tools "Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --json-schema '{"type":"object","properties":{"approved":{"type":"boolean"},"summary":{"type":"string"},"issues":{"type":"array","items":{"type":"object","properties":{"file":{"type":"string"},"description":{"type":"string"}},"required":["file","description"]}}},"required":["approved","summary","issues"]}'
+
+      - name: Gate
+        id: gate
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEW_RESULT: ${{ steps.review.outputs.structured_output }}
+        run: |
+          if [[ -z "$REVIEW_RESULT" ]]; then
+            echo "::error::structured_output is empty"
+            echo "approved=false" >> "$GITHUB_OUTPUT"
+            gh pr comment "$PR_NUMBER" --body "## コンテンツレビュー失敗
+
+          自動レビューを実行できませんでした。人間のレビューが必要です。"
+            exit 1
+          fi
+
+          APPROVED=$(echo "$REVIEW_RESULT" | jq -r '.approved')
+          SUMMARY=$(echo "$REVIEW_RESULT" | jq -r '.summary')
+          echo "approved=$APPROVED" >> "$GITHUB_OUTPUT"
+
+          if [[ "$APPROVED" == "true" ]]; then
+            gh pr comment "$PR_NUMBER" --body "$(cat <<EOF
+          ## コンテンツレビュー OK
+
+          ${SUMMARY}
+          EOF
+          )"
+          else
+            ISSUES=$(echo "$REVIEW_RESULT" | jq -r '.issues[] | "- **\(.file)**: \(.description)"')
+            gh pr comment "$PR_NUMBER" --body "$(cat <<EOF
+          ## コンテンツレビュー NG
+
+          ${SUMMARY}
+
+          ${ISSUES}
+
+          問題を修正してPRを更新してください。
+          EOF
+          )"
+            exit 1
+          fi
+
+  code-review:
+    needs: classify
+    if: >-
+      needs.classify.outputs.code_changed == 'true' &&
+      (github.event.pull_request.user.login != 'renovate[bot]' || needs.classify.outputs.has_non_renovate_commits == 'true')
+    runs-on: ubuntu-latest
+    outputs:
+      approved: ${{ steps.gate.outputs.approved }}
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Review code with Claude
+        id: review
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          allowed_bots: 'lacolaco-actions-worker[bot]'
+          prompt: |
+            このPRのコード変更をレビューしてください。
+            `gh pr diff ${{ github.event.pull_request.number }}` でdiffを取得し、コードファイルの変更のみを対象にレビューを行ってください。
+            コンテンツ変更（articles/**, images/**, notion-sync.manifest.json）が含まれる場合がありますが、レビュー対象外です。
+
+            レビュー観点:
+            - コード品質とベストプラクティス
+            - 潜在的なバグや問題点
+            - パフォーマンスの考慮事項
+            - セキュリティの懸念
+
+            リポジトリのCLAUDE.mdを参照し、スタイルや慣例に従ってください。
+
+            結果をJSONで返してください。
+            - issues が空（このPRで修正すべき問題がない）の場合のみ approved: true
+            - このPRで修正可能な問題があれば、重大度を問わず issues に含め、approved: false とする
+            - このPRのスコープ外の問題（既存コードの技術的負債等）は issues に含めない
+            summary にレビューの要約、issues 配列に具体的な指摘を入れてください。
+          claude_args: >-
+            --allowed-tools "Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --json-schema '{"type":"object","properties":{"approved":{"type":"boolean"},"summary":{"type":"string"},"issues":{"type":"array","items":{"type":"object","properties":{"file":{"type":"string"},"description":{"type":"string"}},"required":["file","description"]}}},"required":["approved","summary","issues"]}'
+
+      - name: Gate
+        id: gate
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEW_RESULT: ${{ steps.review.outputs.structured_output }}
+        run: |
+          if [[ -z "$REVIEW_RESULT" ]]; then
+            echo "::error::structured_output is empty"
+            echo "approved=false" >> "$GITHUB_OUTPUT"
+            gh pr comment "$PR_NUMBER" --body "## コードレビュー失敗
+
+          自動レビューを実行できませんでした。人間のレビューが必要です。"
+            exit 1
+          fi
+
+          APPROVED=$(echo "$REVIEW_RESULT" | jq -r '.approved')
+          SUMMARY=$(echo "$REVIEW_RESULT" | jq -r '.summary')
+          echo "approved=$APPROVED" >> "$GITHUB_OUTPUT"
+
+          ISSUES=$(echo "$REVIEW_RESULT" | jq -r '.issues[] | "- **\(.file)**: \(.description)"')
+
+          if [[ "$APPROVED" == "true" && -z "$ISSUES" ]]; then
+            gh pr review "$PR_NUMBER" --approve --body "$SUMMARY"
+          else
+            BODY="${SUMMARY}"
+            if [[ -n "$ISSUES" ]]; then
+              BODY="${BODY}
+
+          ### 指摘
+
+          ${ISSUES}"
+            fi
+            gh pr review "$PR_NUMBER" --request-changes --body "$BODY"
+            exit 1
+          fi
+
+  # === Gate ===
+
+  ok:
+    needs: [classify, format-check, typecheck, notion-sync-dry-run, renovate-review, content-review, code-review]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: re-actors/alls-green@v1
+        with:
+          allowed-skips: renovate-review, content-review, code-review
+          jobs: ${{ toJSON(needs) }}
+
+  # === Auto-merge ===
+
+  auto-merge:
+    needs: [ok, renovate-review, content-review, code-review]
+    if: >-
+      !cancelled() &&
+      needs.ok.result == 'success' &&
+      (
+        needs.renovate-review.result == 'success' ||
+        (needs.content-review.result == 'success' && needs.code-review.result == 'skipped')
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Generate App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.WORKER_APP_ID }}
+          private-key: ${{ secrets.WORKER_APP_PRIVATE_KEY }}
+
+      - name: Merge PR
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_REPO: ${{ github.repository }}
+        run: gh pr merge "$PR_NUMBER" --squash --auto --repo "$GH_REPO"
