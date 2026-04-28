@@ -3,7 +3,7 @@ title: 'SignalベースのAngularコンポーネント設計パターン'
 published_at: '2023-06-03 09:00'
 topics:
   - 'angular'
-  - '状態管理'
+  - 'state management'
   - 'signals'
   - '設計'
 published: true
