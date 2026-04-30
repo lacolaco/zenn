@@ -6,7 +6,7 @@ topics:
   - 'signals'
   - 'angular cli'
 published: true
-source: 'https://www.notion.so/Angular-v22-ChangeDetectionStrategy-Eager-OnPush-By-Default-34a3521b014a808f9211c3a1b715c44d'
+source: 'https://app.notion.com/p/Angular-v22-ChangeDetectionStrategy-Eager-OnPush-By-Default-34a3521b014a808f9211c3a1b715c44d'
 type: 'tech'
 emoji: '✨'
 ---
