@@ -8,7 +8,7 @@ topics:
   - 'chrome'
   - 'ai'
 published: true
-source: 'https://www.notion.so/Angular-Built-in-AI-Signal-summaryResource-34f3521b014a80149b66c11891b89391'
+source: 'https://app.notion.com/p/Angular-Built-in-AI-Signal-summaryResource-34f3521b014a80149b66c11891b89391'
 type: 'tech'
 emoji: '✨'
 ---
