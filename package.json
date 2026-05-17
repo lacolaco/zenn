@@ -19,7 +19,7 @@
   "devDependencies": {
     "@lacolaco/notion-sync": "^14.0.0",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "24.12.3",
+    "@types/node": "24.12.4",
     "dayjs": "^1.11.10",
     "js-yaml": "^4.1.0",
     "prettier": "^3.0.0",
