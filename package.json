@@ -7,29 +7,13 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "format": "prettier --write 'tools'",
-    "format:check": "prettier --check 'tools'",
-    "typecheck": "tsc --noEmit -p tools/tsconfig.json",
-    "start": "zenn",
-    "notion-sync": "tsx --env-file .env tools/notion-sync/main.ts"
+    "start": "zenn"
   },
   "engines": {
     "node": "^24.0.0"
   },
   "devDependencies": {
-    "@lacolaco/notion-sync": "^14.0.0",
-    "@types/js-yaml": "4.0.9",
-    "@types/node": "24.12.4",
-    "dayjs": "^1.11.10",
-    "js-yaml": "^4.1.0",
-    "prettier": "^3.0.0",
-    "rxjs": "^7.8.0",
-    "tsx": "^4.0.0",
-    "typescript": "^6.0.0",
     "zenn-cli": "^0.4.0"
   },
-  "packageManager": "pnpm@10.33.4",
-  "dependencies": {
-    "sharp": "^0.34.4"
-  }
+  "packageManager": "pnpm@10.33.4"
 }
