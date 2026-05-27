@@ -8,31 +8,37 @@ jobs:
   trigger-sync:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request && github.event.comment.body == '/sync' }}
+    permissions:
+      issues: write # add reaction to comment
     steps:
-      - uses: xt0rted/pull-request-comment-branch@v3
-        id: comment-branch
       - name: Add reaction
-        if: ${{ success() && steps.comment-branch.outputs.head_ref == 'sync-with-notion' }}
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             github.rest.reactions.createForIssueComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: context.payload.comment.id,
-              content: 'eyes'
-            })
-      - name: Trigger Workflow
-        if: ${{ success() }}
-        uses: actions/github-script@v9
+              content: 'eyes',
+            });
+
+      # blog-contents への repository_dispatch には GITHUB_TOKEN だと権限不足のため App token を発行
+      - name: Generate App token (for blog-contents dispatch)
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
+          app-id: ${{ secrets.WORKER_APP_ID }}
+          private-key: ${{ secrets.WORKER_APP_PRIVATE_KEY }}
+          owner: lacolaco
+          repositories: blog-contents
+
+      - name: Dispatch sync workflow in blog-contents
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'sync-with-notion.yml',
-              ref: 'main',
-              inputs: {
-                forceUpdate: 'false'
-              }
-            })
+            await github.rest.repos.createDispatchEvent({
+              owner: 'lacolaco',
+              repo: 'blog-contents',
+              event_type: 'notion-sync-zenn',
+            });
