@@ -9,13 +9,10 @@ on:
   push:
     branches: [main]
 
-# 連打 / 複数 main push を debounce、blog-contents 側 sync workflow の concurrency と協調
-concurrency:
-  group: dispatch-blog-contents-sync
-  cancel-in-progress: true
-
 jobs:
   comment-trigger:
+    # comment-trigger は concurrency 無し (ユーザー操作で reaction 付与済の comment-trigger を
+    # 後続 push で cancel すると 「eyes 付いたが dispatch されない」状態が発生するため)
     if: >-
       github.event_name == 'issue_comment' &&
       github.event.issue.pull_request &&
@@ -57,6 +54,11 @@ jobs:
             });
 
   push-trigger:
+    # 連打 / 複数 main push を debounce、blog-contents 側 sync workflow の concurrency と協調。
+    # comment-trigger には影響しないよう job レベルで設定
+    concurrency:
+      group: dispatch-blog-contents-sync-push
+      cancel-in-progress: true
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     # GITHUB_TOKEN は使わない (App token で dispatch)
