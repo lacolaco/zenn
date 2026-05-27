@@ -13,8 +13,8 @@ importers:
         version: 0.34.5
     devDependencies:
       '@lacolaco/notion-sync':
-        specifier: ^14.0.0
-        version: 14.0.0
+        specifier: ^15.0.0
+        version: 15.1.0(js-yaml@4.1.1)
       '@types/js-yaml':
         specifier: 4.0.9
         version: 4.0.9
@@ -357,8 +357,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lacolaco/notion-sync@14.0.0':
-    resolution: {integrity: sha512-cWxO1L11J2keEv0kBLODlmW4rTYrfyJ2E0GNQFCBAtLUOB+KwYXyivclqr9nTiFJKtzAlEvHqCbrT3/7W9QilA==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-sync/14.0.0/41ea83f282284ac221e009e1eefafe3ed255a4fc}
+  '@lacolaco/notion-sync@15.1.0':
+    resolution: {integrity: sha512-zw6UQvTgpCe5VmAo0qmQzXnog0vrdSgH2/5EL1GVoc+xiGUEhX/IN2uy/Hx+KyH80KjyIh2Rr6Yt7M+FkBqHQw==, tarball: https://npm.pkg.github.com/download/@lacolaco/notion-sync/15.1.0/5ff8d4b92a9f8698913d57577141ffa5e554aefa}
+    peerDependencies:
+      js-yaml: ^4.0.0
 
   '@notionhq/client@5.6.0':
     resolution: {integrity: sha512-eA3dO87vQJhFmR59utXH8r0nnulW7C7oTcxfp3bpiiTiv59luCkOkbbALCIa8TzBDdELoRD/zJEIfKcynyFR6Q==}
@@ -716,7 +718,7 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@lacolaco/notion-sync@14.0.0':
+  '@lacolaco/notion-sync@15.1.0(js-yaml@4.1.1)':
     dependencies:
       '@notionhq/client': 5.6.0
       cli-progress: 3.12.0
