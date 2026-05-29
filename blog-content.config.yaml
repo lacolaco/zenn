@@ -1,0 +1,5 @@
+# blog-contents の sync がこのリポジトリへ出力する際のファイル配置。
+# blog-contents 側コードではなくこのリポジトリが配置を所有する。
+postsDir: articles
+imagesDir: images
+manifestPath: notion-sync.manifest.json
