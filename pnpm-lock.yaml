@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       zenn-cli:
-        specifier: ^0.4.0
-        version: 0.4.8
+        specifier: ^0.5.0
+        version: 0.5.1
 
 packages:
 
@@ -59,8 +59,8 @@ packages:
     resolution: {integrity: sha512-h3Fbisa2nKGPxCpm89Hk33lBLsnaGBvctQopaBSOW/uIs6FTe1ATyAnKFJrzVs9vpGdsTe73WF3V4lIsk4Gacw==}
     engines: {node: '>=18'}
 
-  zenn-cli@0.4.8:
-    resolution: {integrity: sha512-DIJv1udDCyHd6AqoBaQDjTMs/3fo1KUCpumgyy/X8Yt1SKB/egLmhhNmePGukkIhUZDld1+RLoMWOEBky6njwg==}
+  zenn-cli@0.5.1:
+    resolution: {integrity: sha512-4F5lfW9RZTjPr8CuwUSoCnxcSBYcjJBFas+FombLF/rnOlrJia73b1Jn8laYhWwAmz4cYgJ3OvBApTh80NEHnw==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -104,7 +104,7 @@ snapshots:
     dependencies:
       is-wsl: 3.1.1
 
-  zenn-cli@0.4.8:
+  zenn-cli@0.5.1:
     dependencies:
       open: 10.2.0
       package-manager-detector: 1.6.0
