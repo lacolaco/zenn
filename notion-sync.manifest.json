@@ -204,5 +204,9 @@
   "34f3521b-014a-8014-9b66-c11891b89391": {
     "lastModified": "2026-04-30T03:24:00.000Z",
     "filePath": "articles/angular-builtin-summarizer-resource.md"
+  },
+  "3813521b-014a-80c7-aad1-d3778117c09c": {
+    "lastModified": "2026-06-21T23:49:00.000Z",
+    "filePath": "articles/angular-v22-injectasync.md"
   }
 }
