@@ -208,5 +208,18 @@
   "3813521b-014a-80c7-aad1-d3778117c09c": {
     "lastModified": "2026-07-12T00:37:00.000Z",
     "filePath": "articles/angular-v22-injectasync.md"
+  },
+  "39a3521b-014a-80de-bcf4-cc76adf1cce6": {
+    "lastModified": "2026-07-12T13:16:00.000Z",
+    "filePath": "articles/angular-resource-apis-system.md",
+    "imagePaths": [
+      "images/angular-resource-apis-system/CleanShot_2026-07-11_at_11.51.182x.fdf21ad17d3f63fd.png",
+      "images/angular-resource-apis-system/image.ff98702a7dff205e.png",
+      "images/angular-resource-apis-system/image.7f6a2e84c7c8d5a2.png",
+      "images/angular-resource-apis-system/image.fde3b6c4bcd8bb56.png",
+      "images/angular-resource-apis-system/image.bd16716569684d27.png",
+      "images/angular-resource-apis-system/image.d794691b3e377a98.png",
+      "images/angular-resource-apis-system/image.016a63cf56466503.png"
+    ]
   }
 }
