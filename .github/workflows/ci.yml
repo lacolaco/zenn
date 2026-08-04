@@ -172,7 +172,7 @@ jobs:
 
             結果をJSONで返してください。問題がなければ approved: true、問題があれば approved: false。summary にレビューの要約、issues 配列に具体的な指摘を入れてください。
           claude_args: >-
-            --allowed-tools "Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowed-tools "Bash(gh pr diff:*),Bash(gh pr view:*),Read,Glob,Grep"
             --json-schema '{"type":"object","properties":{"approved":{"type":"boolean"},"summary":{"type":"string"},"issues":{"type":"array","items":{"type":"object","properties":{"file":{"type":"string"},"description":{"type":"string"}},"required":["file","description"]}}},"required":["approved","summary","issues"]}'
 
       - name: Gate
@@ -261,7 +261,7 @@ jobs:
             - このPRのスコープ外の問題（既存コードの技術的負債等）は issues に含めない
             summary にレビューの要約、issues 配列に具体的な指摘を入れてください。
           claude_args: >-
-            --allowed-tools "Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowed-tools "Bash(gh pr diff:*),Bash(gh pr view:*),Read,Glob,Grep"
             --json-schema '{"type":"object","properties":{"approved":{"type":"boolean"},"summary":{"type":"string"},"issues":{"type":"array","items":{"type":"object","properties":{"file":{"type":"string"},"description":{"type":"string"}},"required":["file","description"]}}},"required":["approved","summary","issues"]}'
 
       - name: Gate
