@@ -181,6 +181,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          OWNER: ${{ github.repository_owner }}
           REVIEW_RESULT: ${{ steps.review.outputs.structured_output }}
         run: |
           if [[ -z "$REVIEW_RESULT" ]]; then
@@ -188,7 +189,7 @@ jobs:
             echo "approved=false" >> "$GITHUB_OUTPUT"
             gh pr comment "$PR_NUMBER" --body "## コンテンツレビュー失敗
 
-          自動レビューを実行できませんでした。人間のレビューが必要です。"
+          @${OWNER} 自動レビューを実行できませんでした。人間のレビューが必要です。"
             exit 1
           fi
 
@@ -207,6 +208,8 @@ jobs:
             ISSUES=$(echo "$REVIEW_RESULT" | jq -r '.issues[] | "- **\(.file)**: \(.description)"')
             gh pr comment "$PR_NUMBER" --body "$(cat <<EOF
           ## コンテンツレビュー NG
+
+          @${OWNER}
 
           ${SUMMARY}
 
