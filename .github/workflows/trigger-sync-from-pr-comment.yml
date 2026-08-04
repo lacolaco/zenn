@@ -11,32 +11,43 @@ on:
 
 jobs:
   comment-trigger:
+    # 判定の正は github/command 側の triggerCheck。ここは無関係なコメントでランナーを
+    # 起動させないための粗いフィルタなので、本判定より必ず広く取ること。
+    # (action は body.trim() してから startsWith するため、ここで startsWith を使うと
+    #  先頭に空白や改行が付いた `.sync` を取りこぼし、job ごと skip されて無反応になる)
     # comment-trigger は concurrency 無し (ユーザー操作で reaction 付与済の comment-trigger を
     # 後続 push で cancel すると 「eyes 付いたが dispatch されない」状態が発生するため)
     if: >-
       github.event_name == 'issue_comment' &&
       github.event.issue.pull_request &&
-      github.event.comment.body == '/sync'
+      contains(github.event.comment.body, '.sync')
     runs-on: ubuntu-latest
     permissions:
       # この job は PR のコメントでしか動かない (if の github.event.issue.pull_request)。
-      # PR コメントへの reaction は pull-requests: write で足り、issues: write は不要
+      # PR コメントへの reaction と status comment は pull-requests: write で足りる
       pull-requests: write
+      # github/command の prechecks は skip_ci の指定に関わらず checkSuites を読む
+      checks: read
     steps:
-      - name: Add reaction
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+      - uses: github/command@3442f3fa1efe01bdb024b157083c337902d17372 # v2.0.3
+        id: command
         with:
-          script: |
-            github.rest.reactions.createForIssueComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: context.payload.comment.id,
-              content: 'eyes',
-            });
+          command: '.sync'
+          allowed_contexts: pull_request
+          reaction: 'eyes'
+          # この job は blog-contents へ dispatch するだけで PR を読まない。
+          # PR 側の状態 (CI / review / draft / fork) で門前払いさせない
+          skip_ci: true
+          skip_reviews: true
+          allow_drafts: true
+          allow_forks: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          allowlist: lacolaco
 
       # blog-contents への repository_dispatch には GITHUB_TOKEN だと権限不足のため App token を発行
       - name: Generate App token (for blog-contents dispatch)
         id: app-token
+        if: ${{ steps.command.outputs.continue == 'true' }}
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           app-id: ${{ secrets.WORKER_APP_ID }}
@@ -45,6 +56,7 @@ jobs:
           repositories: blog-contents
 
       - name: Dispatch sync workflow in blog-contents
+        if: ${{ steps.command.outputs.continue == 'true' }}
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           github-token: ${{ steps.app-token.outputs.token }}
