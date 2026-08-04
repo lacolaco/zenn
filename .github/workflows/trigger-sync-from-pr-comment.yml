@@ -19,7 +19,8 @@ jobs:
       github.event.comment.body == '/sync'
     runs-on: ubuntu-latest
     permissions:
-      issues: write # add reaction to comment
+      pull-requests: write # add reaction to PR comment
+      issues: write
     steps:
       - name: Add reaction
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
