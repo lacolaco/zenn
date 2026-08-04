@@ -229,5 +229,15 @@
   "3ad3521b-014a-8112-a97d-e82bb32e5d55": {
     "lastModified": "2026-08-02T01:15:00.000Z",
     "filePath": "articles/angular-v22-1-oxc-parser.md"
+  },
+  "3b13521b-014a-8021-9d1c-e585fc92df77": {
+    "lastModified": "2026-08-03T23:31:00.000Z",
+    "filePath": "articles/angular-css-var-namespacing.md",
+    "imagePaths": [
+      "images/angular-css-var-namespacing/CleanShot_2026-08-04_at_07.45.572x.875f648658105d02.png",
+      "images/angular-css-var-namespacing/CleanShot_2026-08-04_at_07.48.302x.278a376db158f1b1.png",
+      "images/angular-css-var-namespacing/CleanShot_2026-08-04_at_07.52.432x.32b37803f08da4eb.png",
+      "images/angular-css-var-namespacing/CleanShot_2026-08-04_at_07.58.392x.98219dd25053b751.png"
+    ]
   }
 }
