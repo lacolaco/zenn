@@ -19,7 +19,9 @@ jobs:
       github.event.comment.body == '/sync'
     runs-on: ubuntu-latest
     permissions:
-      issues: write # add reaction to comment
+      # この job は PR のコメントでしか動かない (if の github.event.issue.pull_request)。
+      # PR コメントへの reaction は pull-requests: write で足り、issues: write は不要
+      pull-requests: write
     steps:
       - name: Add reaction
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
