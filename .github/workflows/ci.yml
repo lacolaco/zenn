@@ -5,7 +5,7 @@ name: CI
 # フロー:
 #   ┌─ classify ─→ content-review (needs: classify)
 #   │             → code-review    (needs: classify)
-#   ├─ CI jobs (なし — content-only repo のため)
+#   ├─ gate-test (review-gate.sh の回帰テスト)
 #   ├─ renovate-review (needs: classify, non-renovateコミットがなければ実行)
 #   ↓
 #   ok (alls-green gate, 唯一のrequired check)
@@ -30,6 +30,14 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
+  # review-gate.sh は全 PR のマージ可否を左右するため、AI レビューではなく
+  # 決定的な検査で守る (自分を疑うための道具を、自分が疑う対象に守らせない)
+  gate-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - run: .github/scripts/review-gate.test.sh
+
   classify:
     runs-on: ubuntu-latest
     permissions:
@@ -179,18 +187,14 @@ jobs:
         id: gate
         if: always()
         env:
+          KIND: content
+          LABEL: コンテンツ
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REVIEW_RESULT: ${{ steps.review.outputs.structured_output }}
         run: |
-          if [[ -z "$REVIEW_RESULT" ]]; then
-            echo "::error::structured_output is empty"
-            echo "approved=false" >> "$GITHUB_OUTPUT"
-            gh pr comment "$PR_NUMBER" --body "## コンテンツレビュー失敗
-
-          自動レビューを実行できませんでした。人間のレビューが必要です。"
-            exit 1
-          fi
+          # レビュー結果が信用できるかの検査。不調なら approved=false を書いて非ゼロで終わる
+          .github/scripts/review-gate.sh
 
           APPROVED=$(echo "$REVIEW_RESULT" | jq -r '.approved')
           SUMMARY=$(echo "$REVIEW_RESULT" | jq -r '.summary')
@@ -268,18 +272,14 @@ jobs:
         id: gate
         if: always()
         env:
+          KIND: code
+          LABEL: コード
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REVIEW_RESULT: ${{ steps.review.outputs.structured_output }}
         run: |
-          if [[ -z "$REVIEW_RESULT" ]]; then
-            echo "::error::structured_output is empty"
-            echo "approved=false" >> "$GITHUB_OUTPUT"
-            gh pr comment "$PR_NUMBER" --body "## コードレビュー失敗
-
-          自動レビューを実行できませんでした。人間のレビューが必要です。"
-            exit 1
-          fi
+          # レビュー結果が信用できるかの検査。不調なら approved=false を書いて非ゼロで終わる
+          .github/scripts/review-gate.sh
 
           APPROVED=$(echo "$REVIEW_RESULT" | jq -r '.approved')
           SUMMARY=$(echo "$REVIEW_RESULT" | jq -r '.summary')
@@ -305,7 +305,7 @@ jobs:
   # === Gate ===
 
   ok:
-    needs: [classify, renovate-review, content-review, code-review]
+    needs: [classify, gate-test, renovate-review, content-review, code-review]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:

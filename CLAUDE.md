@@ -42,6 +42,12 @@ Options:
 - `--verbose`: Show detailed logs
 - `--mode <mode>`: Sync mode (`incremental` or `all`, default: `incremental`)
 
+### Test the CI review gate
+```bash
+.github/scripts/review-gate.test.sh
+```
+Runs `.github/scripts/review-gate.sh` against a stubbed `gh`. This gate decides whether an automated review result is trustworthy, so it gates every merge — the test must pass before changing it. Also runs in CI as the `gate-test` job.
+
 ## Architecture
 
 ### Directory Structure
@@ -96,7 +102,7 @@ Options:
 ## Development Notes
 
 - All TypeScript code in `tools/` uses ES module syntax (import/export)
-- The project has no test suite
+- The only test is `.github/scripts/review-gate.test.sh`, covering the CI review gate. There are no application tests
 - Prettier is configured in `.prettierrc.json` (single quotes, trailing commas, 80 char width)
 - Articles are written in Markdown and must include Zenn frontmatter (title, emoji, type, topics, published)
 
