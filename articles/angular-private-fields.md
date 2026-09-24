@@ -1,6 +1,6 @@
 ---
 title: 'Angular: プライベートフィールドの意味論再考'
-published_at: '2026-09-25 07:30'
+published_at: '2026-09-25 07:36'
 topics:
   - 'angular'
 published: true
@@ -13,7 +13,7 @@ Angular v22.2.0アップデートから、コンポーネントクラスのプ�
 
 ## 更新内容
 
-Angular v22.2.0アップデートでは、コンポーネントのテンプレート内からプライベートアクセサにより宣言されたクラスフィールド（メンバ変数）が参照可能になった。
+Angular v22.2.0アップデートでは、コンポーネントのテンプレート内から`private`修飾子により宣言されたクラスフィールド（メンバ変数）が参照可能になった。
 
 [https://github.com/angular/angular/pull/70188](https://github.com/angular/angular/pull/70188)
 
