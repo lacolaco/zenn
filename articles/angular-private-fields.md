@@ -1,6 +1,6 @@
 ---
 title: 'Angular: プライベートフィールドの意味論再考'
-published_at: '2026-09-25 07:51'
+published_at: '2026-09-25 07:56'
 topics:
   - 'angular'
 published: true
