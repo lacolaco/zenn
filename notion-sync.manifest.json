@@ -243,5 +243,12 @@
   "3e53521b-014a-804c-8c2f-d56fecda60ed": {
     "lastModified": "2026-09-24T22:56:00.000Z",
     "filePath": "articles/angular-private-fields.md"
+  },
+  "3ea3521b-014a-805a-8f9a-ebbf82f0dde8": {
+    "lastModified": "2026-09-29T15:29:00.000Z",
+    "filePath": "articles/angular-ngp.md",
+    "imagePaths": [
+      "images/angular-ngp/image.5e1f3cdef2b3e79b.png"
+    ]
   }
 }
