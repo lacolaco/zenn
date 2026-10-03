@@ -1,6 +1,6 @@
 ---
 title: 'Angular v22.2アップデートのまとめ'
-published_at: '2026-10-03 11:37'
+published_at: '2026-10-03 11:39'
 topics:
   - 'angular'
   - 'angular cli'
@@ -176,7 +176,7 @@ class ProfileComponent {
 
 `hidden`はフォームデータ上のフィールドの状態を指定するルールで、DOMを自動的に非表示にするものではない。表示の切り替えは上の例のようにテンプレート側で`hidden()`を参照する。
 
-## `containsTree`APIの公開
+### `containsTree`APIの公開
 
 https://github.com/angular/angular/commit/2720362818cdeb2a940171e4ab6f21cf78c6a302
 
@@ -194,7 +194,7 @@ containsTree(container, target, { paths: 'exact' });  // false
 containsTree(container, target, { queryParams: 'exact' }); // false
 ```
 
-## `RedirectCommand`のthrowによるリダイレクト
+### `RedirectCommand`のthrowによるリダイレクト
 
 https://github.com/angular/angular/commit/b65dea4f03e5fc01093a718c990c72ae9165c43f
 
@@ -218,7 +218,7 @@ export const idResolver: ResolveFn<string> = (route) => {
 };
 ```
 
-## Router Resources APIの公開
+### Router Resources APIの公開
 
 https://github.com/angular/angular/commit/3064f3f1dccd78177bf3b86f8ea231102884f0d7
 
@@ -226,7 +226,7 @@ https://github.com/angular/angular/commit/3064f3f1dccd78177bf3b86f8ea231102884f0
 
 使い方や従来のリゾルバとの違いについては、後日別の記事で詳しく書く予定。
 
-## ルート別インジェクタ自動破棄機能の安定化
+### ルート別インジェクタ自動破棄機能の安定化
 
 https://github.com/angular/angular/commit/7137a41223079b4b172aeccb5031347fcc947b79
 
@@ -244,7 +244,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-## CSSネイティブネスト構文のカプセル化対応
+### CSSネイティブネスト構文のカプセル化対応
 
 https://github.com/angular/angular/commit/d0d7f57e0810a24ba16dbb1f2ab9f079a096fa3d
 
@@ -262,7 +262,7 @@ CSSネイティブのネスト構文を、`ViewEncapsulation.Emulated`のスタ�
 }
 ```
 
-## `animate.enter`・`animate.leave`への関数・Signalのバインディング
+### `animate.enter`・`animate.leave`への関数・Signalのバインディング
 
 https://github.com/angular/angular/commit/de5889ec4fab2b337e394eb994c8d428272d5ec9
 
@@ -294,7 +294,7 @@ Angular CLIの主な変更は以下。
 
 https://github.com/angular/angular-cli/blob/main/CHANGELOG.md#2220
 
-## MCPサーバーのルートディレクトリ指定
+### MCPサーバーのルートディレクトリ指定
 
 https://github.com/angular/angular-cli/commit/41555dfb3b71d08cdfe2853bf2cbeca5b6942f67
 
@@ -306,7 +306,7 @@ ng mcp --root /path/to/app-a --root /path/to/app-b
 
 MCPクライアントが`listRoots()`でルートを提供する場合は、そちらが優先される。クライアントが対応していない場合や空のリストを返す場合は`--root`の指定が使われ、どちらもなければカレントディレクトリが使われる。
 
-## テスト対象に合わせたコンパイル範囲の絞り込み
+### テスト対象に合わせたコンパイル範囲の絞り込み
 
 https://github.com/angular/angular-cli/commit/f47f77f5f6db5cda1493652f813c98c26f172ea9
 
@@ -316,13 +316,13 @@ https://github.com/angular/angular-cli/commit/f47f77f5f6db5cda1493652f813c98c26f
 ng test --include='src/app/services/test.service.spec.ts'
 ```
 
-## ファイル監視のネイティブ実装への移行
+### ファイル監視のネイティブ実装への移行
 
 https://github.com/angular/angular-cli/commit/a6ef9cfbeace725d58c0f7f65640ef6de9b39c33
 
 `@angular/build`のファイル監視が、`watchpack`から`@parcel/watcher`を中心とした実装に置き換わった。C++のネイティブバインディングを通じてOSのファイル監視APIを利用し、watchモードでのCPU・メモリ使用量を削減する。ポーリングを使う場合やネイティブ監視が利用できない環境では、`chokidar`にフォールバックする。
 
-## Sassコンパイラのネイティブ実装への移行
+### Sassコンパイラのネイティブ実装への移行
 
 https://github.com/angular/angular-cli/commit/ecbcd87b8857225e4df3df7896b3236d63553f23
 
@@ -336,7 +336,7 @@ https://github.com/angular/angular-cli/commit/ecbcd87b8857225e4df3df7896b3236d63
 
 計測例では、大規模アプリは時間短縮よりメモリ削減の効果が大きい。
 
-## SSRのCritical CSS処理の事前コンパイル
+### SSRのCritical CSS処理の事前コンパイル
 
 https://github.com/angular/angular-cli/commit/23e3d44a7f051cd3bb67700b8d8407f73b7aa7f3
 
@@ -348,7 +348,7 @@ Angular CDKやAria、Materialなどの主な変更点は以下。
 
 https://github.com/angular/components/blob/main/CHANGELOG.md#2220
 
-## Material Symbolsの自動判別
+### Material Symbolsの自動判別
 
 https://github.com/angular/components/commit/5d64e397b47e722e6ec8cd9eed69cd032766f656
 
@@ -365,7 +365,7 @@ https://github.com/angular/components/commit/5d64e397b47e722e6ec8cd9eed69cd03276
 
 上の例では`material-symbols-outlined`クラスが自動的に付与される。フォント自体を自動で読み込む機能ではないので、フォントの読み込みは別途必要。旧Material IconsとMaterial Symbolsの両方が読み込まれている場合は、互換性のため従来の`material-icons`が優先される。
 
-## `MatMenuItem`の`disabledInteractive` サポート
+### `MatMenuItem`の`disabledInteractive` サポート
 
 https://github.com/angular/components/commit/cacab5551ba8a4af365b0e99132ef21e87c3b3f5
 
@@ -384,7 +384,7 @@ https://github.com/angular/components/commit/cacab5551ba8a4af365b0e99132ef21e87c
 
 通常の`disabled`と異なり、ネイティブの`disabled`属性は付かず、`aria-disabled`で無効状態を伝える。
 
-## Angular Aria: `MenuItem`の`value`省略対応
+### Angular Aria: `MenuItem`の`value`省略対応
 
 https://github.com/angular/components/commit/cd9c7da8b6caf503cf1c0b1de1e7e861077abefb
 
@@ -397,7 +397,7 @@ https://github.com/angular/components/commit/cd9c7da8b6caf503cf1c0b1de1e7e861077
 </div>
 ```
 
-## `MatFormFieldControl`のSignal Forms対応
+### `MatFormFieldControl`のSignal Forms対応
 
 https://github.com/angular/components/commit/42c72bf2ebb0a8ba0b38c5614814385b25df43e9
 
