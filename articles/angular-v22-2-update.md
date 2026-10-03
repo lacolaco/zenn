@@ -1,6 +1,6 @@
 ---
 title: 'Angular v22.2アップデートのまとめ'
-published_at: '2026-10-03 11:21'
+published_at: '2026-10-03 11:37'
 topics:
   - 'angular'
   - 'angular cli'
@@ -21,7 +21,7 @@ Angular v22.2.0がリリースされた。マンスリーのマイナーアッ�
 
 https://github.com/angular/angular/blob/main/CHANGELOG.md#2220
 
-## テンプレートからプライベートメンバへのアクセス許可
+### テンプレートからプライベートメンバへのアクセス許可
 
 https://github.com/angular/angular/commit/48a0fd6e8a8d14bdc1d901ee5615f4b0ab698fe8
 
@@ -29,7 +29,7 @@ https://github.com/angular/angular/commit/48a0fd6e8a8d14bdc1d901ee5615f4b0ab698f
 
 https://blog.lacolaco.net/posts/angular-private-fields
 
-## `strictUnclaimedEventNames`の追加
+### `strictUnclaimedEventNames`の追加
 
 https://github.com/angular/angular/commit/312e1d808902116fb8cd4e02d936260113453999
 
@@ -40,7 +40,7 @@ https://github.com/angular/angular/commit/312e1d808902116fb8cd4e02d9362601134539
 <button (unknownEvent)="...">
 ```
 
-## `@Component.deferredImports`の追加
+### `@Component.deferredImports`の追加
 
 https://github.com/angular/angular/commit/7d9f55da11319da8f273d9edcd38ff2983bdbb0c
 
@@ -62,7 +62,7 @@ https://github.com/angular/angular/commit/7d9f55da11319da8f273d9edcd38ff2983bdbb
 export class App {}
 ```
 
-## ErrorBoundary機能の追加
+### ErrorBoundary機能の追加
 
 https://github.com/angular/angular/commit/f6afb807c1e62d26b8b665f2b4a9a52c2433a673
 
@@ -83,7 +83,7 @@ https://github.com/angular/angular/pull/70463
 
 `ErrorHandler`にも`onViewError`フックが追加され、描画エラーの詳細を受け取れるようになった。あわせてAngular Language Serviceも`@boundary`と`@error`に対応し、入力補完やホバー、定義への移動、ブロックの折りたたみなどで新しい構文を扱えるようになっている。
 
-## ディレクティブ用のテストユーティリティ追加
+### ディレクティブ用のテストユーティリティ追加
 
 https://github.com/angular/angular/commit/05c4d5a8354228100b51176f295ed5dee4f3febc
 
@@ -118,7 +118,7 @@ it('入力に応じてホスト要素のクラスを切り替える', () => {
 });
 ```
 
-## ビュー・コンテンツクエリでの`Injector`取得
+### ビュー・コンテンツクエリでの`Injector`取得
 
 https://github.com/angular/angular/commit/bd9b45b5cc1dd904cc4a5de45f6de8e1564b70b6
 
@@ -148,7 +148,7 @@ class AppComponent {
 }
 ```
 
-## Signal Formsで非表示固定のフィールドを指定
+### Signal Formsで非表示固定のフィールドを指定
 
 https://github.com/angular/angular/commit/d5e8b1ef7a02c84d4fd70a6b4d748ead9ff815bf
 
@@ -281,7 +281,7 @@ import { Component, signal } from '@angular/core';
     }
   `,
 })
-class ExampleComponent {
+class Example {
   show = signal(true);
   enterClass = signal('fade-in');
   leaveClass = () => 'fade-out';
