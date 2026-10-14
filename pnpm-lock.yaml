@@ -168,7 +168,7 @@ importers:
     devDependencies:
       zenn-cli:
         specifier: ^0.5.0
-        version: 0.5.5(@types/markdown-it@14.2.0)(supports-color@7.2.0)
+        version: 0.5.6(@types/markdown-it@14.2.0)(supports-color@7.2.0)
 
 packages:
 
@@ -1250,13 +1250,13 @@ packages:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
     engines: {node: '>=12'}
 
-  zenn-cli@0.5.5:
-    resolution: {integrity: sha512-ui7S1UX2BH5ojKp5aVM7it2+dd0OhKtXyTtTLljkTFBiMid+s/XJV4kuh/IpOeapRYfLhmmmtKEdTqTLw+XTlg==}
+  zenn-cli@0.5.6:
+    resolution: {integrity: sha512-KTSj+X2CcMdraSqmzoYsXDafcXuAOD1UbXFwbzgTeyRXAluhbWttAA5cDFj1UV0oCfxB8P8oFm0f+uMTJt1muQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
-  zenn-markdown-html@0.5.5:
-    resolution: {integrity: sha512-Ohe+9d/2dpE8+C6TsLmwWx9+sKhguZetOBEMlR7AacLzpInCNg2ShcRynHlCsobVXUsQf4s/PdA/dU9MBqMcpw==}
+  zenn-markdown-html@0.5.6:
+    resolution: {integrity: sha512-JjYcSJIs7b4v/nUTNOx/BpNgQMbJntUvV65nW33DNnUS2cBv2LZFZI1mF3mGn3vrwh0UVRpnXAkfUHO47p4VUQ==}
     engines: {node: '>=22.12.0'}
 
   zod@4.5.4:
@@ -2451,7 +2451,7 @@ snapshots:
 
   xdg-basedir@5.1.0: {}
 
-  zenn-cli@0.5.5(@types/markdown-it@14.2.0)(supports-color@7.2.0):
+  zenn-cli@0.5.6(@types/markdown-it@14.2.0)(supports-color@7.2.0):
     dependencies:
       '@ai-sdk/fireworks': 3.0.44(zod@4.5.4)
       '@ai-sdk/openai': 4.0.52(zod@4.5.4)
@@ -2473,7 +2473,7 @@ snapshots:
       open: 10.2.0
       package-manager-detector: 1.6.0
       ws: 8.22.0
-      zenn-markdown-html: 0.5.5(@types/markdown-it@14.2.0)
+      zenn-markdown-html: 0.5.6(@types/markdown-it@14.2.0)
       zod: 4.5.4
     transitivePeerDependencies:
       - '@types/markdown-it'
@@ -2481,7 +2481,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  zenn-markdown-html@0.5.5(@types/markdown-it@14.2.0):
+  zenn-markdown-html@0.5.6(@types/markdown-it@14.2.0):
     dependencies:
       cheerio: 1.2.0
       markdown-it: 14.3.2
