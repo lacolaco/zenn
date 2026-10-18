@@ -258,5 +258,19 @@
   "3f13521b-014a-80f4-9ace-fae0cf5204c7": {
     "lastModified": "2026-10-11T15:47:00.000Z",
     "filePath": "articles/angular-router-resources.md"
+  },
+  "3fd3521b-014a-809d-9a07-c4a1270cadaa": {
+    "lastModified": "2026-10-18T14:57:00.000Z",
+    "filePath": "articles/angular-error-boundary.md",
+    "imagePaths": [
+      "images/angular-error-boundary/fallback-valid-v2.4b64a167f33f1e83.png",
+      "images/angular-error-boundary/fallback-broken-v2.28c08d30c1631990.png",
+      "images/angular-error-boundary/hide-on-error-valid-v2.5422276b2f2ab87d.png",
+      "images/angular-error-boundary/hide-on-error-broken-v2.ffca8c18a29acbed.png",
+      "images/angular-error-boundary/retry-valid-v2.47fc942869a1ad58.png",
+      "images/angular-error-boundary/retry-broken-v2.2777146d820e9a21.png",
+      "images/angular-error-boundary/error-types-signed-in.30df8f3d728b76bd.png",
+      "images/angular-error-boundary/error-types-signed-out.80dd2c50d65e0a0d.png"
+    ]
   }
 }
