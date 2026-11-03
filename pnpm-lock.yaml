@@ -168,7 +168,7 @@ importers:
     devDependencies:
       zenn-cli:
         specifier: ^0.5.0
-        version: 0.5.10(@types/markdown-it@14.2.0)(supports-color@10.2.2)
+        version: 0.5.11(@types/markdown-it@14.2.0)(supports-color@10.2.2)
 
 packages:
 
@@ -1520,13 +1520,13 @@ packages:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
     engines: {node: '>=12'}
 
-  zenn-cli@0.5.10:
-    resolution: {integrity: sha512-OrLUCMxBn99YE+iReVs3n+OL5E+o6ixD3S1eEjndHrLSg1+a2/X2QftkhYknCkrRNI3FRAVFoMhcIVbkhPxLmQ==}
+  zenn-cli@0.5.11:
+    resolution: {integrity: sha512-uUqvYVKCSoaIzLfLRmEWktjnE8tZdMQFMRrXKRjKLOXOsZTgCOifsVW7l33DTTxu/3PYD2RtU7eo/aRCDHJZEg==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
-  zenn-markdown-html@0.5.10:
-    resolution: {integrity: sha512-Quh3wgV7bttiYMFJtuzpqdKwsf/WOtAjuokaefyRt13n+aGzIbc44EC9NQWdzfTd9rsU35OMz0Bk9isCUkatKw==}
+  zenn-markdown-html@0.5.11:
+    resolution: {integrity: sha512-cwC9krZdv36s9ZtcLt0MzD1t+t5pB8XaxOL1DcVN+iujSKG+xFq8EKSvNAqqSaOvH58XX1AjTcfpbMzlxQtPVQ==}
     engines: {node: '>=22.12.0'}
 
   zod@4.5.4:
@@ -3157,7 +3157,7 @@ snapshots:
 
   xdg-basedir@5.1.0: {}
 
-  zenn-cli@0.5.10(@types/markdown-it@14.2.0)(supports-color@10.2.2):
+  zenn-cli@0.5.11(@types/markdown-it@14.2.0)(supports-color@10.2.2):
     dependencies:
       '@ai-sdk/amazon-bedrock': 5.0.130(zod@4.5.4)
       '@ai-sdk/anthropic': 4.0.94(zod@4.5.4)
@@ -3185,7 +3185,7 @@ snapshots:
       open: 11.0.4
       package-manager-detector: 1.6.0
       ws: 8.22.0
-      zenn-markdown-html: 0.5.10(@types/markdown-it@14.2.0)
+      zenn-markdown-html: 0.5.11(@types/markdown-it@14.2.0)
       zod: 4.5.4
     transitivePeerDependencies:
       - '@types/markdown-it'
@@ -3193,7 +3193,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  zenn-markdown-html@0.5.10(@types/markdown-it@14.2.0):
+  zenn-markdown-html@0.5.11(@types/markdown-it@14.2.0):
     dependencies:
       cheerio: 1.2.0
       markdown-it: 15.0.3
