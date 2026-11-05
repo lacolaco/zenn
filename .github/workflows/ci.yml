@@ -102,7 +102,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: koki-develop/claude-renovate-review@7e3883b2c3d9e93dc18fe065ad1315f9072b26de # v1.3.1
+      - uses: koki-develop/claude-renovate-review@acc32a351ca125c100529d9bc3375ce43b73c2ad # v1.3.2
         id: review
         with:
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
