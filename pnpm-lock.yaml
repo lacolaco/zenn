@@ -177,7 +177,7 @@ importers:
     devDependencies:
       zenn-cli:
         specifier: ^0.5.0
-        version: 0.5.14(@types/markdown-it@14.2.0)(supports-color@10.2.2)
+        version: 0.5.15(@types/markdown-it@14.2.0)(supports-color@10.2.2)
 
 packages:
 
@@ -719,10 +719,6 @@ packages:
     peerDependenciesMeta:
       supports-color:
         optional: true
-
-  deepmerge@4.3.1:
-    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
-    engines: {node: '>=0.10.0'}
 
   default-browser-id@5.0.1:
     resolution: {integrity: sha512-x1VCxdX4t+8wVfd1so/9w+vQ4vx7lKd2Qp5tDRutErwmR85OgmfX7RlLRMWafRMY7hbEiXIbudNrjOAPa/hL8Q==}
@@ -1307,8 +1303,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sanitize-html@2.18.0:
-    resolution: {integrity: sha512-CvY+PV+NBhxe3BnjFI5f//vEDKLULm9OlZArso7gdgVsWvanBuq9PNDx+/2llfL+8XFYa/UNBxvqRBg3TWU2Ug==}
+  sanitize-html@2.18.2:
+    resolution: {integrity: sha512-LTQVNHBeKB5qIae9x2J2Fw68ORnES++8vzYaG7DFT8P4GVCJFeHffHnRUzf5Mrxfx+4GweIvMRqkBPHHodaVNg==}
     engines: {node: '>=22.12.0'}
 
   semver@7.8.5:
@@ -1530,13 +1526,13 @@ packages:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
     engines: {node: '>=12'}
 
-  zenn-cli@0.5.14:
-    resolution: {integrity: sha512-843/88s2fU8A/6mJjHEp3fZVMpcXcoIsmlJc+TjXv8f9/CMH/luGdl0kBuLSh4q3U6kx9JQiwk3LBJBZbNZtPw==}
+  zenn-cli@0.5.15:
+    resolution: {integrity: sha512-cSNtFx/b9o2gEh9QxGT3m+qKLd431tzPvio3/IsIRMis6Y0OhkKo2xFIizZjZ7qxpSOuxNGoEuqdFdgO8BJcFQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
-  zenn-markdown-html@0.5.14:
-    resolution: {integrity: sha512-ew6BpUTdcXucjgZTPYRkGJM4rJJfzFFUQcQ+HLIXNVHO4x9zAKshFlOvUG7ANw1hiGCkagkTI3SJm5h7hTvTdA==}
+  zenn-markdown-html@0.5.15:
+    resolution: {integrity: sha512-2k1SMYdUtrMJhkPeYezSUtqNjcmsEFJUKCwwzM85ohUWpvbCnkxNrp2Wa/wAh+BmsIK+SUdKwGAoq5zFmFvxmg==}
     engines: {node: '>=22.12.0'}
 
   zod@4.6.7:
@@ -2290,8 +2286,6 @@ snapshots:
     optionalDependencies:
       supports-color: 10.2.2
 
-  deepmerge@4.3.1: {}
-
   default-browser-id@5.0.1: {}
 
   default-browser@5.5.1:
@@ -2919,9 +2913,8 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sanitize-html@2.18.0:
+  sanitize-html@2.18.2:
     dependencies:
-      deepmerge: 4.3.1
       escape-string-regexp: 4.0.0
       htmlparser2: 12.0.0
       is-plain-object: 5.1.0
@@ -3167,7 +3160,7 @@ snapshots:
 
   xdg-basedir@5.1.0: {}
 
-  zenn-cli@0.5.14(@types/markdown-it@14.2.0)(supports-color@10.2.2):
+  zenn-cli@0.5.15(@types/markdown-it@14.2.0)(supports-color@10.2.2):
     dependencies:
       '@ai-sdk/amazon-bedrock': 5.0.130(zod@4.6.7)
       '@ai-sdk/anthropic': 4.0.94(zod@4.6.7)
@@ -3195,7 +3188,7 @@ snapshots:
       open: 11.0.4
       package-manager-detector: 1.6.0
       ws: 8.22.0
-      zenn-markdown-html: 0.5.14(@types/markdown-it@14.2.0)
+      zenn-markdown-html: 0.5.15(@types/markdown-it@14.2.0)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@types/markdown-it'
@@ -3203,7 +3196,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  zenn-markdown-html@0.5.14(@types/markdown-it@14.2.0):
+  zenn-markdown-html@0.5.15(@types/markdown-it@14.2.0):
     dependencies:
       cheerio: 1.2.0
       markdown-it: 15.0.3
@@ -3213,7 +3206,7 @@ snapshots:
       markdown-it-inline-comments: 1.0.1
       markdown-it-link-attributes: 4.0.1
       markdown-it-task-lists: 2.1.1
-      sanitize-html: 2.18.0
+      sanitize-html: 2.18.2
       shiki: 4.5.0
     transitivePeerDependencies:
       - '@types/markdown-it'
